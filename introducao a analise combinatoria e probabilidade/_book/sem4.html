@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 4 Semana 4 | Análise Combinatória, Probabilidade e Aplicações</title>
+  <meta name="description" content="Notas de aula da disciplina." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 4 Semana 4 | Análise Combinatória, Probabilidade e Aplicações" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notas de aula da disciplina." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 4 Semana 4 | Análise Combinatória, Probabilidade e Aplicações" />
+  
+  <meta name="twitter:description" content="Notas de aula da disciplina." />
+  
+
+<meta name="author" content="Magno T F Severino" />
+
+
+<meta name="date" content="2021-02-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="sem3.html"/>
+<link rel="next" href="sem5.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notas de aula</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introdução</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#lista-de-tarefas"><i class="fa fa-check"></i>LISTA DE TAREFAS</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="sem1.html"><a href="sem1.html"><i class="fa fa-check"></i><b>1</b> Semana 1</a><ul>
+<li class="chapter" data-level="1.1" data-path="sem1.html"><a href="sem1.html#conjuntos"><i class="fa fa-check"></i><b>1.1</b> Conjuntos</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="sem1.html"><a href="sem1.html#operações-entre-conjuntos"><i class="fa fa-check"></i><b>1.1.1</b> Operações entre conjuntos</a></li>
+<li class="chapter" data-level="1.1.2" data-path="sem1.html"><a href="sem1.html#identidades-de-conjuntos"><i class="fa fa-check"></i><b>1.1.2</b> Identidades de conjuntos</a></li>
+<li class="chapter" data-level="1.1.3" data-path="sem1.html"><a href="sem1.html#uniões-e-interseções-gerais"><i class="fa fa-check"></i><b>1.1.3</b> Uniões e interseções gerais</a></li>
+<li class="chapter" data-level="1.1.4" data-path="sem1.html"><a href="sem1.html#representação-de-conjuntos-na-linguagem-r"><i class="fa fa-check"></i><b>1.1.4</b> Representação de conjuntos na linguagem <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="sem1.html"><a href="sem1.html#somatórios-e-produtórios"><i class="fa fa-check"></i><b>1.2</b> Somatórios e produtórios</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="sem1.html"><a href="sem1.html#somatórios-e-produtórios-na-linguagem-r"><i class="fa fa-check"></i><b>1.2.1</b> Somatórios e produtórios na linguagem <code>R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="sem1.html"><a href="sem1.html#princípio-de-indução-matemática"><i class="fa fa-check"></i><b>1.3</b> Princípio de indução matemática</a><ul>
+<li class="chapter" data-level="" data-path="sem1.html"><a href="sem1.html#primeira-forma-do-princípio-de-indução-matemática"><i class="fa fa-check"></i>Primeira forma do Princípio de Indução Matemática</a></li>
+<li class="chapter" data-level="" data-path="sem1.html"><a href="sem1.html#segunda-forma-do-princípio-de-indução-matemática"><i class="fa fa-check"></i>Segunda forma do princípio de Indução Matemática</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="sem1.html"><a href="sem1.html#princípio-aditivo-e-multiplicativo"><i class="fa fa-check"></i><b>1.4</b> Princípio aditivo e multiplicativo</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="sem1.html"><a href="sem1.html#aplicações-dos-princípios-aditivo-e-multiplicativo"><i class="fa fa-check"></i><b>1.4.1</b> Aplicações dos Princípios Aditivo e Multiplicativo</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="sem1.html"><a href="sem1.html#permutação"><i class="fa fa-check"></i><b>1.5</b> Permutação</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="sem2.html"><a href="sem2.html"><i class="fa fa-check"></i><b>2</b> Semana 2</a><ul>
+<li class="chapter" data-level="2.1" data-path="sem2.html"><a href="sem2.html#arranjo-simples-r-permutação"><i class="fa fa-check"></i><b>2.1</b> Arranjo simples (<span class="math inline">\(r\)</span>-permutação)</a></li>
+<li class="chapter" data-level="2.2" data-path="sem2.html"><a href="sem2.html#combinações"><i class="fa fa-check"></i><b>2.2</b> Combinações</a></li>
+<li class="chapter" data-level="2.3" data-path="sem2.html"><a href="sem2.html#aplicações"><i class="fa fa-check"></i><b>2.3</b> Aplicações</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="sem2.html"><a href="sem2.html#equações-lineares-com-coeficientes-unitários"><i class="fa fa-check"></i><b>2.3.1</b> Equações lineares com coeficientes unitários</a></li>
+<li class="chapter" data-level="2.3.2" data-path="sem2.html"><a href="sem2.html#combinações-com-repetições"><i class="fa fa-check"></i><b>2.3.2</b> Combinações com repetições</a></li>
+<li class="chapter" data-level="2.3.3" data-path="sem2.html"><a href="sem2.html#arranjo-com-repetições"><i class="fa fa-check"></i><b>2.3.3</b> Arranjo com repetições</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="sem2.html"><a href="sem2.html#princípio-da-inclusão-e-exclusão"><i class="fa fa-check"></i><b>2.4</b> Princípio da inclusão e exclusão</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="sem3.html"><a href="sem3.html"><i class="fa fa-check"></i><b>3</b> Semana 3</a><ul>
+<li class="chapter" data-level="3.1" data-path="sem3.html"><a href="sem3.html#mais-exemplos-com-permutações"><i class="fa fa-check"></i><b>3.1</b> Mais exemplos com permutações</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="sem3.html"><a href="sem3.html#contando-o-número-de-funções"><i class="fa fa-check"></i><b>3.1.1</b> Contando o número de funções</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="sem3.html"><a href="sem3.html#probabilidade"><i class="fa fa-check"></i><b>3.2</b> Probabilidade</a></li>
+<li class="chapter" data-level="3.3" data-path="sem3.html"><a href="sem3.html#axiomas-de-probabilidade"><i class="fa fa-check"></i><b>3.3</b> Axiomas de Probabilidade</a></li>
+<li class="chapter" data-level="3.4" data-path="sem3.html"><a href="sem3.html#espaços-amostrais-com-resultados-igualmente-prováveis"><i class="fa fa-check"></i><b>3.4</b> Espaços amostrais com resultados igualmente prováveis</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="sem4.html"><a href="sem4.html"><i class="fa fa-check"></i><b>4</b> Semana 4</a><ul>
+<li class="chapter" data-level="4.1" data-path="sem4.html"><a href="sem4.html#probabilidade-como-uma-medida-de-crença"><i class="fa fa-check"></i><b>4.1</b> Probabilidade como uma medida de crença</a></li>
+<li class="chapter" data-level="4.2" data-path="sem4.html"><a href="sem4.html#probabilidade-condicional-e-independência"><i class="fa fa-check"></i><b>4.2</b> Probabilidade condicional e independência</a></li>
+<li class="chapter" data-level="4.3" data-path="sem4.html"><a href="sem4.html#fórmula-de-bayes"><i class="fa fa-check"></i><b>4.3</b> Fórmula de Bayes</a></li>
+<li class="chapter" data-level="4.4" data-path="sem4.html"><a href="sem4.html#eventos-independentes"><i class="fa fa-check"></i><b>4.4</b> Eventos independentes</a></li>
+<li class="chapter" data-level="4.5" data-path="sem4.html"><a href="sem4.html#variáveis-aleatórias-discretas"><i class="fa fa-check"></i><b>4.5</b> Variáveis Aleatórias discretas</a></li>
+<li class="chapter" data-level="4.6" data-path="sem4.html"><a href="sem4.html#valor-esperado"><i class="fa fa-check"></i><b>4.6</b> Valor esperado</a></li>
+<li class="chapter" data-level="4.7" data-path="sem4.html"><a href="sem4.html#esperança-de-uma-função-de-uma-variável-aleatória"><i class="fa fa-check"></i><b>4.7</b> Esperança de uma função de uma variável aleatória</a></li>
+<li class="chapter" data-level="4.8" data-path="sem4.html"><a href="sem4.html#variância"><i class="fa fa-check"></i><b>4.8</b> Variância</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="sem5.html"><a href="sem5.html"><i class="fa fa-check"></i><b>5</b> Semana 5</a><ul>
+<li class="chapter" data-level="5.1" data-path="sem5.html"><a href="sem5.html#variáveis-aleatórias-discretas-1"><i class="fa fa-check"></i><b>5.1</b> Variáveis Aleatórias Discretas</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="sem5.html"><a href="sem5.html#variáveis-aleatórias-bernoulli-e-binomial"><i class="fa fa-check"></i><b>5.1.1</b> Variáveis aleatórias Bernoulli e Binomial</a></li>
+<li class="chapter" data-level="5.1.2" data-path="sem5.html"><a href="sem5.html#variável-aleatória-geométrica"><i class="fa fa-check"></i><b>5.1.2</b> Variável aleatória geométrica</a></li>
+<li class="chapter" data-level="5.1.3" data-path="sem5.html"><a href="sem5.html#variável-aleatória-binomial-negativa"><i class="fa fa-check"></i><b>5.1.3</b> Variável aleatória binomial negativa</a></li>
+<li class="chapter" data-level="5.1.4" data-path="sem5.html"><a href="sem5.html#variável-aleatória-poisson"><i class="fa fa-check"></i><b>5.1.4</b> Variável aleatória Poisson</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="sem5.html"><a href="sem5.html#valor-esperado-da-soma-de-variáveis-aleatórias"><i class="fa fa-check"></i><b>5.2</b> Valor esperado da soma de variáveis aleatórias</a></li>
+<li class="chapter" data-level="5.3" data-path="sem5.html"><a href="sem5.html#propriedades-da-função-de-distribuição-acumulada"><i class="fa fa-check"></i><b>5.3</b> Propriedades da função de distribuição acumulada</a></li>
+<li class="chapter" data-level="5.4" data-path="sem5.html"><a href="sem5.html#funções-conjuntamente-distribuídas"><i class="fa fa-check"></i><b>5.4</b> Funções conjuntamente distribuídas</a></li>
+<li class="chapter" data-level="5.5" data-path="sem5.html"><a href="sem5.html#variáveis-aleatórias-independentes"><i class="fa fa-check"></i><b>5.5</b> Variáveis aleatórias independentes</a></li>
+<li class="chapter" data-level="5.6" data-path="sem5.html"><a href="sem5.html#soma-de-variáveis-aleatórias-independentes"><i class="fa fa-check"></i><b>5.6</b> Soma de variáveis aleatórias independentes</a></li>
+<li class="chapter" data-level="5.7" data-path="sem5.html"><a href="sem5.html#distribuições-condicionais"><i class="fa fa-check"></i><b>5.7</b> Distribuições condicionais</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="sem6.html"><a href="sem6.html"><i class="fa fa-check"></i><b>6</b> Semana 6</a><ul>
+<li class="chapter" data-level="6.1" data-path="sem6.html"><a href="sem6.html#variáveis-aleatórias-contínuas"><i class="fa fa-check"></i><b>6.1</b> Variáveis aleatórias contínuas</a></li>
+<li class="chapter" data-level="6.2" data-path="sem6.html"><a href="sem6.html#esperança-e-variância-de-variáveis-aleatórias-contínuas"><i class="fa fa-check"></i><b>6.2</b> Esperança e variância de variáveis aleatórias contínuas</a></li>
+<li class="chapter" data-level="6.3" data-path="sem6.html"><a href="sem6.html#variável-aleatória-normal"><i class="fa fa-check"></i><b>6.3</b> Variável aleatória normal</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendice</b></span></li>
+<li class="chapter" data-level="A" data-path="S-apendiceR.html"><a href="S-apendiceR.html"><i class="fa fa-check"></i><b>A</b> Básicos da linguagem <code>R</code></a><ul>
+<li class="chapter" data-level="A.1" data-path="S-apendiceR.html"><a href="S-apendiceR.html#usando-o-r-como-uma-calculadora"><i class="fa fa-check"></i><b>A.1</b> Usando o <code>R</code> como uma calculadora</a></li>
+<li class="chapter" data-level="A.2" data-path="S-apendiceR.html"><a href="S-apendiceR.html#atribuindo-variáveis"><i class="fa fa-check"></i><b>A.2</b> Atribuindo variáveis</a></li>
+<li class="chapter" data-level="A.3" data-path="S-apendiceR.html"><a href="S-apendiceR.html#números-especias"><i class="fa fa-check"></i><b>A.3</b> Números especias</a></li>
+<li class="chapter" data-level="A.4" data-path="S-apendiceR.html"><a href="S-apendiceR.html#vetores-matrizes-e-dataframes"><i class="fa fa-check"></i><b>A.4</b> Vetores, Matrizes e Dataframes</a><ul>
+<li class="chapter" data-level="A.4.1" data-path="S-apendiceR.html"><a href="S-apendiceR.html#vetores"><i class="fa fa-check"></i><b>A.4.1</b> Vetores</a></li>
+<li class="chapter" data-level="A.4.2" data-path="S-apendiceR.html"><a href="S-apendiceR.html#matrizes"><i class="fa fa-check"></i><b>A.4.2</b> Matrizes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Análise Combinatória, Probabilidade e Aplicações</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="sem4" class="section level1">
+<h1><span class="header-section-number">Capítulo 4</span> Semana 4</h1>
+
+<div class="example">
+<span id="exm:unnamed-chunk-1" class="example"><strong>Exemplo 4.1  </strong></span>Um comitê de 5 pessoas deve ser selecionado de um grupo de 6 homens e 9 mulheres.
+Se a seleção for feita aleatoriamente, qua é a probabilidade de que o comitê seja formado por 3 homens e 2 mulheres?
+</div>
+
+
+<div class="solution">
+ <span class="solution"><em>Solução. </em></span> <span class="math display">\[\frac{{6\choose 3}{9 \choose 2}}{{15 \choose 5}} = \frac{240}{1001}.\]</span>
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-3" class="example"><strong>Exemplo 4.2  </strong></span>Suponha que <span class="math inline">\(n+m\)</span> bolas, das quais <span class="math inline">\(n\)</span> são vermelhas e <span class="math inline">\(m\)</span> são azuis, sejam arranjadas em uma sequência linear de forma que todas as <span class="math inline">\((m+n)!\)</span> sequências possíveis sejam igualmente prováveis.
+Se gravarmos o resultado deste experimento listando apenas as cores das bolas sucessivas, mostre que todos os resultados possíveis permanecem igualmente prováveis.
+</div>
+
+
+<div class="solution">
+ <span class="solution"><em>Solução. </em></span> Considere qualquer uma das <span class="math inline">\((m+n)!\)</span> sequências possíveis e note que qualquer permutação das bolas vermelhas entre si e das bolas azuis entre si não muda a sequência de cores.
+Como resultado, cada sequência de cores tem probabilidade de ocorrência igual a <span class="math inline">\(\frac{n!m!}{(n+m)!}.\)</span>
+Por exemplo, suponha que há 2 bolas vermelhas nomeadas <span class="math inline">\(v_1\)</span> e <span class="math inline">\(v_2\)</span> e duas bolas azuis, nomeadas <span class="math inline">\(a_1\)</span> e <span class="math inline">\(a_2\)</span>.
+Então, das <span class="math inline">\(4!\)</span> possíveis sequências, <span class="math inline">\(2!2!\)</span> delas resultarão em qualquer combinação de cores especificada.
+Por exemplo, as ordenações a seguir resulta na alternância de cores em bolas adjacentes, com uma bola vermelha na frente
+<span class="math display">\[\begin{align}
+v_1 a_1 v_2 a_2, &amp; \qquad v_1 a_2 v_2 a_1, \\
+v_2 a_1 v_1 a_2, &amp; \qquad v_2 a_2 v_1 a_1.
+\end{align}\]</span>
+Portanto, cada uma das possíveis sequências de cores tem probabilidade <span class="math inline">\(\frac{4}{24}=\frac{1}{6}\)</span> de ocorrer.
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-5" class="example"><strong>Exemplo 4.3  </strong></span>Se <span class="math inline">\(n\)</span> pessoas se encontram no interior de uma sala, qual é a probabilide de que duas pessoas não celebrem o aniversário no mesmo dia do ano?
+Quão grande precisa ser <span class="math inline">\(n\)</span> para que essa probabilidade seja menor que <span class="math inline">\(0{,}5\)</span>?
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>Solução. </em></span> Como cada pessoa pode celebrar seu aniversário em qualquer um dos 365 dias do ano, há um total de <span class="math inline">\(365^n\)</span> resultados possíveis (estamos considerando apenas anos não bisextos!).
+Supondo que cada resultado seja igualmente provável, vemos que a probabilidade desejada é igual a
+<span class="math display">\[\frac{365\cdot 364\cdot 363 \cdots (365-n+1)}{365^n}.\]</span></p>
+Quando <span class="math inline">\(n\geq 23\)</span>, esta probabilidade é menor que <span class="math inline">\(\frac{1}{2}\)</span>.
+Isto é, 23 pessoas ou mais na sala, então a probabilidade de que pelo menos duas delas façam aniversário no mesmo dia é maior que <span class="math inline">\(\frac{1}{2}\)</span>.
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-7" class="example"><strong>Exemplo 4.4  (Permutação caótica revisitada)  </strong></span>Suponha que cada uma das <span class="math inline">\(N\)</span> pessoas presentes em uma festa junina atire seu chapeu para o centro de uma roda.
+Os chapeus são misturadaos e então cada pessoa seleciona aleatoriamente um deles.
+Qual é a probabilidade de que nenhuma das pessoas selecione o seu próprio chapeu?
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>Solução. </em></span> Seja <span class="math inline">\(E_i, i=1,2,\ldots,N\)</span>, o evento em que a <span class="math inline">\(i\)</span>-ésima pessoa seleciona seu próprio chapeu.
+Pela Proposição <a href="#prp:propInclusaoExclusao"><strong>??</strong></a>, <span class="math inline">\(P(\cup_{i=1}^{N}E_i)\)</span>, a probabilidade de que pelo menos um dos presentes na festa selecione o seu próprio chapeu é dada por
+<span class="math display">\[\begin{align}
+P(\cup_{i=1}^{N}E_i)=P(E_1\cup E_2 \cup\cdots\cup E_n) =&amp; \sum_{i=1}^{N}P(E_i) - \sum_{1\leq i &lt;j}P(E_i E_j) \\ &amp;+ \cdots +(-1)^{N+1}P(E_1 E_2 \cdots E_N).
+\end{align}\]</span></p>
+<p>Se interpretarmos o resultado deste experimento como um vetor de <span class="math inline">\(N\)</span> números, em que o <span class="math inline">\(i\)</span>-ésimo elemento corresponde ao número do chapeu jogado pela <span class="math inline">\(i\)</span>-ésima pessoa, então existem <span class="math inline">\(N!\)</span> resultados possíveis.
+Além disso, <span class="math inline">\(E_{i_1}E_{i_2}\cdots E_{i_n}\)</span>, o evento em que cada uma das <span class="math inline">\(n\)</span> pessoas
+<span class="math inline">\(i_1, i_2, \ldots, i_n\)</span> seleciona o seu próprio chapeu pode ocorrer de qualquer uma das <span class="math inline">\((N-n)(N-n-1)\cdots 1=(N-n)!\)</span> maneiras possíveis, pois das <span class="math inline">\(N-n\)</span> pessoas restantes, a primeira pode selecionar qualquer um dos <span class="math inline">\(N-n\)</span> chapéus, a segunda pessoa pode selecionar qualquer um dos <span class="math inline">\(N-n-1\)</span> chapéus restantes e assim por diante.
+Além disso, supondo que todos os <span class="math inline">\(N!\)</span> resultados possíveis sejam igualmente prováveis, vemos que
+<span class="math display">\[P(E_{i_1}E_{i_2}\cdots E_{i_n}) = \frac{(N-n)!}{N!}.\]</span></p>
+Além disso, como existem <span class="math inline">\({N \choose n}\)</span> termos em <span class="math inline">\(\sum_{1\leq i_1&lt;i_2 &lt; \cdots &lt; i_n}P(E_{i_1}E_{i_2}\cdots E_{i_n})\)</span>, temos que
+<span class="math display">\[\sum_{1\leq i_1&lt;i_2 &lt; \cdots &lt; i_n}P(E_{i_1}E_{i_2}\cdots E_{i_n}) = \frac{N!}{(N-n)!n!}\frac{(N-n)!}{N!} = \frac{1}{n!}.\]</span>
+Logo,
+<span class="math display">\[P\Bigg(\bigcup_{i=1}^{N}\Bigg) = 1 - \frac{1}{2!} + \frac{1}{3!} - \cdots + (-1)^{N+1}\frac{1}{N!}.\]</span>
+Portanto, a probabilidade de que nenhuma das pessoas selecione o seu próprio chapeu é
+<span class="math display" id="eq:exemploChapeu">\[\begin{equation}
+1 - P\Bigg(\bigcup_{i=1}^{N}\Bigg) = 1 - 1 + \frac{1}{2!} - \frac{1}{3!} + \cdots - (-1)^{N+1}\frac{1}{N!}.
+\tag{4.1}
+\end{equation}\]</span>
+</div>
+
+
+<div class="remark">
+ <span class="remark"><em>Observação. </em></span> Para <span class="math inline">\(n\)</span> grande, a Expressão <a href="sem4.html#eq:exemploChapeu">(4.1)</a> converge para <span class="math inline">\(\mathrm{e}^{-1}\approx 0{,}36788\)</span>.
+</div>
+
+<div id="probabilidade-como-uma-medida-de-crença" class="section level2">
+<h2><span class="header-section-number">4.1</span> Probabilidade como uma medida de crença</h2>
+<p>Até agora interpretamos a probabilidade de um evento de certo experimento como sendo uma medida de frequência de ocorrência desse evento quando o experimento é repetido continuamente.
+Entretanto, existem também outros usos para o termo probabilidade.
+Por exemplo, você já deve ter ouvido frases como “a probabilidade de que Magno não seja paulista é de 90%”.
+Como podemos interpretar essa frase?</p>
+<p>A interpretação mais simples e natural é que as probabilidades citadas são medidas da crença de um indivíduo.
+Essa interpretação da probabilidade como sendo uma medida de crença é chamada de visão <em>pessoal</em> ou <em>subjetiva</em> da probabilidade.
+Parece lógico supor que “uma medida de crença” deva satisfazer todos os axiomas da probabilidade.
+Por exemplo, se temos 60% de certeza de que Magno é mineiro e 15% de certeza de que ele é goiano, então é lógico supor que temos 75% de certeza de que Magno é mineiro ou goiano.
+Com isso, seja com a interpretação da probabilidade como uma medida de crença ou como uma frequência de ocorrência em uma longa sequência de experimentos, suas propriedades matemáticas permanecem inalteradas.</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-10" class="example"><strong>Exemplo 4.5  </strong></span>Suponha que, em uma corrida de 7 cavalos, você sinta que cada um dos 2 primeiros cavalos tem 20% de chance de vencer, os cavalos 3 e 4 têm uma chance de 15%, e os três cavalos restantes têm uma chance de 10% cada.
+Seria melhor para você apostar, podendo ganhar o mesmo que apostou, na vitória dos três primeiros cavalos ou na vitória dos cavalos 1, 5, 6 e 7?
+</div>
+
+
+<div class="solution">
+ <span class="solution"><em>Solução. </em></span> Com base em suas probabilidades pessoais a respeito do resultado da corrida, a probabilidade de você vencer a primeira aposta é de <span class="math inline">\(0{,}2 + 0{,}2 +0{,}15 = 0{,}55\)</span>, enquanto a de vencer a segunda aposta é de <span class="math inline">\(0{,}2 + 0{,}1 +0{,}1 + 0{,}1=0{,}5.\)</span>
+Com isso, a primeira aposta é mais atraente.
+</div>
+
+<p>Vamos agora introduzir um dos conceitos mais importantes da teoria da probabilidade. A importância desse conceito é dupla.
+Em primeiro lugar, estamos frequentemente interessados em calcular probabilidades quando temos alguma informação parcial a respeito do resultado de um experimento; em tal situação, as probabilidades desejadas são condicionais.
+Em segundo lugar, mesmo quando não temos nenhuma informação parcial sobre o resultado de um experimento, as probabilidades condicionais podem ser frequentemente utilizadas para computar mais facilmente as probabilidades desejadas.</p>
+</div>
+<div id="probabilidade-condicional-e-independência" class="section level2">
+<h2><span class="header-section-number">4.2</span> Probabilidade condicional e independência</h2>
+<p>Suponha que lancemos dois dados, cada um dos 36 resultados possíveis é igualmente provável e portanto tem probabilidade <span class="math inline">\(\frac{1}{36}\)</span>.
+Digamos que o primeiro dado seja um 3.
+Então, dada essa informação, qual é a probabilidade de que a soma dos dois dados seja 8?</p>
+<p>Sabendo que saiu um 3 no dado inicial, existirão no máximo 6 resultados possíveis para o nosso experimento, isto é, <span class="math inline">\((3,1), (3,2),\)</span> <span class="math inline">\((3,3), (3,4),\)</span> <span class="math inline">\((3,5), (3,6)\)</span>.
+Como cada um desses resultados tinha originalmente a mesma probabilidade de ocorrência, os resultados deveriam continuar a ter probabilidades iguais.
+Dado que o primeiro dado é 3, a probabilidade (condicional) de cada um dos resultados possíveis é <span class="math inline">\(\frac{1}{6}\)</span>, enquanto a probabilidade (condicional) dos outros 30 pontos no espaço amostral é zero.
+Com isso, a probabilidade desejada será igual a <span class="math inline">\(\frac{1}{6}\)</span>.</p>
+
+<div class="definition">
+<span id="def:defProbCond" class="definition"><strong>Definição 4.1  (Probabilidade Condicional)  </strong></span>Sejam <span class="math inline">\(E\)</span> e <span class="math inline">\(F\)</span> dois eventos tais que <span class="math inline">\(P(F&gt;0)\)</span>.
+A probabilidade condicional de que <span class="math inline">\(E\)</span> ocorra dado que <span class="math inline">\(F\)</span> ocorreu é representada por
+<span class="math display" id="eq:condicional">\[\begin{equation}
+P(E|F) = \frac{P(EF)}{P(F)}.
+\tag{4.2}
+\end{equation}\]</span>
+</div>
+
+<p>Ao condicionar o evento <span class="math inline">\(E\)</span> na ocorrência do evento <span class="math inline">\(F\)</span>, é como se <span class="math inline">\(F\)</span> passase a ser o espaço amostral.
+Veja nas Figuras <a href="sem4.html#fig:figProbCond1">4.1</a> e <a href="sem4.html#fig:figProbCond2">4.2</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:figProbCond1"></span>
+<img src="Livro_files/figure-html/figProbCond1-1.png" alt="Espaço amostral e dois eventos." width="95%" />
+<p class="caption">
+Figura 4.1: Espaço amostral e dois eventos.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:figProbCond2"></span>
+<img src="Livro_files/figure-html/figProbCond2-1.png" alt="Na probabilidade condicional, F faz o papel de espaço amostral." width="95%" />
+<p class="caption">
+Figura 4.2: Na probabilidade condicional, F faz o papel de espaço amostral.
+</p>
+</div>
+
+<div class="example">
+<span id="exm:unnamed-chunk-12" class="example"><strong>Exemplo 4.6  </strong></span>Uma moeda é lançada duas vezes.
+Supondo que todos os quatro pontos no espaço amostral <span class="math inline">\(\mathcal{S} = \{(H,H), (H,T),\)</span> <span class="math inline">\((T,H), (T,T)\}\)</span> sejam equiprováveis, qual a probabilidade condicional de que dê <span class="math inline">\(cara\)</span> (<span class="math inline">\(H\)</span>) em ambas as jogadas dado que (a) dê <span class="math inline">\(cara\)</span> na primeira jogada? (b) dê <span class="math inline">\(cara\)</span> em pelo menos uma das jogadas?
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>Solução. </em></span> Sejam <span class="math inline">\(B=\{(H,H)\}\)</span> o evento em que ambos lançamentos dão cara, <span class="math inline">\(F=\{(H,H),(H,T)\}\)</span> o evento em que dá <span class="math inline">\(cara\)</span> no primeiro lançamento e <span class="math inline">\(A=\{(H,H),(H,T),(T,H)\}\)</span> o evento em que pelo menos uma <span class="math inline">\(cara\)</span> ocorre.
+Então, para o item (a) temos</p>
+<p><span class="math display">\[\begin{align}
+P(B|F) &amp;= \frac{P(BF)}{P(F)}\\
+&amp;=\frac{P(\{(H,H)\})}{P(\{(H,H),(H,T)\})} &amp;&amp;\\
+&amp;=\frac{1/4}{2/4}=\frac{1}{2}.
+\end{align}\]</span></p>
+<p>E para o item (b)</p>
+<span class="math display">\[\begin{align}
+P(B|A) &amp;= \frac{P(BA)}{P(A)}\\
+&amp;=\frac{P(\{(H,H)\})}{P(\{(H,H),(H,T),(T,H)\})} &amp;&amp;\\
+&amp;=\frac{1/4}{3/4}=\frac{1}{3}.
+\end{align}\]</span>
+</div>
+
+<p>Multiplicando ambos os lados da Expressão <a href="sem4.html#eq:condicional">(4.2)</a> por <span class="math inline">\(P(F)\)</span>, obtemos
+<span class="math display" id="eq:condicional2">\[\begin{equation}
+P(E|F)P(F) = P(EF).
+\tag{4.3}
+\end{equation}\]</span></p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-14" class="example"><strong>Exemplo 4.7  </strong></span>Marcela está indecisa quanto a fazer a disciplina de Análise Combinatória ou Introdução à Probabilidade.
+Ela estima que sua probabilidade de conseguir um conceito <span class="math inline">\(A\)</span> seria de <span class="math inline">\(\frac{2}{3}\)</span> em Análise Combinatória e <span class="math inline">\(\frac{1}{2}\)</span> em Introdução à Probabilidade.
+Se Marcela decide basear sua escolha no lançamento de uma moeda honesta, qual é a probabilidade de que ela obtenha A em Análise Combinatória?
+</div>
+
+
+<div class="solution">
+ <span class="solution"><em>Solução. </em></span> Suponha que <span class="math inline">\(C\)</span> seja o evento em que Marcela faz o curso de Análise Combinatória e <span class="math inline">\(A\)</span> o evento em que ela tira <span class="math inline">\(A\)</span> independentemente do curso que fizer.
+Então
+<span class="math display">\[P(CA) = P(C)P(A|C) = \frac{1}{2}\frac{2}{3} = \frac{1}{3}.\]</span>
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-16" class="example"><strong>Exemplo 4.8  </strong></span>Suponha que uma urna contenha 8 bolas vermelhas e 4 bolas brancas.
+Retira-se duas bolas sem reposição.
+(a) se supõe-se que em cada retirada cada bola na urna tenha a mesma probabilidade de ser escolhida, qual é a probabilidade de que ambas as bolas retiradas sejam vermelhas?
+(b) Suponha que as bolas tenham tamanhos diferentes (vermelha tem diametro <span class="math inline">\(r\)</span> e a branca tem diametro <span class="math inline">\(w\)</span>) e que a probabilidade de que a próxima bola a ser retirada da urna seja igual ao diametro da bola dividido pela soma dos diametros de todas as bolas na urna naquele momento.
+Qual é a probabilidade de que ambas bolas sejam vermelhas?
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>Solução. </em></span> Defina os eventos <span class="math inline">\(R_1 =\)</span> “primeira bola retirada é vermelha” e <span class="math inline">\(R_2 =\)</span> “segunda bola retirada é vermelha”.
+(a) Dado que a primeira bola é vermelha, existem 7 bolas vermelhas e 4 bolas brancas restantes, de forma que <span class="math inline">\(P(R_2|R_1) = 7/11\)</span>.
+Como <span class="math inline">\(P(R_1)=8/12\)</span>, a probabilidade desejada é
+<span class="math display">\[P(R_1 R_2) = P(R_1)P(R_2|R_1) = \frac{2}{3}\frac{7}{11} = \frac{14}{33}.\]</span>
+Alternativamente, <span class="math inline">\(P(R_1 R_2) = {{8\choose 2}}/{{12\choose 2}}\)</span>.</p>
+<p>Para o item (b) vamos usar <span class="math inline">\(P(R_1 R_2) = P(R_1)P(R_2 | R_1)\)</span>.
+Numere as bolas vermelhas e suponha que <span class="math inline">\(B_i, i=1, \ldots, 8\)</span> seja o evento em que a primeira bola retirada é uma bola vermelha de numero <span class="math inline">\(i\)</span>.
+Então,
+<span class="math display">\[P(R_1) = P\Bigg(\bigcup_{i=1}^{8}B_i\Bigg) = \sum_{i=1}^{8}P(B_i) = 8\cdot \frac{r}{8r+4w}.\]</span></p>
+Se a primeira bola é vermelha, a urna passa a conter 7 bolas vermelhas e 4 bolas brancas.
+Assim, pelo mesmo argumento acima,
+<span class="math display">\[P(R_2 | R_1) = 7\cdot \frac{r}{7r+4w}.\]</span>
+Portanto, a probabilidade desejada é
+<span class="math display">\[P(R_1 R_2) = \frac{8r}{8r+4w}\frac{7r}{7r+4w}.\]</span>
+</div>
+
+<p>Uma generalização da Equação <a href="sem4.html#eq:condicional2">(4.3)</a> fornece uma expressão para a probabilidade da interseção de um número arbitrário de eventos.</p>
+
+<div class="proposition">
+<span id="prp:unnamed-chunk-18" class="proposition"><strong>Proposição 4.1  (Regra da multiplicação)  </strong></span>
+</div>
+
+<p><span class="math display" id="eq:condicional3">\[\begin{equation}
+P(E_1 E_2 \cdots E_n) = P(E_1)P(E_2|E_1)P(E_3|E_1 E_2)\cdots P(E_n|E_1 E_2 \cdots E_{n-1}).
+\tag{4.4}
+\end{equation}\]</span></p>
+
+<div class="proof">
+ <span class="proof"><em>Prova. </em></span> Aplicando a Definição <a href="sem4.html#def:defProbCond">4.1</a> de probabilidade condicional ao lado direito da Equação <a href="sem4.html#eq:condicional3">(4.4)</a>, temos
+<span class="math display">\[P(E_1) \frac{P(E_1E_2)}{P(E_1)} \frac{P(E_1 E_2 E_3)}{P(E_1 E_2)} \cdots \frac{P(E_1 E_2 \cdots E_n)}{P(E_1 E_2 \cdots E_{n-1})} = P(E_1 E_2 \cdots E_n).\]</span>
+</div>
+
+</div>
+<div id="fórmula-de-bayes" class="section level2">
+<h2><span class="header-section-number">4.3</span> Fórmula de Bayes</h2>
+<p>Sejam os eventos <span class="math inline">\(E\)</span> e <span class="math inline">\(F\)</span>.
+Podemos expressar <span class="math inline">\(E\)</span> como
+<span class="math display">\[E = EF \cup EF^c.\]</span>
+Note que <span class="math inline">\((EF) \cap (EF^c)=\emptyset\)</span>, assim, pelo Axioma 3,
+<span class="math display" id="eq:complementar">\[\begin{align}
+P(E) &amp;= P(EF) + P(EF^c)\\
+&amp;= P(E|F)P(F) + P(E|F^c)P(F^c).
+\tag{4.5}
+\end{align}\]</span></p>
+<p>A Equação <a href="sem4.html#eq:complementar">(4.5)</a> diz que a probabilidade do evento <span class="math inline">\(E\)</span> é uma média ponderada da probabilidade condicional de <span class="math inline">\(E\)</span> dado que o evento <span class="math inline">\(F\)</span> ocorreu e da probabilidade condicional de <span class="math inline">\(E\)</span> dado que <span class="math inline">\(F\)</span> não ocorreu.
+Esta fórmula é útil porque seu uso muitas vezes nos permite determinar a probabilidade de um evento com base na condição de ocorrência ou não de um segundo evento.
+Veja uma representação deste resultado através do diagrama de Venn na Figura <a href="sem4.html#fig:figProbTotal">4.3</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:figProbTotal"></span>
+<img src="Livro_files/figure-html/figProbTotal-1.png" alt="Na probabilidade condicional, F faz o papel de espaço amostral." width="95%" />
+<p class="caption">
+Figura 4.3: Na probabilidade condicional, F faz o papel de espaço amostral.
+</p>
+</div>
+
+<div class="example">
+<span id="exm:unnamed-chunk-20" class="example"><strong>Exemplo 4.9  </strong></span>Uma companhia de seguros acredita que pessoas podem ser divididas em duas classes: aquelas que são propensas a acidentes e aquelas que não são.
+A estatística da companhia mostra que uma pessoa propensa a acidadentes tem probabilidade de <span class="math inline">\(0{,}4\)</span> de sofrer um acidente dentro de um período fixo de 1 ano, enquanto que essa probabilidade cai para <span class="math inline">\(0{,}2\)</span> no caso de uma pessoa não propensa a acidentes.
+Se supormos que <span class="math inline">\(30\%\)</span> da população é propensa a acidentes, (a) qual é a probabilidade de que um novo segurado sofra um acidente no período de um ano posterior à compra de sua apólice?
+(b) Suponha que um novo segurado sofra um acidente em menos de um ano após a compra da apólice.
+Qual é a probabilidade de que ele seja propenso a acidentes?
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>Solução. </em></span> Vamos definir o evento <span class="math inline">\(A_1\)</span> como sendo o evento em que “o segurado sofre um acidente no período de um ano após a compra de sua apólice” e <span class="math inline">\(A\)</span> como “o segurado é propenso a acidentes”.
+Assim, a probabilidade desejada no item (a) é
+<span class="math display">\[\begin{align}
+P(A_1) &amp;= P(A_1|A)P(A) + P(A_1|A^c)P(A^c)\\
+&amp;= 0{,}4\cdot 0{,}3 + 0{,}2\cdot 0{,}7 = 0{,}26.
+\end{align}\]</span></p>
+<p>Para o item (b), queremos obter <span class="math inline">\(P(A|A_1)\)</span>.
+Então,</p>
+<span class="math display">\[P(A|A_1) = \frac{P(A A_1)}{P(A_1)} = \frac{P(A_1|A)P(A)}{P(A_1)} = \frac{ 0{,}3\cdot 0{,}4}{ 0{,}26} = \frac{6}{13} = 0{,}46.\]</span>
+</div>
+
+<p>A Equação <a href="sem4.html#eq:complementar">(4.5)</a> pode ser generalizada da seguinte maneira.
+Suponha que <span class="math inline">\(F_1, F_2, \ldots, F_n\)</span> sejam eventos mutualmente exclusivos tais que</p>
+<p><span class="math display">\[\bigcup_{i=1}^{n}F_i=\mathcal{S}.\]</span>
+Escrevendo <span class="math display">\[E = \bigcup_{i=1}^{n}EF_i,\]</span></p>
+<p>e usando o fato de que os eventos <span class="math inline">\(EF_i, i=1,\ldots, n\)</span> são mutualmentne exclusivos, obtemos</p>
+<p><span class="math display" id="eq:particao">\[\begin{equation}
+P(E) =  \sum_{i=1}^{n}P(EF_i) = \sum_{i=1}^{n}P(E|F_i)P(F_i).
+\tag{4.6}
+\end{equation}\]</span></p>
+<p>A Equação <a href="sem4.html#eq:particao">(4.6)</a> mostra que, para dados eventos <span class="math inline">\(F_1, F_2, \ldots, F_n\)</span>, dos quais <strong>um e apenas um</strong> deve ocorrer, podemos calcular <span class="math inline">\(P(E)\)</span> primeiro analizando as condições em que <span class="math inline">\(F_i\)</span> ocorre.
+Além disso, a Equação <a href="sem4.html#eq:particao">(4.6)</a> diz que <span class="math inline">\(P(E)\)</span> é igual à média ponderada de <span class="math inline">\(P(E|F_i)\)</span>, com cada termo sendo ponderado pela probabilidade do evento ao qual está condicionado.</p>
+<p>Considerando a mesma sequência de eventos <span class="math inline">\(F_1, F_2, \ldots, F_n\)</span>, uma partição de <span class="math inline">\(\mathcal{S}\)</span>, suponha que <span class="math inline">\(E\)</span> tenha ocorrido e que estejamos interessados em determinar qual dos <span class="math inline">\(F_j\)</span> ocorreu.
+Então pela generalização apresentada pela Equação <a href="sem4.html#eq:particao">(4.6)</a>, temos a Proposição <a href="sem4.html#prp:bayes">4.2</a> a seguir.</p>
+
+<div class="proposition">
+<span id="prp:bayes" class="proposition"><strong>Proposição 4.2  (Fórmula de Bayes)  </strong></span><span class="math display">\[\begin{align}
+P(F_j|E) &amp;= \frac{P(EF_j)}{P(E)}\\
+&amp;= \frac{P(E|F_j)P(F_j)}{\sum_{i=1}^{n}P(E|F_i)P(F_i)}.
+\end{align}\]</span>
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-22" class="example"><strong>Exemplo 4.10  </strong></span>Uma caixa contés 3 tipos de lâmpadas.
+A probabilidade de que uma lâmpada do tipo 1 funcione por mais de 100h é igual a <span class="math inline">\(0{,}7\)</span> e as probabilidades referentes às lâmpadas do tipo 2 e 3 correspondem à <span class="math inline">\(0{,}4\)</span> e <span class="math inline">\(0{,}3\)</span>, respectivamente.
+Suponha que <span class="math inline">\(20\%\)</span> das lâmpadas na caixa sejam do tipo 1, <span class="math inline">\(30\%\)</span> sejam do tipo 2 e <span class="math inline">\(50\%\)</span> do tipo 3.
+(a) Qual a probabilidade de que uma lâmpada alteatoriamente escolhida funcione mais que 100 horas?
+(b) Dado que uma lâmpada tenha durado mais de 100 horas, qual é a probabilidade de que ela seja uma lâmpada do tipo <span class="math inline">\(j, j=1,2,3\)</span>?
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>Solução. </em></span> Vamos definir <span class="math inline">\(A\)</span> como o evento “a lâmpada escolhida funciona mais do que 100h” e <span class="math inline">\(F_j\)</span> como “a lâmpada do tipo <span class="math inline">\(j\)</span> é escolhida”, para <span class="math inline">\(j=1,2,3\)</span>.
+Então, para o item (a) temos
+<span class="math display">\[\begin{align}
+P(A) &amp; = \sum_{j=1}^{3}P(A|F_j)P(F_j)\\
+&amp; = P(A|F_1)P(F_1) + P(A|F_2)P(F_2) + P(A|F_3)P(F_3)\\
+&amp; = 0{,}7\cdot 0{,}2 + 0{,}4\cdot 0{,}3 + 0{,}3\cdot 0{,}5\\
+&amp;= 0{,}41.
+\end{align}\]</span></p>
+<p>Para o item (b), vamos usar a fórmula de Bayes (veja a Proposição <a href="sem4.html#prp:bayes">4.2</a>)</p>
+<p><span class="math display">\[P(F_j|A) = 
+  \frac{P(AF_j)}{P(A)} = \frac{P(A|F_j)P(F_j)}{0{,}41}.\]</span></p>
+<p>Assim,
+<span class="math display">\[\begin{align}
+P(F_1|A) &amp;= 
+  \frac{0{,}7\cdot 0{,}2}{0{,}41} = \frac{11}{41} = 0{,}341, \\
+P(F_j|A) &amp;= 
+  \frac{0{,}4\cdot 0{,}3}{0{,}41} = \frac{12}{41} = 0{,}293, \\
+P(F_j|A) &amp;= 
+  \frac{0{,}3\cdot 0{,}5}{0{,}41} = \frac{15}{41} = 0{,}366.
+\end{align}\]</span></p>
+Note que, enquanto a probabilidade de uma lâmpada do tipo 1 ser escolhida é de apenas <span class="math inline">\(0{,}2\)</span>, a informação de que a lanterna funcionou por mais de 100 horas aumenta a probabildiade do evento <span class="math inline">\(E_1\)</span> para <span class="math inline">\(0{,}341\)</span>.
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-24" class="example"><strong>Exemplo 4.11  </strong></span>Em certo estágio de uma investigação criminal, o inspetor encarregado está 60% convencido da culpa de certo suspeito.
+Suponha, no entanto, que uma nova prova que mostre que o criminoso tinha certa característica (como o fato de ser canhoto, por exemplo) apareça.
+Se 20% da população possue essa característica, quão certo da culpa do suspeito o inspetor estará agora se o suspeito apresentar a caraterística em questão?
+</div>
+
+
+<div class="solution">
+ <span class="solution"><em>Solução. </em></span> Supondo que <span class="math inline">\(G\)</span> represente o evento em que o suspeito é culpado e
+<span class="math inline">\(C\)</span> o evento em que ele possui a característica do criminoso, temos
+<span class="math display">\[\begin{align}
+  P(G|C) &amp;= \frac{P(GC)}{P(C)}\\
+  &amp;= \frac{P(C|G)P(G)}{P(C|G)P(G)+P(C|G^c)P(G^c)}\\
+  &amp;= \frac{1(0,6)}{1(0,6) + 0,2(0,4)}\\
+  &amp;= 0,8824.
+\end{align}\]</span>
+onde supomos que a probabilidade de o suspeito ter a característica em questão mesmo sendo inocente é igual a 0,2, isto é, o percentual da população que possui tal característica.
+</div>
+
+</div>
+<div id="eventos-independentes" class="section level2">
+<h2><span class="header-section-number">4.4</span> Eventos independentes</h2>
+<p>Até o momento, vimmos que <span class="math inline">\(P(E|F)\)</span>, a probabilidade condicional de <span class="math inline">\(E\)</span> dado <span class="math inline">\(F\)</span>, não é geralmente igual a <span class="math inline">\(P(E)\)</span>.
+Ou seja, saber que <span class="math inline">\(F\)</span> ocorreu geralmente muda a probabilidade de ocorrência de <span class="math inline">\(E\)</span>.
+Nos casos especiais em que <span class="math inline">\(P(E|F)\)</span> é de fato igual a P(E), dizemos que <span class="math inline">\(E\)</span> é independente de <span class="math inline">\(F\)</span>.
+Isto é, <span class="math inline">\(E\)</span> é independente de <span class="math inline">\(F\)</span> se o conhecimento de que <span class="math inline">\(F\)</span> ocorreu não mudar a probabilidade de ocorrência de <span class="math inline">\(E\)</span>.</p>
+
+<div class="definition">
+<span id="def:defIndep" class="definition"><strong>Definição 4.2  (Independência entre eventos)  </strong></span>Dois eventos <span class="math inline">\(E\)</span> e <span class="math inline">\(F\)</span> são chamados de independentes se
+<span class="math display">\[P(EF) = P(E)P(F).\]</span>
+Notação: <span class="math inline">\(E\perp F\)</span>.
+</div>
+
+
+<div class="remark">
+ <span class="remark"><em>Observação. </em></span> Dois eventos <span class="math inline">\(E\)</span> e <span class="math inline">\(F\)</span> que não são independentes são chamados de <strong>dependentes</strong>.
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-27" class="example"><strong>Exemplo 4.12  </strong></span>Duas moedas são lançadas e supõe-se que os 4 resultados possíveis são igualmente prováveis.
+Se <span class="math inline">\(E\)</span> é o evento em que a primeira moeda dá cara e <span class="math inline">\(F\)</span> é o evento em que a segunda moeda dá coroa, então pode-se dizer que <span class="math inline">\(E\)</span> e <span class="math inline">\(F\)</span> são independentes?
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>Solução. </em></span> Sabemos que os 4 resultados possíveis deste experimento são <span class="math inline">\((h,h),(h,t),(t,h),(t,t)\)</span>, em que <span class="math inline">\(h\)</span> representa cara e <span class="math inline">\(t\)</span> representa coroa.
+Então, vamos verificar se existe independência entre <span class="math inline">\(E\)</span> e <span class="math inline">\(F\)</span> através da Definição <a href="sem4.html#def:defIndep">4.2</a>.
+<span class="math display">\[\begin{align}
+P(EF) &amp;= P(\{(h,t)\}) = \frac{1}{4},\\
+P(E) &amp;= P(\{(h,h),(h,t)\}) = \frac{1}{2},\\
+P(F) &amp;= P(\{(h,t),(t,t)\}) = \frac{1}{2}.\\
+\end{align}\]</span></p>
+Portanto, vemos que <span class="math inline">\(P(EF) = P(E)P(F)\)</span>, e <span class="math inline">\(E \perp F\)</span>.
+</div>
+
+
+<div class="proposition">
+<span id="prp:unnamed-chunk-29" class="proposition"><strong>Proposição 4.3  </strong></span>Se <span class="math inline">\(E\)</span> e <span class="math inline">\(F\)</span> são independentes, então <span class="math inline">\(E\perp F^c\)</span>.
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>Prova. </em></span> Suponha que <span class="math inline">\(E\)</span> e <span class="math inline">\(F\)</span> são independentes.
+Como <span class="math inline">\(E=EF\cup EF^c\)</span> e <span class="math inline">\((EF)\cap (EF^c)=\emptyset\)</span>, temos</p>
+<p><span class="math display">\[\begin{align}
+P(E) &amp;= P(EF) + P(EF^c)\\
+&amp;=P(E)P(F) + P(EF^c).
+\end{align}\]</span></p>
+<p>Equivalentemente,
+<span class="math display">\[\begin{align}
+P(EF^c) &amp;= P(E) - P(E)P(F)\\
+&amp;=P(E)\big[1-P(F)\big].\\
+&amp;=P(E)P(F^c).
+\end{align}\]</span></p>
+</div>
+
+</div>
+<div id="variáveis-aleatórias-discretas" class="section level2">
+<h2><span class="header-section-number">4.5</span> Variáveis Aleatórias discretas</h2>
+<p>Ao realizar um experimento, frequentemente estamos interessados principalmente em alguma função do resultado e não do resultado em si.
+Essas grandezas de interesse, ou essas funções reais definidas no espaço amostral, são conhecidas como <strong>variáveis aleatórias</strong>.
+Como o valor da variável aleatória é determinado pelo resultado do experimento, podemos atribuir probabilidades à estes possíveis valores.</p>
+
+<div class="definition">
+<span id="def:defVAdiscreta" class="definition"><strong>Definição 4.3  (Variável discreta)  </strong></span>Uma variável aleatória que pode assumir no máximo um número contável de valores possíveis é chamada de <strong>variável discreta</strong>.
+</div>
+
+<p>Para uma variável discreta <span class="math inline">\(X\)</span>, definimos a função discreta de probabilidade (ou simplesmente função de probabilidade) <span class="math inline">\(p(a)\)</span> de <span class="math inline">\(X\)</span> como
+<span class="math display">\[p(a) = p(\{X=a\}).\]</span></p>
+<p>A função discreta de probabilidade p(a) é positiva para no máximo um número contável de valores de a.
+Isto é, se <span class="math inline">\(X\)</span> deve assumir um dos valores <span class="math inline">\(x_1, x_2, \ldots,\)</span> então
+<span class="math display">\[\begin{align}
+  p(x_i) &amp;\geq 0 \quad \text{para } i=1,2,\ldots\\
+  p(x) &amp;= 0 \quad \text{para todos os demais valores de } x.
+\end{align}\]</span></p>
+<p>Como <span class="math inline">\(X\)</span> deve assumir um dos valores <span class="math inline">\(x_i\)</span>,
+<span class="math display">\[\sum_{i=1}^{\infty}p(x_i)=1.\]</span></p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-31" class="example"><strong>Exemplo 4.13  </strong></span>Considere o experimento de lançar 3 moedas honestas.
+Se <span class="math inline">\(Y\)</span> representar o número de <span class="math inline">\(caras\)</span> que apareceram, então <span class="math inline">\(Y\)</span> é uma variável aleatória que pode assumir um dos valores <span class="math inline">\(0,1,2\)</span> ou <span class="math inline">\(3\)</span> com probabilidades
+<span class="math display">\[\begin{align}
+P(Y=0) &amp;= P(\{(t,t,t)\}) = \frac{1}{8}, \\
+P(Y=1) &amp;= P(\{(t,t,h),(t,h,t),(h,t,t)\}) = \frac{3}{8}, \\
+P(Y=2) &amp;= P(\{(t,h,h),(h,t,h),(h,h,t)\}) = \frac{3}{8}, \\
+P(Y=3) &amp;= P(\{(h,h,h)\}) = \frac{1}{8}.
+\end{align}\]</span>
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-32" class="example"><strong>Exemplo 4.14  </strong></span>Três bolas são selecionadas aleatoriamente e sem reposição de uma urna contendo 20 bolas numeradas de 1 a 20.
+Se apostarmos que pelo menos uma das bolas selecionadas tem um número maior ou igual a 17, qual é a probabilidade de vencermos a aposta?
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>Solução. </em></span> Seja <span class="math inline">\(X\)</span> o maior número selecionado.
+Então <span class="math inline">\(X\)</span> é uma variável aleatória que pode ter qualquer um dos valores <span class="math inline">\(3, 4, \ldots, 20\)</span>.
+Se supormos que cada uma das <span class="math inline">\({20\choose 3}\)</span> seleções possíveis tem a mesma probabilidade de ocorrer, então
+<span class="math inline">\(P(X=i) = {{i-1} \choose 2}/{20\choose 3},\)</span> <span class="math inline">\(i = 3, 4, \ldots, 20.\)</span></p>
+Temos, então, que
+<span class="math inline">\(P(X \geq 17)=\)</span> <span class="math inline">\(P(X=17) +\)</span> <span class="math inline">\(P(X=18) +\)</span> <span class="math inline">\(P(X=19) +\)</span> <span class="math inline">\(P(X=20) =\)</span> <span class="math inline">\(0{,}509.\)</span>
+</div>
+
+
+<div class="definition">
+<span id="def:defFDA" class="definition"><strong>Definição 4.4  (Função de distribuição acumulada)  </strong></span>Para uma variável aleatória <span class="math inline">\(X\)</span>, a função <span class="math inline">\(F\)</span> definida por
+<span class="math display">\[F(x) = P(X\leq x), \qquad -\infty&lt;x&lt;\infty\]</span>
+é chamada de <strong>função de distribuição acumulada</strong>, ou, mais simplismente, de <strong>função de distribuição</strong> de <span class="math inline">\(X\)</span>.
+</div>
+
+
+<div class="remark">
+ <span class="remark"><em>Observação. </em></span> Se <span class="math inline">\(a \leq b\)</span>, então <span class="math inline">\(\{X\leq a\} \subseteq \{X \leq b\}\)</span>, logo <span class="math inline">\(F(a)\leq F(b)\)</span>.
+Note que <span class="math inline">\(F(x)\)</span> é uma função não-decrescente.
+</div>
+
+<p>A função de distribuição acumulada <span class="math inline">\(F\)</span> pode ser expressa em termos de <span class="math inline">\(p(a)\)</span> como
+<span class="math display">\[F(a) = \sum_{x \leq a}p(x).\]</span></p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-34" class="example"><strong>Exemplo 4.15  </strong></span>Se <span class="math inline">\(X\)</span> tem uma função de probabilidade dada por
+<span class="math display">\[p(1) = \frac{1}{4}, \quad p(2) = \frac{1}{2}, \quad p(3) = \frac{1}{8}, \quad p(4) = \frac{1}{8},\]</span>
+então, sua função de distribuição acumulada é</p>
+<span class="math display">\[\begin{equation*}
+  F(a) =
+    \begin{cases}
+      0 &amp; \text{se } a &lt; 1\\
+      1/4 &amp; \text{se } 1 \leq a &lt; 2\\
+      3/4 &amp; \text{se } 2 \leq a &lt; 3\\
+      7/8 &amp; \text{se } 3 \leq a &lt; 4\\
+      1 &amp; \text{se } 4 \leq a\\
+    \end{cases}       
+\end{equation*}\]</span>
+</div>
+
+<p>A Figura <a href="sem4.html#fig:figFunDist">4.4</a> mostra o gráfico da função <span class="math inline">\(F(x).\)</span></p>
+<div class="figure" style="text-align: center"><span id="fig:figFunDist"></span>
+<img src="Livro_files/figure-html/figFunDist-1.png" alt="Roda com cinco crianças." width="90%" />
+<p class="caption">
+Figura 4.4: Roda com cinco crianças.
+</p>
+</div>
+</div>
+<div id="valor-esperado" class="section level2">
+<h2><span class="header-section-number">4.6</span> Valor esperado</h2>
+<p>Um dos conceitos mais importantes na teoria da probabilidade é aquele do valor esperado de uma variável aleatória.</p>
+
+<div class="definition">
+<span id="def:defEsperanca" class="definition"><strong>Definição 4.5  (Valor esperado)  </strong></span>Se <span class="math inline">\(X\)</span> é uma variável aleatória com função de probabilidade <span class="math inline">\(p(x)\)</span>, então o valor esperado, ou esperança, de <span class="math inline">\(X\)</span> é definido por
+<span class="math display">\[E(X) = \sum_{x:p(x)&gt;0} x\cdot p(x).\]</span>
+</div>
+
+<p>Note que <span class="math inline">\(E(X)\)</span> é uma média ponderada dos possíveis valores que <span class="math inline">\(X\)</span> pode assumir, com cada valor sendo ponderado pela probabilidade de que <span class="math inline">\(X\)</span> seja igual a esse valor.</p>
+
+<div class="example">
+<span id="exm:esperancaDado" class="example"><strong>Exemplo 4.16  </strong></span>Determine <span class="math inline">\(E(X)\)</span>, em que <span class="math inline">\(X\)</span> é o resultado obtido ao lançar um dado honesto.
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>Solução. </em></span> Como <span class="math inline">\(p(1)=\)</span> <span class="math inline">\(p(2)=\)</span> <span class="math inline">\(p(3)=\)</span> <span class="math inline">\(p(4)=\)</span> <span class="math inline">\(p(5)=\)</span> <span class="math inline">\(p(6)=\)</span> <span class="math inline">\(1/6\)</span>, temos</p>
+<span class="math display">\[E(X) = 1\cdot \frac{1}{6} +2\cdot \frac{1}{6}+3\cdot \frac{1}{6}+4\cdot \frac{1}{6}+5\cdot \frac{1}{6}+6\cdot \frac{1}{6}=\frac{7}{2}.\]</span>
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-36" class="example"><strong>Exemplo 4.17  </strong></span>Dizemos que <span class="math inline">\(I\)</span> é uma variável indicadora do evento <span class="math inline">\(A\)</span> se
+<span class="math display">\[\begin{equation}
+  I =
+    \begin{cases}
+      1 &amp; \text{se $A$ ocorre,}\\
+      0 &amp; \text{se $A^c$ ocorre.}
+    \end{cases}       
+\end{equation}\]</span>
+Determine <span class="math inline">\(E(I).\)</span>
+</div>
+
+
+<div class="solution">
+ <span class="solution"><em>Solução. </em></span> Como <span class="math inline">\(p(1)=P(A)\)</span> e <span class="math inline">\(p(0)=P(A^c)\)</span>, temos
+<span class="math display">\[E(I)=1\cdot P(A) + 0\cdot (1-P(A)) = P(A).\]</span>
+Assim, o valor esperado da variável indicadora do evento <span class="math inline">\(A\)</span> é igual à probabilidade de ocorrência de <span class="math inline">\(A\)</span>.
+</div>
+
+</div>
+<div id="esperança-de-uma-função-de-uma-variável-aleatória" class="section level2">
+<h2><span class="header-section-number">4.7</span> Esperança de uma função de uma variável aleatória</h2>
+<p>Seja <span class="math inline">\(X\)</span> uma variável aleatória discreta e suponha que queriamos calcular o valor esperado de alguma função de <span class="math inline">\(X\)</span>, digamos <span class="math inline">\(g(X)\)</span>.
+Como <span class="math inline">\(g(x)\)</span> é uma variável aleatória discreta, ela tem função de probabilidade que pode ser determinada a partir da função de probabilidade de <span class="math inline">\(X\)</span>, assim, podemos calcular <span class="math inline">\(E[g(x)]\)</span> usando a Definição <a href="sem4.html#def:defEsperanca">4.5</a>.</p>
+
+<div class="example">
+<span id="exm:exX2" class="example"><strong>Exemplo 4.18  </strong></span>Seja <span class="math inline">\(X\)</span> uma variável aleatória que pode receber os valores <span class="math inline">\(-1, 0, 1\)</span> com probabilidades <span class="math inline">\(P(X=-1)=0{,}2\)</span>, <span class="math inline">\(P(X=0)=0{,}5\)</span> e <span class="math inline">\(P(X=1)=0{,}3\)</span>.
+Calcule <span class="math inline">\(E(X^2)\)</span>.
+</div>
+
+
+<div class="solution">
+ <span class="solution"><em>Solução. </em></span> Seja <span class="math inline">\(Y=X^2\)</span>, então a função de probabilidade de <span class="math inline">\(Y\)</span> é dada por
+<span class="math display">\[\begin{align}
+P(Y=1) &amp;= P(X=-1) + P(X=1) = 0{,}5;\\ 
+P(Y=0) &amp;= P(X=0) = 0{,}5.\\ 
+\end{align}\]</span>
+Logo,
+<span class="math display">\[E(X^2) = E(Y) = 1\cdot 0{,}5 + 0\cdot 0{,}5 = 0{,}5.\]</span>
+Observe que <span class="math inline">\(0{,}5 = E(X^2) \neq [E(X)]^2 = 0{,}01\)</span>.
+</div>
+
+
+<div class="proposition">
+<span id="prp:propGx" class="proposition"><strong>Proposição 4.4  </strong></span>Se <span class="math inline">\(X\)</span> é uma variável aleatória discreta que pode receber os valores <span class="math inline">\(x_i, i\geq 1\)</span>, com respectivas probabilidade <span class="math inline">\(p(x_i)\)</span>, então, para qualquer função real <span class="math inline">\(g\)</span>
+<span class="math display">\[E[g(x)] = \sum_i g(x_i)p(x_i).\]</span>
+</div>
+
+
+<div class="proof">
+ <span class="proof"><em>Prova. </em></span> Vamos agrupar todos os termos em <span class="math inline">\(\sum_i g(x_i)p(x_i)\)</span> com mesmo valor de <span class="math inline">\(g(x_i)\)</span>.
+Especificamente, suponha que <span class="math inline">\(y_j, j\geq 1\)</span>, represente os diferentes valores de <span class="math inline">\(g(x_i), i\geq 1\)</span>.
+Então, o agrupamento de todos os <span class="math inline">\(g(x_i)\)</span> com valores iguais resulta em
+<span class="math display">\[\begin{align}
+\sum_i g(x_i)p(x_i) &amp;= \sum_j \sum_{i:g(x_i)=y_j} g(x_i)\cdot p(x_i)\\
+&amp;=\sum_j \sum_{i:g(x_i)=y_j} y_j\cdot p(x_i)\\
+&amp;=\sum_j y_j \sum_{i:g(x_i)=y_j} p(x_i)\\
+&amp;=\sum_j y_j \cdot P(g(X)=y_i)\\
+&amp;= E(g(X)).
+\end{align}\]</span>
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-40" class="example"><strong>Exemplo 4.19  </strong></span>No Exemplo <a href="sem4.html#exm:exX2">4.18</a>, podemos calcular <span class="math inline">\(E(X^2)\)</span> de uma forma mais direta, usando o resultado da Proposição <a href="sem4.html#prp:propGx">4.4</a>.
+<span class="math display">\[\begin{align}
+E(X^2) &amp;= (-1)^2\cdot 0{,}2 + 0^2\cdot 0{,}5 + 1^2\cdot 0{,}3\\
+&amp;= 1\cdot(0{,}2+0{,}3) + 0\cdot 0{,}5\\
+&amp;= 0{,}5.
+\end{align}\]</span>
+</div>
+
+<p>O Corolário <a href="sem4.html#cor:corEsperanca">4.1</a> é uma consequência direta da Proposição <a href="sem4.html#prp:propGx">4.4</a>.</p>
+
+<div class="corollary">
+<span id="cor:corEsperanca" class="corollary"><strong>Corolário 4.1  </strong></span>Se <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> são constantes, então <span class="math display">\[E(aX+b) = aE(X)+b.\]</span>
+</div>
+
+
+<div class="proof">
+ <span class="proof"><em>Prova. </em></span> <span class="math display">\[\begin{align}
+E(aX+b) &amp;= \sum_{x:p(x)&gt;0}(ax+b)\cdot p(x)\\
+&amp;=a\sum_{x:p(x)&gt;0}x \cdot p(x) + b\sum_{x:p(x)&gt;0}p(x)\\
+&amp;= aE(X) + b.
+\end{align}\]</span>
+</div>
+
+<p>O valor esperado de uma variável aleatória <span class="math inline">\(X\)</span>, <span class="math inline">\(E(X)\)</span>, também é chamado de <em>média</em> ou <em>primeiro momento</em> de <span class="math inline">\(X\)</span>.
+A grandeza <span class="math inline">\(E(X^n)\)</span>, <span class="math inline">\(n\geq 1\)</span>,é chamada de <span class="math inline">\(n\)</span>-ésimo momento de <span class="math inline">\(X\)</span>.
+Pela Proposição <a href="sem4.html#prp:propGx">4.4</a>, temos que
+<span class="math display">\[E(X^n) = \sum_{x:p(x)&gt; 0}x^n p(x).\]</span></p>
+</div>
+<div id="variância" class="section level2">
+<h2><span class="header-section-number">4.8</span> Variância</h2>
+<p>Dada uma variável aleatória X e sua função distribuição <span class="math inline">\(F\)</span>, seria extremamente útil se pudéssemos resumir as propriedades essenciais de F em certas medidas convenientemente definidas.
+Uma dessas medidas seria <span class="math inline">\(E(X)\)</span> o, valor esperado de <span class="math inline">\(X\)</span>.
+Entretanto, embora <span class="math inline">\(E(X)\)</span> forneça a média ponderada dos valores possíveis de <span class="math inline">\(X\)</span>, ela não nos diz nada sobre a variação, ou dispersão, desses valores.</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-42" class="example"><strong>Exemplo 4.20  </strong></span>Considere variáveis aleatórias W, Y e Z com funções de probabilidades discretas dadas por
+<span class="math display">\[\begin{align}
+  W &amp;= 0 \quad\text{com probabilidade } 1,\\
+  Y &amp;= \left\{
+      \begin{array}{ll}
+            -1 &amp; \text{com probabilidade } 1/2\\
+            1 &amp; \text{com probabilidade } 1/2\\
+         \end{array} 
+      \right.\\
+  Z &amp;= \left\{
+      \begin{array}{ll}
+            -100 &amp; \text{com probabilidade } 1/2\\
+            100 &amp; \text{com probabilidade } 1/2\\
+         \end{array} 
+      \right.
+\end{align}\]</span>
+</div>
+
+<p>O valor esperado de <span class="math inline">\(W, Y\)</span> e <span class="math inline">\(Z\)</span> é igual a 0, embora exista uma dispersão muito maior nos valores possíveis de <span class="math inline">\(Y\)</span> do que naqueles de <span class="math inline">\(W\)</span> (que é uma constante) e nos valores possíveis de <span class="math inline">\(Z\)</span> do que naqueles de <span class="math inline">\(Y\)</span>.</p>
+<p>Por esse motivo, é interessante também analisar uma variável aleatória olhando para sua disperção.
+Uma medida de dispersão que é bastante utiliada é a <strong>variância</strong>.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-43" class="definition"><strong>Definição 4.6  (Variância)  </strong></span>Se <span class="math inline">\(X\)</span> é uma variável aleatória com média <span class="math inline">\(\mu\)</span>, então a variância de <span class="math inline">\(X\)</span>, representada por <span class="math inline">\(\mathrm{Var}(X)\)</span> é definida como
+<span class="math display">\[\mathrm{Var}(X) = E\big[(X-\mu)^2\big].\]</span>
+</div>
+
+<p>Uma fórmula alternativa para o cálculo de <span class="math inline">\(\mathrm{Var}(X)\)</span> é deduzida a seguir.</p>
+<p><span class="math display">\[\begin{align}
+\mathrm{Var}(X) &amp;= E\big[(X-\mu)^2\big] \\
+&amp;= \sum_x (x-\mu)^2p(x) \\
+&amp;= \sum_x (x^2 - 2\mu x + \mu^2)p(x)\\
+&amp;= \sum_x x^2p(x) - 2\mu\sum_x xp(x) + \mu^2\sum_x p(x)\\
+&amp;= E(X^2) - 2\mu^2 + \mu^2\\
+&amp;= E(X^2) - \mu^2.
+\end{align}\]</span></p>
+<p>Assim,
+<span class="math display">\[\mathrm{Var}(X) = E\big(X^2\big)-\big[E(X)\big]^2.\]</span>
+Na prática, essa é uma maneira mais fácil de calcular <span class="math inline">\(\mathrm{Var}(X)\)</span>.</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-44" class="example"><strong>Exemplo 4.21  </strong></span>Calcule <span class="math inline">\(\mathrm{Var}(X)\)</span> se <span class="math inline">\(X\)</span> representa o resultado do lançamento de um dado honesto.
+</div>
+
+
+<div class="solution">
+ <span class="solution"><em>Solução. </em></span> Vimos no Exemplo <a href="sem4.html#exm:esperancaDado">4.16</a> que <span class="math inline">\(E(X) =\frac{7}{2}\)</span>.
+Note que
+<span class="math display">\[E(X^2) = 1^2\cdot \frac{1}{6} +2^2\cdot \frac{1}{6}+3^2\cdot \frac{1}{6}+4^2\cdot \frac{1}{6}+5^2\cdot \frac{1}{6}+6^2\cdot \frac{1}{6}=91\cdot\frac{1}{6}.\]</span>
+Com isso,
+<span class="math display">\[\mathrm{Var}(X) = \frac{91}{6} - \bigg(\frac{7}{2}\bigg)^2 = \frac{35}{12}.\]</span>
+</div>
+
+
+<div class="corollary">
+<span id="cor:unnamed-chunk-46" class="corollary"><strong>Corolário 4.2  </strong></span>Para <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> constantes, <span class="math display">\[\mathrm{Var}(aX+b) = a^2\mathrm{Var}(X).\]</span>
+</div>
+
+
+<div class="proof">
+ <span class="proof"><em>Prova. </em></span> Considere <span class="math inline">\(\mu=E(X)\)</span> e lembre-se que <span class="math inline">\(E(aX+b)=aE(X)+b\)</span> (veja Corolário <a href="sem4.html#cor:corEsperanca">4.1</a>).
+Portanto,
+<span class="math display">\[\begin{align}
+\mathrm{Var}(aX+b) &amp;= E\bigg[\big((aX+b)-(a\mu+b)\big)^2\bigg] \\
+&amp;= E\bigg[\big((aX+b-a\mu-b)\big)^2\bigg] \\
+&amp;= E\big[a^2(X-\mu)^2\big] \\
+&amp;= a^2 E\big[(X-\mu)^2\big] \\
+&amp;= a^2 \mathrm{Var}(X).
+\end{align}\]</span>
+</div>
+
+
+<div class="definition">
+<span id="def:unnamed-chunk-48" class="definition"><strong>Definição 4.7  (Desvio Padrão)  </strong></span>A quantidade <span class="math inline">\(\sqrt{\mathrm{Var}(X)}\)</span> é chamada de desvio padrão de <span class="math inline">\(X\)</span>.
+<span class="math display">\[\mathrm{SD}(X) = \sqrt{\mathrm{Var}(X)}.\]</span>
+</div>
+
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="sem3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sem5.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Livro.pdf", "Livro.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

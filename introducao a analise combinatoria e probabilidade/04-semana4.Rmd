@@ -1,0 +1,847 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+# Semana 4 {#sem4}
+
+```{example}
+Um comitê de 5 pessoas deve ser selecionado de um grupo de 6 homens e 9 mulheres.
+Se a seleção for feita aleatoriamente, qua é a probabilidade de que o comitê seja formado por 3 homens e 2 mulheres?
+```
+
+
+```{solution}
+$$\frac{{6\choose 3}{9 \choose 2}}{{15 \choose 5}} = \frac{240}{1001}.$$
+```
+
+
+```{example}
+Suponha que $n+m$ bolas, das quais $n$ são vermelhas e $m$ são azuis, sejam arranjadas em uma sequência linear de forma que todas as $(m+n)!$ sequências possíveis sejam igualmente prováveis.
+Se gravarmos o resultado deste experimento listando apenas as cores das bolas sucessivas, mostre que todos os resultados possíveis permanecem igualmente prováveis.
+```
+
+```{solution}
+Considere qualquer uma das $(m+n)!$ sequências possíveis e note que qualquer permutação das bolas vermelhas entre si e das bolas azuis entre si não muda a sequência de cores.
+Como resultado, cada sequência de cores tem probabilidade de ocorrência igual a $\frac{n!m!}{(n+m)!}.$
+Por exemplo, suponha que há 2 bolas vermelhas nomeadas $v_1$ e $v_2$ e duas bolas azuis, nomeadas $a_1$ e $a_2$.
+Então, das $4!$ possíveis sequências, $2!2!$ delas resultarão em qualquer combinação de cores especificada.
+Por exemplo, as ordenações a seguir resulta na alternância de cores em bolas adjacentes, com  uma bola vermelha na frente
+\begin{align}
+v_1 a_1 v_2 a_2, & \qquad v_1 a_2 v_2 a_1, \\
+v_2 a_1 v_1 a_2, & \qquad v_2 a_2 v_1 a_1.
+\end{align}
+Portanto, cada uma das possíveis sequências de cores tem probabilidade $\frac{4}{24}=\frac{1}{6}$ de ocorrer.
+```
+
+```{example}
+Se $n$ pessoas se encontram no interior de uma sala, qual é a probabilide de que duas pessoas não celebrem o aniversário no mesmo dia do ano?
+Quão grande precisa ser $n$ para que essa probabilidade seja menor que $0{,}5$?
+```
+
+```{solution}
+Como cada pessoa pode celebrar seu aniversário em qualquer um dos 365 dias do ano, há um total de $365^n$ resultados possíveis (estamos considerando apenas anos não bisextos!).
+Supondo que cada resultado seja igualmente provável, vemos que a probabilidade desejada é igual a 
+$$\frac{365\cdot 364\cdot 363 \cdots (365-n+1)}{365^n}.$$
+
+Quando $n\geq 23$, esta probabilidade é menor que $\frac{1}{2}$.
+Isto é, 23 pessoas ou mais na sala, então a probabilidade de que pelo menos duas delas façam aniversário no mesmo dia é maior que $\frac{1}{2}$.
+```
+
+
+```{example, name="Permutação caótica revisitada"}
+Suponha que cada uma das $N$ pessoas presentes em uma festa junina atire seu chapeu para o centro de uma roda.
+Os chapeus são misturadaos e então cada pessoa seleciona aleatoriamente um deles.
+Qual é a probabilidade de que nenhuma das pessoas selecione o seu próprio chapeu?
+```
+
+```{solution}
+Seja $E_i, i=1,2,\ldots,N$, o evento em que a $i$-ésima pessoa seleciona seu próprio chapeu. 
+Pela Proposição \@ref(prp:propInclusaoExclusao), $P(\cup_{i=1}^{N}E_i)$, a probabilidade de que pelo menos um dos presentes na festa selecione o seu próprio chapeu é dada por 
+\begin{align}
+P(\cup_{i=1}^{N}E_i)=P(E_1\cup E_2 \cup\cdots\cup E_n) =& \sum_{i=1}^{N}P(E_i) - \sum_{1\leq i <j}P(E_i E_j) \\ &+ \cdots +(-1)^{N+1}P(E_1 E_2 \cdots E_N).
+\end{align}
+
+Se interpretarmos o resultado deste experimento como um vetor de $N$ números, em que o $i$-ésimo elemento corresponde ao número do chapeu jogado pela $i$-ésima pessoa, então existem $N!$ resultados possíveis.
+Além disso, $E_{i_1}E_{i_2}\cdots E_{i_n}$, o evento em que cada uma das $n$ pessoas 
+$i_1, i_2, \ldots, i_n$ seleciona o seu próprio chapeu pode ocorrer de qualquer uma das $(N-n)(N-n-1)\cdots 1=(N-n)!$ maneiras possíveis, pois das $N-n$ pessoas restantes, a primeira pode selecionar qualquer um dos $N-n$ chapéus, a segunda pessoa pode selecionar qualquer um dos $N-n-1$ chapéus restantes e assim por diante.
+Além disso, supondo que todos os $N!$ resultados possíveis sejam igualmente prováveis, vemos que 
+$$P(E_{i_1}E_{i_2}\cdots E_{i_n}) = \frac{(N-n)!}{N!}.$$
+  
+Além disso, como existem ${N \choose n}$ termos em $\sum_{1\leq i_1<i_2 < \cdots < i_n}P(E_{i_1}E_{i_2}\cdots E_{i_n})$, temos que
+$$\sum_{1\leq i_1<i_2 < \cdots < i_n}P(E_{i_1}E_{i_2}\cdots E_{i_n}) = \frac{N!}{(N-n)!n!}\frac{(N-n)!}{N!} = \frac{1}{n!}.$$
+Logo,
+$$P\Bigg(\bigcup_{i=1}^{N}\Bigg) = 1 - \frac{1}{2!} + \frac{1}{3!} - \cdots + (-1)^{N+1}\frac{1}{N!}.$$
+Portanto, a probabilidade de que nenhuma das pessoas selecione o seu próprio chapeu é 
+\begin{equation}
+1 - P\Bigg(\bigcup_{i=1}^{N}\Bigg) = 1 - 1 + \frac{1}{2!} - \frac{1}{3!} + \cdots - (-1)^{N+1}\frac{1}{N!}.
+(\#eq:exemploChapeu)
+\end{equation}
+```
+
+```{remark}
+Para $n$ grande, a Expressão \@ref(eq:exemploChapeu) converge para $\mathrm{e}^{-1}\approx 0{,}36788$.
+```
+
+## Probabilidade como uma medida de crença
+
+Até agora interpretamos a probabilidade de um evento de certo experimento como sendo uma medida de frequência de ocorrência desse evento quando o experimento é repetido continuamente.
+Entretanto, existem também outros usos para o termo probabilidade.
+Por exemplo, você já deve ter ouvido frases como "a probabilidade de que Magno não seja paulista é de 90%". 
+Como podemos interpretar essa frase?
+
+A interpretação mais simples e natural é que as probabilidades citadas são medidas da crença de um indivíduo.
+Essa interpretação da probabilidade como sendo uma medida de crença é chamada de visão _pessoal_ ou _subjetiva_ da probabilidade.
+Parece lógico supor que "uma medida de crença" deva satisfazer todos os axiomas da probabilidade.
+Por exemplo, se temos 60% de certeza de que Magno é mineiro e 15% de certeza de que ele é goiano, então é lógico supor que temos 75% de certeza de que Magno é mineiro ou goiano.
+Com isso, seja com a interpretação da probabilidade como uma medida de crença ou como uma frequência de ocorrência em uma longa sequência de experimentos, suas propriedades matemáticas permanecem inalteradas.
+
+```{example}
+Suponha que, em uma corrida de 7 cavalos, você sinta que cada um dos 2 primeiros cavalos tem 20% de chance de vencer, os cavalos 3 e 4 têm uma chance de 15%, e os três cavalos restantes têm uma chance de 10% cada. 
+Seria melhor para você apostar, podendo ganhar o mesmo que apostou, na vitória dos três primeiros cavalos ou na vitória dos cavalos 1, 5, 6 e 7?
+```
+
+
+```{solution}
+Com base em suas probabilidades pessoais a respeito do resultado da corrida, a probabilidade de você vencer a primeira aposta é de $0{,}2 + 0{,}2 +0{,}15 = 0{,}55$, enquanto a de vencer a segunda aposta é de $0{,}2 + 0{,}1 +0{,}1 + 0{,}1=0{,}5.$ 
+Com isso, a primeira aposta é mais atraente.
+```
+
+
+Vamos agora introduzir um dos conceitos mais importantes da teoria da probabilidade. A importância desse conceito é dupla. 
+Em primeiro lugar, estamos frequentemente interessados em calcular probabilidades quando temos alguma informação parcial a respeito do resultado de um experimento; em tal situação, as probabilidades desejadas são condicionais.
+Em segundo lugar, mesmo quando não temos nenhuma informação parcial sobre o resultado de um experimento, as probabilidades condicionais podem ser frequentemente utilizadas para computar mais facilmente as probabilidades desejadas.
+
+## Probabilidade condicional e independência
+
+Suponha que lancemos dois dados, cada um dos 36 resultados possíveis é igualmente provável e portanto tem probabilidade $\frac{1}{36}$.
+Digamos que o primeiro dado seja um 3.
+Então, dada essa informação, qual é a probabilidade de que a soma dos dois dados seja 8?
+
+Sabendo que saiu um 3 no dado inicial, existirão no máximo 6 resultados possíveis para o nosso experimento, isto é, $(3,1), (3,2),$ $(3,3), (3,4),$  $(3,5), (3,6)$.
+Como cada um desses resultados tinha originalmente a mesma probabilidade de ocorrência, os resultados deveriam continuar a ter probabilidades iguais.
+Dado que o primeiro dado é 3, a probabilidade (condicional) de cada um dos resultados possíveis é $\frac{1}{6}$, enquanto a probabilidade (condicional) dos outros 30 pontos no espaço amostral é zero.
+Com isso, a probabilidade desejada será igual a $\frac{1}{6}$.
+
+```{definition, name="Probabilidade Condicional", label="defProbCond"}
+Sejam $E$ e $F$ dois eventos tais que $P(F>0)$.
+A probabilidade condicional de que $E$ ocorra dado que $F$ ocorreu é representada por
+\begin{equation}
+P(E|F) = \frac{P(EF)}{P(F)}.
+(\#eq:condicional)
+\end{equation}
+```
+
+Ao condicionar o evento $E$ na ocorrência do evento $F$, é como se $F$ passase a ser o espaço amostral. 
+Veja nas Figuras \@ref(fig:figProbCond1) e \@ref(fig:figProbCond2).
+
+```{r figProbCond1, echo=FALSE, engine='tikz', out.width='95%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png', fig.cap='Espaço amostral e dois eventos.', fig.align = 'center', engine.opts = list(template = "latex/tikz2pdf.tex")}
+
+\begin{center}
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,165); %set diagram left start at 0, and has height of 165
+
+%Shape: Rectangle [id:dp734715582596946] 
+\draw  [fill={rgb, 255:red, 80; green, 227; blue, 194 }  ,fill opacity=0.5 ] (215,12.14) -- (461.5,12.14) -- (461.5,153) -- (215,153) -- cycle ;
+%Shape: Circle [id:dp5222948023083898] 
+\draw   (265,83.25) .. controls (265,58.26) and (285.26,38) .. (310.25,38) .. controls (335.24,38) and (355.5,58.26) .. (355.5,83.25) .. controls (355.5,108.24) and (335.24,128.5) .. (310.25,128.5) .. controls (285.26,128.5) and (265,108.24) .. (265,83.25) -- cycle ;
+%Shape: Circle [id:dp5104696429579092] 
+\draw   (326,81.25) .. controls (326,56.26) and (346.26,36) .. (371.25,36) .. controls (396.24,36) and (416.5,56.26) .. (416.5,81.25) .. controls (416.5,106.24) and (396.24,126.5) .. (371.25,126.5) .. controls (346.26,126.5) and (326,106.24) .. (326,81.25) -- cycle ;
+
+% Text Node
+\draw (261,110) node [anchor=north west][inner sep=0.75pt]   [align=left] {E};
+% Text Node
+\draw (409,110) node [anchor=north west][inner sep=0.75pt]   [align=left] {F};
+% Text Node
+\draw (222,134.4) node [anchor=north west][inner sep=0.75pt]    {$\Omega $};
+\end{tikzpicture}
+\end{center}
+```
+
+
+```{r figProbCond2, echo=FALSE, engine='tikz', out.width='95%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png', fig.cap='Na probabilidade condicional, F faz o papel de espaço amostral.', fig.align = 'center', engine.opts = list(template = "latex/tikz2pdf.tex")}
+\begin{center}
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,169); %set diagram left start at 0, and has height of 169
+
+%Shape: Rectangle [id:dp14350953134038136] 
+\draw   (216,12.14) -- (462.5,12.14) -- (462.5,153) -- (216,153) -- cycle ;
+%Shape: Circle [id:dp6223235412306907] 
+\draw   (266,83.25) .. controls (266,58.26) and (286.26,38) .. (311.25,38) .. controls (336.24,38) and (356.5,58.26) .. (356.5,83.25) .. controls (356.5,108.24) and (336.24,128.5) .. (311.25,128.5) .. controls (286.26,128.5) and (266,108.24) .. (266,83.25) -- cycle ;
+%Shape: Circle [id:dp5537171616118117] 
+\draw  [fill={rgb, 255:red, 80; green, 227; blue, 194 }  ,fill opacity=0.5 ] (327,81.25) .. controls (327,56.26) and (347.26,36) .. (372.25,36) .. controls (397.24,36) and (417.5,56.26) .. (417.5,81.25) .. controls (417.5,106.24) and (397.24,126.5) .. (372.25,126.5) .. controls (347.26,126.5) and (327,106.24) .. (327,81.25) -- cycle ;
+
+% Text Node
+\draw (262,110) node [anchor=north west][inner sep=0.75pt]   [align=left] {E};
+% Text Node
+\draw (410,110) node [anchor=north west][inner sep=0.75pt]   [align=left] {F};
+% Text Node
+\draw (223,134.4) node [anchor=north west][inner sep=0.75pt]    {$\Omega $};
+\end{tikzpicture}
+\end{center}
+```
+
+
+```{example}
+Uma moeda é lançada duas vezes.
+Supondo que todos os quatro pontos no espaço amostral $\mathcal{S} = \{(H,H), (H,T),$ $(T,H), (T,T)\}$ sejam equiprováveis, qual a probabilidade condicional de que dê $cara$ ($H$) em ambas as jogadas dado que (a) dê $cara$ na primeira jogada? (b) dê $cara$ em pelo menos uma das jogadas?
+```
+
+```{solution}
+Sejam $B=\{(H,H)\}$ o evento em que ambos lançamentos dão cara, $F=\{(H,H),(H,T)\}$ o evento em que dá $cara$ no primeiro lançamento e $A=\{(H,H),(H,T),(T,H)\}$ o evento em que pelo menos uma $cara$ ocorre.
+Então, para o item (a) temos
+
+\begin{align}
+P(B|F) &= \frac{P(BF)}{P(F)}\\
+&=\frac{P(\{(H,H)\})}{P(\{(H,H),(H,T)\})} &&\\
+&=\frac{1/4}{2/4}=\frac{1}{2}.
+\end{align}
+
+E para o item (b)
+
+\begin{align}
+P(B|A) &= \frac{P(BA)}{P(A)}\\
+&=\frac{P(\{(H,H)\})}{P(\{(H,H),(H,T),(T,H)\})} &&\\
+&=\frac{1/4}{3/4}=\frac{1}{3}.
+\end{align}
+```
+
+
+Multiplicando ambos os lados da Expressão \@ref(eq:condicional) por $P(F)$, obtemos
+\begin{equation}
+P(E|F)P(F) = P(EF).
+(\#eq:condicional2)
+\end{equation}
+
+```{example}
+Marcela está indecisa quanto a fazer a disciplina de Análise Combinatória ou Introdução à Probabilidade.
+Ela estima que sua probabilidade de conseguir um conceito $A$ seria de $\frac{2}{3}$ em Análise Combinatória e $\frac{1}{2}$ em Introdução à Probabilidade.
+Se Marcela decide basear sua escolha no lançamento de uma moeda honesta, qual é a probabilidade de que ela obtenha A em Análise Combinatória?
+```
+
+```{solution}
+Suponha que $C$ seja o evento em que Marcela faz o curso de Análise Combinatória e $A$ o evento em que ela tira $A$ independentemente do curso que fizer.
+Então
+$$P(CA) = P(C)P(A|C) = \frac{1}{2}\frac{2}{3} = \frac{1}{3}.$$
+```
+
+```{example}
+Suponha que uma urna contenha 8 bolas vermelhas e 4 bolas brancas.
+Retira-se duas bolas sem reposição.
+(a) se supõe-se que em cada retirada cada bola na urna tenha a mesma probabilidade de ser escolhida, qual é a probabilidade de que ambas as bolas retiradas sejam vermelhas?
+(b) Suponha que as bolas tenham tamanhos diferentes (vermelha tem diametro $r$ e a branca tem diametro $w$) e que a probabilidade de que a próxima bola a ser retirada da urna seja igual ao diametro da bola dividido pela soma dos diametros de todas as bolas na urna naquele momento.
+Qual é a probabilidade de que ambas bolas sejam vermelhas?
+```
+
+```{solution}
+Defina os eventos $R_1 =$ "primeira bola retirada é vermelha" e $R_2 =$ "segunda bola retirada é vermelha".
+(a) Dado que a primeira  bola é vermelha, existem 7 bolas vermelhas e 4 bolas brancas restantes, de forma que $P(R_2|R_1) = 7/11$.
+Como $P(R_1)=8/12$, a probabilidade desejada é
+$$P(R_1 R_2) = P(R_1)P(R_2|R_1) = \frac{2}{3}\frac{7}{11} = \frac{14}{33}.$$
+Alternativamente, $P(R_1 R_2) = {{8\choose 2}}/{{12\choose 2}}$.
+
+
+Para o item (b) vamos usar $P(R_1 R_2) = P(R_1)P(R_2 | R_1)$.
+Numere as bolas vermelhas e suponha que $B_i, i=1, \ldots, 8$ seja o evento em que a primeira bola retirada é uma bola vermelha de numero $i$.
+Então,
+$$P(R_1) = P\Bigg(\bigcup_{i=1}^{8}B_i\Bigg) = \sum_{i=1}^{8}P(B_i) = 8\cdot \frac{r}{8r+4w}.$$
+  
+Se a primeira bola é vermelha, a urna passa a conter 7 bolas vermelhas e 4 bolas brancas.
+Assim, pelo mesmo argumento acima,
+$$P(R_2 | R_1) = 7\cdot \frac{r}{7r+4w}.$$
+Portanto, a probabilidade desejada é 
+$$P(R_1 R_2) = \frac{8r}{8r+4w}\frac{7r}{7r+4w}.$$
+```
+
+Uma generalização da Equação \@ref(eq:condicional2) fornece uma expressão para a probabilidade da interseção de um número arbitrário de eventos.
+
+```{proposition, name="Regra da multiplicação"}
+
+```
+
+\begin{equation}
+P(E_1 E_2 \cdots E_n) = P(E_1)P(E_2|E_1)P(E_3|E_1 E_2)\cdots P(E_n|E_1 E_2 \cdots E_{n-1}).
+(\#eq:condicional3)
+\end{equation}
+
+```{proof}
+Aplicando a Definição \@ref(def:defProbCond) de probabilidade condicional ao lado direito da Equação \@ref(eq:condicional3), temos
+$$P(E_1) \frac{P(E_1E_2)}{P(E_1)} \frac{P(E_1 E_2 E_3)}{P(E_1 E_2)} \cdots \frac{P(E_1 E_2 \cdots E_n)}{P(E_1 E_2 \cdots E_{n-1})} = P(E_1 E_2 \cdots E_n).$$
+```
+
+## Fórmula de Bayes
+
+Sejam os eventos $E$ e $F$.
+Podemos expressar $E$ como
+$$E = EF \cup EF^c.$$
+Note que $(EF) \cap (EF^c)=\emptyset$, assim, pelo Axioma 3,
+\begin{align}
+P(E) &= P(EF) + P(EF^c)\\
+&= P(E|F)P(F) + P(E|F^c)P(F^c).
+(\#eq:complementar)
+\end{align}
+
+
+A Equação \@ref(eq:complementar) diz que a probabilidade do evento $E$ é uma média ponderada da probabilidade condicional de $E$ dado que o evento $F$ ocorreu e da probabilidade condicional de $E$ dado que $F$ não ocorreu.
+Esta fórmula é útil porque seu uso muitas vezes nos permite determinar a probabilidade de um evento com base na condição de ocorrência ou não de um segundo evento.
+Veja uma representação deste resultado através do diagrama de Venn na Figura \@ref(fig:figProbTotal).
+
+```{r figProbTotal, echo=FALSE, engine='tikz', out.width='95%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png', fig.cap='Na probabilidade condicional, F faz o papel de espaço amostral.', fig.align = 'center', engine.opts = list(template = "latex/tikz2pdf.tex")}
+\begin{center}
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,164); %set diagram left start at 0, and has height of 164
+
+%Straight Lines [id:da3269632468361021] 
+\draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ]   (494.5,80) -- (455.87,79.59) ;
+\draw [shift={(453.88,79.57)}, rotate = 360.6] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Shape: Rectangle [id:dp33181378188568966] 
+\draw  [fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=0.5 ] (236,9.14) -- (359.25,9.14) -- (359.25,152) -- (236,152) -- cycle ;
+%Shape: Rectangle [id:dp18889385055376007] 
+\draw  [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=0.5 ] (359.25,9.14) -- (482.5,9.14) -- (482.5,152) -- (359.25,152) -- cycle ;
+%Shape: Ellipse [id:dp5097052821907417] 
+\draw  [fill={rgb, 255:red, 184; green, 233; blue, 134 }  ,fill opacity=0.5 ] (264.63,79.57) .. controls (264.63,55.11) and (306.99,35.29) .. (359.25,35.29) .. controls (411.51,35.29) and (453.88,55.11) .. (453.88,79.57) .. controls (453.88,104.03) and (411.51,123.86) .. (359.25,123.86) .. controls (306.99,123.86) and (264.63,104.03) .. (264.63,79.57) -- cycle ;
+
+% Text Node
+\draw (499,71) node [anchor=north west][inner sep=0.75pt]   [align=left] {E};
+% Text Node
+\draw (241,131.4) node [anchor=north west][inner sep=0.75pt]    {$\Omega =F\cup F^{c} \ $};
+% Text Node
+\draw (464,11.4) node [anchor=north west][inner sep=0.75pt]    {$F^{c}$};
+% Text Node
+\draw (238,12.54) node [anchor=north west][inner sep=0.75pt]    {$F$};
+\end{tikzpicture}
+\end{center}
+```
+
+```{example}
+Uma companhia de seguros acredita que pessoas podem ser divididas em duas classes: aquelas que são propensas a acidentes e aquelas que não são.
+A estatística da companhia mostra que uma pessoa propensa a acidadentes tem probabilidade de $0{,}4$ de sofrer um acidente dentro de um período fixo de 1 ano, enquanto que essa probabilidade cai para $0{,}2$ no caso de uma pessoa não propensa a acidentes.
+Se supormos que $30\%$ da população é propensa a acidentes, (a) qual é a probabilidade de que um novo segurado sofra um acidente no período de um ano posterior à compra de sua apólice?
+(b) Suponha que um novo segurado sofra um acidente em menos de um ano após a compra da apólice. 
+Qual é a probabilidade de que ele seja propenso a acidentes?
+```
+
+```{solution}
+Vamos definir o evento $A_1$ como sendo o evento em que "o segurado sofre um acidente no período de um ano após a compra de sua apólice" e $A$ como "o segurado é propenso a acidentes".
+Assim, a probabilidade desejada no item (a) é
+\begin{align}
+P(A_1) &= P(A_1|A)P(A) + P(A_1|A^c)P(A^c)\\
+&= 0{,}4\cdot 0{,}3 + 0{,}2\cdot 0{,}7 = 0{,}26.
+\end{align}
+
+Para o item (b), queremos obter $P(A|A_1)$.
+Então,
+
+$$P(A|A_1) = \frac{P(A A_1)}{P(A_1)} = \frac{P(A_1|A)P(A)}{P(A_1)} = \frac{ 0{,}3\cdot 0{,}4}{ 0{,}26} = \frac{6}{13} = 0{,}46.$$
+```
+
+A Equação \@ref(eq:complementar) pode ser generalizada da seguinte maneira.
+Suponha que $F_1, F_2, \ldots, F_n$ sejam eventos mutualmente exclusivos tais que 
+
+$$\bigcup_{i=1}^{n}F_i=\mathcal{S}.$$
+Escrevendo $$E = \bigcup_{i=1}^{n}EF_i,$$
+
+e usando o fato de que os eventos $EF_i, i=1,\ldots, n$ são mutualmentne exclusivos, obtemos
+
+\begin{equation}
+P(E) =  \sum_{i=1}^{n}P(EF_i) = \sum_{i=1}^{n}P(E|F_i)P(F_i).
+(\#eq:particao)
+\end{equation}
+
+A Equação \@ref(eq:particao) mostra que, para dados eventos $F_1, F_2, \ldots, F_n$, dos quais **um e apenas um** deve ocorrer, podemos calcular $P(E)$ primeiro analizando as condições em que $F_i$ ocorre.
+Além disso, a Equação \@ref(eq:particao) diz que $P(E)$ é igual à média ponderada de $P(E|F_i)$, com cada termo sendo ponderado pela probabilidade do evento ao qual está condicionado.
+
+Considerando a mesma sequência de eventos $F_1, F_2, \ldots, F_n$, uma partição de $\mathcal{S}$, suponha que $E$ tenha ocorrido e que estejamos interessados em determinar qual dos $F_j$ ocorreu.
+Então pela generalização  apresentada pela Equação \@ref(eq:particao), temos a Proposição \@ref(prp:bayes) a seguir.
+
+```{proposition, name="Fórmula de Bayes", label="bayes"}
+\begin{align}
+P(F_j|E) &= \frac{P(EF_j)}{P(E)}\\
+&= \frac{P(E|F_j)P(F_j)}{\sum_{i=1}^{n}P(E|F_i)P(F_i)}.
+\end{align}
+```
+
+```{example}
+Uma caixa contés 3 tipos de lâmpadas.
+A probabilidade de que uma lâmpada do tipo 1 funcione por mais de 100h é igual a $0{,}7$ e as probabilidades referentes às lâmpadas do tipo 2 e 3 correspondem à $0{,}4$ e $0{,}3$, respectivamente.
+Suponha que $20\%$ das lâmpadas na caixa sejam do tipo 1, $30\%$ sejam do tipo 2 e $50\%$ do tipo 3.
+(a) Qual a probabilidade de que uma lâmpada alteatoriamente escolhida funcione mais que 100 horas?
+(b) Dado que uma lâmpada tenha durado mais de 100 horas, qual é a probabilidade de que ela seja uma lâmpada do tipo $j, j=1,2,3$?
+```
+
+```{solution}
+Vamos definir $A$ como o evento "a lâmpada escolhida funciona mais do que 100h" e $F_j$ como "a lâmpada do tipo $j$ é escolhida", para $j=1,2,3$.
+Então, para o item (a) temos
+\begin{align}
+P(A) & = \sum_{j=1}^{3}P(A|F_j)P(F_j)\\
+& = P(A|F_1)P(F_1) + P(A|F_2)P(F_2) + P(A|F_3)P(F_3)\\
+& = 0{,}7\cdot 0{,}2 + 0{,}4\cdot 0{,}3 + 0{,}3\cdot 0{,}5\\
+&= 0{,}41.
+\end{align}
+
+Para o item (b), vamos usar a fórmula de Bayes (veja a Proposição \@ref(prp:bayes))
+
+$$P(F_j|A) = 
+  \frac{P(AF_j)}{P(A)} = \frac{P(A|F_j)P(F_j)}{0{,}41}.$$
+
+Assim,
+\begin{align}
+P(F_1|A) &= 
+  \frac{0{,}7\cdot 0{,}2}{0{,}41} = \frac{11}{41} = 0{,}341, \\
+P(F_j|A) &= 
+  \frac{0{,}4\cdot 0{,}3}{0{,}41} = \frac{12}{41} = 0{,}293, \\
+P(F_j|A) &= 
+  \frac{0{,}3\cdot 0{,}5}{0{,}41} = \frac{15}{41} = 0{,}366.
+\end{align}
+
+Note que, enquanto a probabilidade de uma lâmpada do tipo 1 ser escolhida é de apenas $0{,}2$, a informação de que a lanterna funcionou por mais de 100 horas aumenta a probabildiade do evento $E_1$ para $0{,}341$.
+```
+
+```{example}
+Em certo estágio de uma investigação criminal, o inspetor encarregado está 60% convencido da culpa de certo suspeito. 
+Suponha, no entanto, que uma nova prova que mostre que o criminoso tinha certa característica (como o fato de ser canhoto, por exemplo) apareça. 
+Se 20% da população possue essa característica, quão certo da culpa do suspeito o inspetor estará agora se o suspeito apresentar a caraterística em questão?
+```
+
+```{solution}
+Supondo que $G$ represente o evento em que o suspeito é culpado e
+$C$ o evento em que ele possui a característica do criminoso, temos
+\begin{align}
+  P(G|C) &= \frac{P(GC)}{P(C)}\\
+  &= \frac{P(C|G)P(G)}{P(C|G)P(G)+P(C|G^c)P(G^c)}\\
+  &= \frac{1(0,6)}{1(0,6) + 0,2(0,4)}\\
+  &= 0,8824.
+\end{align}
+onde supomos que a probabilidade de o suspeito ter a característica em questão mesmo sendo inocente é igual a 0,2, isto é, o percentual da população que possui tal característica.
+```
+
+
+## Eventos independentes
+
+Até o momento, vimmos que $P(E|F)$, a probabilidade condicional de $E$ dado $F$, não é geralmente igual a $P(E)$. 
+Ou seja, saber que $F$ ocorreu geralmente muda a probabilidade de ocorrência de $E$. 
+Nos casos especiais em que $P(E|F)$ é de fato igual a P(E), dizemos que $E$ é independente de $F$. 
+Isto é, $E$ é independente de $F$ se o conhecimento de que $F$ ocorreu não mudar a probabilidade de ocorrência de $E$.
+
+```{definition, name="Independência entre eventos", label="defIndep"}
+Dois eventos $E$ e $F$ são chamados de independentes se
+$$P(EF) = P(E)P(F).$$
+Notação: $E\perp F$.
+```
+
+```{remark}
+Dois eventos $E$ e $F$ que não são independentes são chamados de **dependentes**.
+```
+
+
+```{example}
+Duas moedas  são lançadas e supõe-se que os 4 resultados possíveis são igualmente prováveis.
+Se $E$ é o evento em que a primeira moeda dá cara e $F$ é o evento em que a segunda moeda dá coroa, então pode-se dizer que $E$ e $F$ são independentes?
+```
+
+
+```{solution}
+Sabemos que os 4 resultados possíveis deste experimento são $(h,h),(h,t),(t,h),(t,t)$, em que $h$ representa cara e $t$ representa coroa.
+Então, vamos verificar se existe independência entre $E$ e $F$ através da Definição \@ref(def:defIndep).
+\begin{align}
+P(EF) &= P(\{(h,t)\}) = \frac{1}{4},\\
+P(E) &= P(\{(h,h),(h,t)\}) = \frac{1}{2},\\
+P(F) &= P(\{(h,t),(t,t)\}) = \frac{1}{2}.\\
+\end{align}
+
+Portanto, vemos que $P(EF) = P(E)P(F)$, e $E \perp F$.
+```
+
+```{proposition}
+Se $E$ e $F$ são independentes, então $E\perp F^c$.
+```
+
+```{proof}
+Suponha que $E$ e $F$ são independentes. 
+Como $E=EF\cup EF^c$ e $(EF)\cap (EF^c)=\emptyset$, temos
+
+\begin{align}
+P(E) &= P(EF) + P(EF^c)\\
+&=P(E)P(F) + P(EF^c).
+\end{align}
+
+Equivalentemente,
+\begin{align}
+P(EF^c) &= P(E) - P(E)P(F)\\
+&=P(E)\big[1-P(F)\big].\\
+&=P(E)P(F^c).
+\end{align}
+
+```
+
+## Variáveis Aleatórias discretas
+
+Ao realizar um experimento, frequentemente estamos interessados principalmente em alguma função do resultado e não do resultado em si.
+Essas grandezas de interesse, ou essas funções reais definidas no espaço amostral, são conhecidas como **variáveis aleatórias**.
+Como o valor da variável aleatória é determinado pelo resultado do experimento, podemos atribuir probabilidades à estes possíveis valores.
+
+```{definition, name="Variável discreta", label="defVAdiscreta"}
+Uma variável aleatória que pode assumir no máximo um número contável de valores possíveis é chamada de **variável discreta**.
+```
+
+Para uma variável discreta $X$, definimos a função discreta de probabilidade (ou simplesmente função de probabilidade) $p(a)$ de $X$ como
+$$p(a) = p(\{X=a\}).$$
+
+A função discreta de probabilidade p(a) é positiva para no máximo um número contável de valores de a. 
+Isto é, se $X$ deve assumir um dos valores $x_1, x_2, \ldots,$ então
+\begin{align}
+  p(x_i) &\geq 0 \quad \text{para } i=1,2,\ldots\\
+  p(x) &= 0 \quad \text{para todos os demais valores de } x.
+\end{align}
+
+Como $X$ deve assumir um dos valores $x_i$,
+$$\sum_{i=1}^{\infty}p(x_i)=1.$$
+
+```{example}
+Considere o experimento de lançar 3 moedas honestas.
+Se $Y$ representar o número de $caras$ que apareceram, então $Y$ é uma variável aleatória que pode assumir um dos valores $0,1,2$ ou $3$ com probabilidades
+\begin{align}
+P(Y=0) &= P(\{(t,t,t)\}) = \frac{1}{8}, \\
+P(Y=1) &= P(\{(t,t,h),(t,h,t),(h,t,t)\}) = \frac{3}{8}, \\
+P(Y=2) &= P(\{(t,h,h),(h,t,h),(h,h,t)\}) = \frac{3}{8}, \\
+P(Y=3) &= P(\{(h,h,h)\}) = \frac{1}{8}.
+\end{align}
+```
+
+```{example}
+Três bolas são selecionadas aleatoriamente e sem reposição de uma urna contendo 20 bolas numeradas de 1 a 20.
+Se apostarmos que pelo menos uma das bolas selecionadas tem um número maior ou igual a 17, qual é a probabilidade de vencermos a aposta?
+```
+
+```{solution}
+Seja $X$ o maior número selecionado.
+Então $X$ é uma variável aleatória que pode ter qualquer um dos valores $3, 4, \ldots, 20$.
+Se supormos que cada uma das ${20\choose 3}$ seleções possíveis tem a mesma probabilidade de ocorrer, então
+$P(X=i) = {{i-1} \choose 2}/{20\choose 3},$ $i = 3, 4, \ldots, 20.$
+  
+Temos, então, que
+$P(X \geq 17)=$ $P(X=17) +$ $P(X=18) +$ $P(X=19) +$ $P(X=20) =$ $0{,}509.$
+```
+
+```{definition, name="Função de distribuição acumulada", label="defFDA"}
+Para uma variável aleatória $X$, a função $F$ definida por 
+$$F(x) = P(X\leq x), \qquad -\infty<x<\infty$$
+é chamada de **função de distribuição acumulada**, ou, mais simplismente, de **função de distribuição** de $X$.
+```
+
+```{remark, label="obsFDA"}
+Se $a \leq b$, então $\{X\leq a\} \subseteq \{X \leq b\}$, logo $F(a)\leq F(b)$.
+Note que $F(x)$ é uma função não-decrescente.
+```
+
+
+A função de distribuição acumulada $F$ pode ser expressa em termos de $p(a)$ como
+$$F(a) = \sum_{x \leq a}p(x).$$
+
+```{example}
+Se $X$ tem uma função de probabilidade dada por
+$$p(1) = \frac{1}{4}, \quad p(2) = \frac{1}{2}, \quad p(3) = \frac{1}{8}, \quad p(4) = \frac{1}{8},$$
+então, sua função de distribuição acumulada é
+
+\begin{equation*}
+  F(a) =
+    \begin{cases}
+      0 & \text{se } a < 1\\
+      1/4 & \text{se } 1 \leq a < 2\\
+      3/4 & \text{se } 2 \leq a < 3\\
+      7/8 & \text{se } 3 \leq a < 4\\
+      1 & \text{se } 4 \leq a\\
+    \end{cases}       
+\end{equation*}
+```
+
+A Figura \@ref(fig:figFunDist) mostra o gráfico da função $F(x).$
+
+```{r figFunDist, echo=FALSE, engine='tikz', out.width='90%', fig.ext=if (knitr:::is_latex_output()) 'pdf' else 'png', fig.cap='Roda com cinco crianças.', fig.align = 'center', engine.opts = list(template = "latex/tikz2pdf.tex")}
+
+\begin{center}
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Straight Lines [id:da8847906596276696] 
+\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (330.5,50) -- (330.5,211) ;
+%Straight Lines [id:da08791374362946591] 
+\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (270.5,70) -- (270.75,216.5) ;
+%Straight Lines [id:da3083013035162654] 
+\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (210.5,91) -- (209.38,216.5) ;
+%Straight Lines [id:da03732014156702523] 
+\draw [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ] [dash pattern={on 4.5pt off 4.5pt}]  (149.5,171) -- (149.5,211) ;
+%Straight Lines [id:da3477676814690178] 
+\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 74; blue, 74 }  ,fill opacity=1 ]   (110.5,211) -- (432.5,211) ;
+\draw [shift={(434.5,211)}, rotate = 180] [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da3155372401212513] 
+\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 74; blue, 74 }  ,fill opacity=1 ]   (110.5,211) -- (109.51,31) ;
+\draw [shift={(109.5,29)}, rotate = 449.69] [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+%Straight Lines [id:da7569493135351915] 
+\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 74; blue, 74 }  ,fill opacity=1 ]   (104.5,190) -- (115.5,190) ;
+%Straight Lines [id:da930675744258256] 
+\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 74; blue, 74 }  ,fill opacity=1 ]   (104.5,170) -- (115.5,170) ;
+%Straight Lines [id:da8499364806681753] 
+\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 74; blue, 74 }  ,fill opacity=1 ]   (104.5,150) -- (115.5,150) ;
+%Straight Lines [id:da0157618764156926] 
+\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 74; blue, 74 }  ,fill opacity=1 ]   (104.5,130) -- (115.5,130) ;
+%Straight Lines [id:da2711437460754129] 
+\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 74; blue, 74 }  ,fill opacity=1 ]   (104.5,110) -- (115.5,110) ;
+%Straight Lines [id:da4405006401463223] 
+\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 74; blue, 74 }  ,fill opacity=1 ]   (104.5,90) -- (115.5,90) ;
+%Straight Lines [id:da4236090601711251] 
+\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 74; blue, 74 }  ,fill opacity=1 ]   (104.5,70) -- (115.5,70) ;
+%Straight Lines [id:da4278904726947306] 
+\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 74; blue, 74 }  ,fill opacity=1 ]   (104.5,50) -- (115.5,50) ;
+%Straight Lines [id:da19569329666816127] 
+\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 74; blue, 74 }  ,fill opacity=1 ]   (150,205.5) -- (150,216.5) ;
+%Straight Lines [id:da692554134473558] 
+\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 74; blue, 74 }  ,fill opacity=1 ]   (209.38,205.5) -- (209.38,216.5) ;
+%Straight Lines [id:da6001061326587751] 
+\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 74; blue, 74 }  ,fill opacity=1 ]   (270.75,205.5) -- (270.75,216.5) ;
+%Straight Lines [id:da1566843991019493] 
+\draw [color={rgb, 255:red, 74; green, 74; blue, 74 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 74; blue, 74 }  ,fill opacity=1 ]   (330.13,205.5) -- (330.13,216.5) ;
+%Straight Lines [id:da5168580893251633] 
+\draw [color={rgb, 255:red, 24; green, 88; blue, 163 }  ,draw opacity=1 ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ][line width=1.5]    (149.5,171) -- (207.15,171) ;
+\draw [shift={(210.5,171)}, rotate = 0] [color={rgb, 255:red, 24; green, 88; blue, 163 }  ,draw opacity=1 ][line width=1.5]      (0, 0) circle [x radius= 4.36, y radius= 4.36]   ;
+\draw [shift={(149.5,171)}, rotate = 0] [color={rgb, 255:red, 24; green, 88; blue, 163 }  ,draw opacity=1 ][fill={rgb, 255:red, 24; green, 88; blue, 163 }  ,fill opacity=1 ][line width=1.5]      (0, 0) circle [x radius= 4.36, y radius= 4.36]   ;
+%Straight Lines [id:da22249881476751554] 
+\draw [color={rgb, 255:red, 24; green, 88; blue, 163 }  ,draw opacity=1 ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ][line width=1.5]    (210.5,91) -- (268.15,91) ;
+\draw [shift={(271.5,91)}, rotate = 0] [color={rgb, 255:red, 24; green, 88; blue, 163 }  ,draw opacity=1 ][line width=1.5]      (0, 0) circle [x radius= 4.36, y radius= 4.36]   ;
+\draw [shift={(210.5,91)}, rotate = 0] [color={rgb, 255:red, 24; green, 88; blue, 163 }  ,draw opacity=1 ][fill={rgb, 255:red, 24; green, 88; blue, 163 }  ,fill opacity=1 ][line width=1.5]      (0, 0) circle [x radius= 4.36, y radius= 4.36]   ;
+%Straight Lines [id:da43017444886725253] 
+\draw [color={rgb, 255:red, 24; green, 88; blue, 163 }  ,draw opacity=1 ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ][line width=1.5]    (270.5,70) -- (327.15,70) ;
+\draw [shift={(330.5,70)}, rotate = 0] [color={rgb, 255:red, 24; green, 88; blue, 163 }  ,draw opacity=1 ][line width=1.5]      (0, 0) circle [x radius= 4.36, y radius= 4.36]   ;
+\draw [shift={(270.5,70)}, rotate = 0] [color={rgb, 255:red, 24; green, 88; blue, 163 }  ,draw opacity=1 ][fill={rgb, 255:red, 24; green, 88; blue, 163 }  ,fill opacity=1 ][line width=1.5]      (0, 0) circle [x radius= 4.36, y radius= 4.36]   ;
+%Straight Lines [id:da5669936872074282] 
+\draw [color={rgb, 255:red, 24; green, 88; blue, 163 }  ,draw opacity=1 ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ][line width=1.5]    (330.5,50) -- (430.5,49) ;
+\draw [shift={(330.5,50)}, rotate = 359.43] [color={rgb, 255:red, 24; green, 88; blue, 163 }  ,draw opacity=1 ][fill={rgb, 255:red, 24; green, 88; blue, 163 }  ,fill opacity=1 ][line width=1.5]      (0, 0) circle [x radius= 4.36, y radius= 4.36]   ;
+%Straight Lines [id:da23876234989153078] 
+\draw [color={rgb, 255:red, 24; green, 88; blue, 163 }  ,draw opacity=1 ][fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ][line width=1.5]    (110.5,211) -- (146.15,211) ;
+\draw [shift={(149.5,211)}, rotate = 0] [color={rgb, 255:red, 24; green, 88; blue, 163 }  ,draw opacity=1 ][line width=1.5]      (0, 0) circle [x radius= 4.36, y radius= 4.36]   ;
+
+% Text Node
+\draw (71,159.4) node [anchor=north west][inner sep=0.75pt]    {$1/4$};
+% Text Node
+\draw (72,81.4) node [anchor=north west][inner sep=0.75pt]    {$3/4$};
+% Text Node
+\draw (72,61.4) node [anchor=north west][inner sep=0.75pt]    {$7/8$};
+% Text Node
+\draw (83,43.4) node [anchor=north west][inner sep=0.75pt]    {$1$};
+% Text Node
+\draw (145,222.4) node [anchor=north west][inner sep=0.75pt]    {$1$};
+% Text Node
+\draw (205,222.4) node [anchor=north west][inner sep=0.75pt]    {$2$};
+% Text Node
+\draw (266,221.4) node [anchor=north west][inner sep=0.75pt]    {$3$};
+% Text Node
+\draw (326,221.4) node [anchor=north west][inner sep=0.75pt]    {$4$};
+
+
+\end{tikzpicture}
+\end{center}
+```
+
+
+## Valor esperado
+
+Um dos conceitos mais importantes na teoria da probabilidade é aquele do valor esperado de uma variável aleatória.
+
+```{definition, name="Valor esperado", label="defEsperanca"}
+Se $X$ é uma variável aleatória com função de probabilidade $p(x)$, então o valor esperado, ou esperança, de $X$ é definido por
+$$E(X) = \sum_{x:p(x)>0} x\cdot p(x).$$
+```
+
+Note que $E(X)$ é uma média ponderada dos possíveis valores que $X$ pode assumir, com cada valor sendo ponderado pela probabilidade de que $X$ seja igual a esse valor.
+
+```{example, label="esperancaDado"}
+Determine $E(X)$, em que $X$ é o resultado obtido ao lançar um dado honesto.
+```
+
+```{solution}
+Como $p(1)=$ $p(2)=$ $p(3)=$ $p(4)=$ $p(5)=$ $p(6)=$ $1/6$, temos
+
+$$E(X) = 1\cdot \frac{1}{6} +2\cdot \frac{1}{6}+3\cdot \frac{1}{6}+4\cdot \frac{1}{6}+5\cdot \frac{1}{6}+6\cdot \frac{1}{6}=\frac{7}{2}.$$
+```
+
+```{example}
+Dizemos que $I$ é uma variável indicadora do evento $A$ se 
+\begin{equation}
+  I =
+    \begin{cases}
+      1 & \text{se $A$ ocorre,}\\
+      0 & \text{se $A^c$ ocorre.}
+    \end{cases}       
+\end{equation}
+Determine $E(I).$
+```
+
+```{solution}
+Como $p(1)=P(A)$ e $p(0)=P(A^c)$, temos
+$$E(I)=1\cdot P(A) + 0\cdot (1-P(A)) = P(A).$$
+Assim, o valor esperado da variável indicadora do evento $A$ é igual à probabilidade de ocorrência de $A$.
+```
+
+## Esperança de uma função de uma variável aleatória
+
+Seja $X$ uma variável aleatória discreta e suponha que queriamos calcular o valor esperado de alguma função de $X$, digamos $g(X)$.
+Como $g(x)$ é uma variável aleatória discreta, ela tem função de probabilidade que pode ser determinada a partir da função de probabilidade de $X$, assim, podemos calcular $E[g(x)]$ usando a Definição \@ref(def:defEsperanca).
+
+```{example, label="exX2"}
+Seja $X$ uma variável aleatória que pode receber os valores $-1, 0, 1$ com probabilidades $P(X=-1)=0{,}2$, $P(X=0)=0{,}5$ e $P(X=1)=0{,}3$.
+Calcule $E(X^2)$.
+```
+
+```{solution}
+Seja $Y=X^2$, então a função de probabilidade de $Y$ é dada por 
+\begin{align}
+P(Y=1) &= P(X=-1) + P(X=1) = 0{,}5;\\ 
+P(Y=0) &= P(X=0) = 0{,}5.\\ 
+\end{align}
+Logo, 
+$$E(X^2) = E(Y) = 1\cdot 0{,}5 + 0\cdot 0{,}5 = 0{,}5.$$
+Observe que $0{,}5 = E(X^2) \neq [E(X)]^2 = 0{,}01$.
+```
+
+
+```{proposition, label="propGx"}
+Se $X$ é uma variável aleatória discreta que pode receber os valores $x_i, i\geq 1$, com respectivas probabilidade $p(x_i)$, então, para qualquer função real $g$
+  $$E[g(x)] = \sum_i g(x_i)p(x_i).$$
+```
+
+```{proof}
+Vamos agrupar todos os termos em $\sum_i g(x_i)p(x_i)$ com mesmo valor de $g(x_i)$.
+Especificamente, suponha que $y_j, j\geq 1$, represente os diferentes valores de $g(x_i), i\geq 1$.
+Então, o agrupamento de todos os $g(x_i)$ com valores iguais resulta em
+\begin{align}
+\sum_i g(x_i)p(x_i) &= \sum_j \sum_{i:g(x_i)=y_j} g(x_i)\cdot p(x_i)\\
+&=\sum_j \sum_{i:g(x_i)=y_j} y_j\cdot p(x_i)\\
+&=\sum_j y_j \sum_{i:g(x_i)=y_j} p(x_i)\\
+&=\sum_j y_j \cdot P(g(X)=y_i)\\
+&= E(g(X)).
+\end{align}
+```
+
+```{example}
+No Exemplo \@ref(exm:exX2), podemos calcular $E(X^2)$ de uma forma mais direta, usando o resultado da Proposição \@ref(prp:propGx).
+\begin{align}
+E(X^2) &= (-1)^2\cdot 0{,}2 + 0^2\cdot 0{,}5 + 1^2\cdot 0{,}3\\
+&= 1\cdot(0{,}2+0{,}3) + 0\cdot 0{,}5\\
+&= 0{,}5.
+\end{align}
+```
+
+O Corolário \@ref(cor:corEsperanca) é uma consequência direta da Proposição \@ref(prp:propGx).
+
+```{corollary, label="corEsperanca"}
+Se $a$ e $b$ são constantes, então $$E(aX+b) = aE(X)+b.$$
+```
+
+```{proof}
+\begin{align}
+E(aX+b) &= \sum_{x:p(x)>0}(ax+b)\cdot p(x)\\
+&=a\sum_{x:p(x)>0}x \cdot p(x) + b\sum_{x:p(x)>0}p(x)\\
+&= aE(X) + b.
+\end{align}
+```
+
+O valor esperado de uma variável aleatória $X$, $E(X)$, também é chamado de _média_ ou _primeiro momento_ de $X$. 
+A grandeza $E(X^n)$, $n\geq 1$,é chamada de $n$-ésimo momento de $X$.
+Pela Proposição \@ref(prp:propGx), temos que
+$$E(X^n) = \sum_{x:p(x)> 0}x^n p(x).$$
+
+## Variância
+
+Dada uma variável aleatória X e sua função distribuição $F$, seria extremamente útil se pudéssemos resumir as propriedades essenciais de F em certas medidas convenientemente definidas. 
+Uma dessas medidas seria $E(X)$ o, valor esperado de $X$. 
+Entretanto, embora $E(X)$ forneça a média ponderada dos valores possíveis de $X$, ela não nos diz nada sobre a variação, ou dispersão, desses valores.
+
+```{example}
+Considere variáveis aleatórias W, Y e Z com funções de probabilidades discretas dadas por
+\begin{align}
+  W &= 0 \quad\text{com probabilidade } 1,\\
+  Y &= \left\{
+      \begin{array}{ll}
+            -1 & \text{com probabilidade } 1/2\\
+            1 & \text{com probabilidade } 1/2\\
+         \end{array} 
+      \right.\\
+  Z &= \left\{
+      \begin{array}{ll}
+            -100 & \text{com probabilidade } 1/2\\
+            100 & \text{com probabilidade } 1/2\\
+         \end{array} 
+      \right.
+\end{align}
+    
+```
+
+O valor esperado de $W, Y$ e $Z$ é igual a 0, embora exista uma dispersão muito maior nos valores possíveis de $Y$ do que naqueles de $W$ (que é uma constante) e nos valores possíveis de $Z$ do que naqueles de $Y$.
+
+Por esse motivo, é interessante também analisar uma variável aleatória olhando para sua disperção.
+Uma medida de dispersão que é bastante utiliada é a **variância**.
+
+```{definition, name="Variância"}
+Se $X$ é uma variável aleatória com média $\mu$, então a variância de $X$, representada por $\mathrm{Var}(X)$ é definida como
+$$\mathrm{Var}(X) = E\big[(X-\mu)^2\big].$$
+```
+
+Uma fórmula alternativa para o cálculo de $\mathrm{Var}(X)$ é deduzida a seguir.
+
+\begin{align}
+\mathrm{Var}(X) &= E\big[(X-\mu)^2\big] \\
+&= \sum_x (x-\mu)^2p(x) \\
+&= \sum_x (x^2 - 2\mu x + \mu^2)p(x)\\
+&= \sum_x x^2p(x) - 2\mu\sum_x xp(x) + \mu^2\sum_x p(x)\\
+&= E(X^2) - 2\mu^2 + \mu^2\\
+&= E(X^2) - \mu^2.
+\end{align}
+
+Assim,
+$$\mathrm{Var}(X) = E\big(X^2\big)-\big[E(X)\big]^2.$$
+Na prática, essa é uma maneira mais fácil de calcular $\mathrm{Var}(X)$.
+
+```{example}
+Calcule $\mathrm{Var}(X)$ se $X$ representa o resultado do lançamento de um dado honesto.
+```
+
+```{solution}
+Vimos no Exemplo \@ref(exm:esperancaDado) que $E(X) =\frac{7}{2}$.
+Note que 
+$$E(X^2) = 1^2\cdot \frac{1}{6} +2^2\cdot \frac{1}{6}+3^2\cdot \frac{1}{6}+4^2\cdot \frac{1}{6}+5^2\cdot \frac{1}{6}+6^2\cdot \frac{1}{6}=91\cdot\frac{1}{6}.$$
+Com isso,
+$$\mathrm{Var}(X) = \frac{91}{6} - \bigg(\frac{7}{2}\bigg)^2 = \frac{35}{12}.$$
+```
+
+```{corollary}
+Para $a$ e $b$ constantes, $$\mathrm{Var}(aX+b) = a^2\mathrm{Var}(X).$$
+```
+
+```{proof}
+Considere $\mu=E(X)$ e lembre-se que $E(aX+b)=aE(X)+b$ (veja Corolário \@ref(cor:corEsperanca)). 
+Portanto, 
+\begin{align}
+\mathrm{Var}(aX+b) &= E\bigg[\big((aX+b)-(a\mu+b)\big)^2\bigg] \\
+&= E\bigg[\big((aX+b-a\mu-b)\big)^2\bigg] \\
+&= E\big[a^2(X-\mu)^2\big] \\
+&= a^2 E\big[(X-\mu)^2\big] \\
+&= a^2 \mathrm{Var}(X).
+\end{align}
+```
+
+```{definition, name="Desvio Padrão"}
+A quantidade $\sqrt{\mathrm{Var}(X)}$ é chamada de desvio padrão de $X$.
+$$\mathrm{SD}(X) = \sqrt{\mathrm{Var}(X)}.$$
+```
+

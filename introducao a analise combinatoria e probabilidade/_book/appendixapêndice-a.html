@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 7 (APPENDIX)Apêndice A | Análise Combinatória, Probabilidade e Aplicações</title>
+  <meta name="description" content="Notas de aula da disciplina." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 7 (APPENDIX)Apêndice A | Análise Combinatória, Probabilidade e Aplicações" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notas de aula da disciplina." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 7 (APPENDIX)Apêndice A | Análise Combinatória, Probabilidade e Aplicações" />
+  
+  <meta name="twitter:description" content="Notas de aula da disciplina." />
+  
+
+<meta name="author" content="Magno T F Severino" />
+
+
+<meta name="date" content="2020-12-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="appendix.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notas de aula</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introdução</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#lista-de-tarefas"><i class="fa fa-check"></i>LISTA DE TAREFAS</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="sem1.html"><a href="sem1.html"><i class="fa fa-check"></i><b>1</b> Semana 1</a><ul>
+<li class="chapter" data-level="1.1" data-path="sem1.html"><a href="sem1.html#conjuntos"><i class="fa fa-check"></i><b>1.1</b> Conjuntos</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="sem1.html"><a href="sem1.html#operações-entre-conjuntos"><i class="fa fa-check"></i><b>1.1.1</b> Operações entre conjuntos</a></li>
+<li class="chapter" data-level="1.1.2" data-path="sem1.html"><a href="sem1.html#identidades-de-conjuntos"><i class="fa fa-check"></i><b>1.1.2</b> Identidades de conjuntos</a></li>
+<li class="chapter" data-level="1.1.3" data-path="sem1.html"><a href="sem1.html#uniões-e-interseções-gerais"><i class="fa fa-check"></i><b>1.1.3</b> Uniões e interseções gerais</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="sem1.html"><a href="sem1.html#representação-de-conjuntos-na-linguagem-r"><i class="fa fa-check"></i><b>1.2</b> Representação de conjuntos na linguagem <code>R</code></a></li>
+<li class="chapter" data-level="1.3" data-path="sem1.html"><a href="sem1.html#somatórios-e-produtórios"><i class="fa fa-check"></i><b>1.3</b> Somatórios e produtórios</a></li>
+<li class="chapter" data-level="1.4" data-path="sem1.html"><a href="sem1.html#princípio-de-indução-matemática"><i class="fa fa-check"></i><b>1.4</b> Princípio de indução matemática</a><ul>
+<li class="chapter" data-level="" data-path="sem1.html"><a href="sem1.html#primeira-forma-do-princípio-de-indução-matemática"><i class="fa fa-check"></i>Primeira forma do Princípio de Indução Matemática</a></li>
+<li class="chapter" data-level="" data-path="sem1.html"><a href="sem1.html#segunda-forma-do-princípio-de-indução-matemática"><i class="fa fa-check"></i>Segunda forma do princípio de Indução Matemática</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="sem2.html"><a href="sem2.html"><i class="fa fa-check"></i><b>2</b> Semana 2</a><ul>
+<li class="chapter" data-level="2.1" data-path="sem2.html"><a href="sem2.html#princípio-aditivo-e-multiplicativo"><i class="fa fa-check"></i><b>2.1</b> Princípio aditivo e multiplicativo</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="sem2.html"><a href="sem2.html#aplicaçõs-dos-princípios-aditivo-e-multiplicativo"><i class="fa fa-check"></i><b>2.1.1</b> Aplicaçõs dos Princípios Aditivo e Multiplicativo</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="sem2.html"><a href="sem2.html#permutação"><i class="fa fa-check"></i><b>2.2</b> Permutação</a></li>
+<li class="chapter" data-level="2.3" data-path="sem2.html"><a href="sem2.html#arranjo-simples-r-permutação"><i class="fa fa-check"></i><b>2.3</b> Arranjo simples (<span class="math inline">\(r\)</span>-permutação)</a></li>
+<li class="chapter" data-level="2.4" data-path="sem2.html"><a href="sem2.html#combinações"><i class="fa fa-check"></i><b>2.4</b> Combinações</a></li>
+<li class="chapter" data-level="2.5" data-path="sem2.html"><a href="sem2.html#aplicações"><i class="fa fa-check"></i><b>2.5</b> Aplicações</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="sem2.html"><a href="sem2.html#equações-lineares-com-coeficientes-unitários"><i class="fa fa-check"></i><b>2.5.1</b> Equações lineares com coeficientes unitários</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="sem2.html"><a href="sem2.html#combinações-com-repetições"><i class="fa fa-check"></i><b>2.6</b> Combinações com repetições</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="sem3.html"><a href="sem3.html"><i class="fa fa-check"></i><b>3</b> Semana 3</a><ul>
+<li class="chapter" data-level="3.1" data-path="sem3.html"><a href="sem3.html#princípio-da-inclusão-e-exclusão"><i class="fa fa-check"></i><b>3.1</b> Princípio da inclusão e exclusão</a></li>
+<li class="chapter" data-level="3.2" data-path="sem3.html"><a href="sem3.html#a-função-phi-de-euler"><i class="fa fa-check"></i><b>3.2</b> A função <span class="math inline">\(\phi\)</span> de Euler</a></li>
+<li class="chapter" data-level="3.3" data-path="sem3.html"><a href="sem3.html#mais-exemplos-com-permutações"><i class="fa fa-check"></i><b>3.3</b> Mais exemplos com permutações</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="sem3.html"><a href="sem3.html#contando-o-número-de-funções"><i class="fa fa-check"></i><b>3.3.1</b> Contando o número de funções</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="sem4.html"><a href="sem4.html"><i class="fa fa-check"></i><b>4</b> Semana 4</a><ul>
+<li class="chapter" data-level="4.1" data-path="sem4.html"><a href="sem4.html#probabilidade"><i class="fa fa-check"></i><b>4.1</b> Probabilidade</a></li>
+<li class="chapter" data-level="4.2" data-path="sem4.html"><a href="sem4.html#axiomas-de-probabilidade"><i class="fa fa-check"></i><b>4.2</b> Axiomas de Probabilidade</a></li>
+<li class="chapter" data-level="4.3" data-path="sem4.html"><a href="sem4.html#espaços-amostrais-com-resultados-igualmente-prováveis"><i class="fa fa-check"></i><b>4.3</b> Espaços amostrais com resultados igualmente prováveis</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="sem5.html"><a href="sem5.html"><i class="fa fa-check"></i><b>5</b> Semana 5</a><ul>
+<li class="chapter" data-level="5.1" data-path="sem5.html"><a href="sem5.html#probabilidade-condicional-e-independência"><i class="fa fa-check"></i><b>5.1</b> Probabilidade condicional e independência</a></li>
+<li class="chapter" data-level="5.2" data-path="sem5.html"><a href="sem5.html#fórmula-de-bayes"><i class="fa fa-check"></i><b>5.2</b> Fórmula de Bayes</a></li>
+<li class="chapter" data-level="5.3" data-path="sem5.html"><a href="sem5.html#variáveis-aleatórias"><i class="fa fa-check"></i><b>5.3</b> Variáveis Aleatórias</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="sem6.html"><a href="sem6.html"><i class="fa fa-check"></i><b>6</b> Semana 6</a><ul>
+<li class="chapter" data-level="6.1" data-path="sem6.html"><a href="sem6.html#esperança-de-uma-função-de-uma-variável-aleatória"><i class="fa fa-check"></i><b>6.1</b> Esperança de uma função de uma variável aleatória</a></li>
+<li class="chapter" data-level="6.2" data-path="sem6.html"><a href="sem6.html#variáveis-aleatórias-discretas"><i class="fa fa-check"></i><b>6.2</b> Variáveis Aleatórias Discretas</a></li>
+<li class="chapter" data-level="6.3" data-path="sem6.html"><a href="sem6.html#funções-conjuntamente-distribuídas"><i class="fa fa-check"></i><b>6.3</b> Funções conjuntamente distribuídas</a></li>
+<li class="chapter" data-level="6.4" data-path="sem6.html"><a href="sem6.html#propriedades-das-variáveis-aleatórias-binomiais"><i class="fa fa-check"></i><b>6.4</b> Propriedades das variáveis aleatórias binomiais</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>Appendix</a></li>
+<li class="chapter" data-level="7" data-path="appendixapêndice-a.html"><a href="appendixapêndice-a.html"><i class="fa fa-check"></i><b>7</b> (APPENDIX)Apêndice A</a><ul>
+<li class="chapter" data-level="7.1" data-path="appendixapêndice-a.html"><a href="appendixapêndice-a.html#S:apendiceR"><i class="fa fa-check"></i><b>7.1</b> Básicos da linguagem <code>R</code></a><ul>
+<li class="chapter" data-level="7.1.1" data-path="appendixapêndice-a.html"><a href="appendixapêndice-a.html#atribuindo-variáveis"><i class="fa fa-check"></i><b>7.1.1</b> Atribuindo variáveis</a></li>
+<li class="chapter" data-level="7.1.2" data-path="appendixapêndice-a.html"><a href="appendixapêndice-a.html#números-especias"><i class="fa fa-check"></i><b>7.1.2</b> Números especias</a></li>
+<li class="chapter" data-level="7.1.3" data-path="appendixapêndice-a.html"><a href="appendixapêndice-a.html#vetores-matrizes-e-dataframes"><i class="fa fa-check"></i><b>7.1.3</b> Vetores, Matrizes e Dataframes</a></li>
+<li class="chapter" data-level="7.1.4" data-path="appendixapêndice-a.html"><a href="appendixapêndice-a.html#tamanhos"><i class="fa fa-check"></i><b>7.1.4</b> Tamanhos</a></li>
+<li class="chapter" data-level="7.1.5" data-path="appendixapêndice-a.html"><a href="appendixapêndice-a.html#indexando-vetores"><i class="fa fa-check"></i><b>7.1.5</b> Indexando vetores</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Análise Combinatória, Probabilidade e Aplicações</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="appendixapêndice-a" class="section level1">
+<h1><span class="header-section-number">Capítulo 7</span> (APPENDIX)Apêndice A</h1>
+<div id="S:apendiceR" class="section level2">
+<h2><span class="header-section-number">7.1</span> Básicos da linguagem <code>R</code></h2>
+<p>Para instalação,</p>
+<ul>
+<li><p>faça o download do R em <a href="http://www.r-project.org" class="uri">http://www.r-project.org</a>;</p></li>
+<li><p>sugestão: utilizar a IDE <a href="http://www.rstudio.org">R Studio</a>.</p></li>
+</ul>
+<p>É muito importante saber como obter ajuda no R.
+Sempre que estiver em dúvidas quanto as características de alguma função, consule a aba <em>help</em> do R.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">?mean <span class="co">#abre a página de ajuda da função &#39;mean&#39;</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">??plot <span class="co">#procura por tópicos contendo a palavra &#39;plot&#39;</span></a></code></pre></div>
+<div id="usando-o-r-como-uma-calculadora" class="section level4">
+<h4><span class="header-section-number">7.1.0.1</span> Usando o <code>R</code> como uma calculadora</h4>
+<p>O operador <tt>+</tt> realiza a adição entre dois elementos.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>Um vetor é um conjunto ordenado de valores.
+O operador <tt>:</tt> cria uma sequência a partir de um número até outro.
+A função <tt>c</tt> concatena valores, criando um vetor.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></a></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</a></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<p>Além de adicionar dois números, o operador <tt>+</tt> pode ser usado para adicionar dois vetores.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="dv">1</span><span class="op">:</span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">6</span><span class="op">:</span><span class="dv">10</span></a></code></pre></div>
+<pre><code>## [1]  7  9 11 13 15</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>)</a></code></pre></div>
+<pre><code>## [1]  7  9 11 13 15</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="dv">1</span><span class="op">:</span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>)</a></code></pre></div>
+<pre><code>## [1]  7  9 11 13 15</code></pre>
+<p>Os próximos exemplos mostram subtração, multiplicação, exponenciação e divisão.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">11</span>, <span class="dv">13</span>) <span class="op">-</span><span class="st"> </span><span class="dv">2</span>       <span class="co">#subtração</span></a></code></pre></div>
+<pre><code>## [1]  0  1  3  5  9 11</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="dv">-2</span><span class="op">:</span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">-2</span><span class="op">:</span><span class="dv">2</span>                     <span class="co">#multiplicação</span></a></code></pre></div>
+<pre><code>## [1] 4 1 0 1 4</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) <span class="op">^</span><span class="st"> </span><span class="dv">2</span>                        <span class="co">#exponenciação</span></a></code></pre></div>
+<pre><code>##  [1]   1   4   9  16  25  36  49  64  81 100</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="dv">1</span><span class="op">:</span><span class="dv">10</span> <span class="op">/</span><span class="st"> </span><span class="dv">3</span>                        <span class="co">#divisão</span></a></code></pre></div>
+<pre><code>##  [1] 0.3333333 0.6666667 1.0000000 1.3333333 1.6666667 2.0000000 2.3333333
+##  [8] 2.6666667 3.0000000 3.3333333</code></pre>
+</div>
+<div id="atribuindo-variáveis" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> Atribuindo variáveis</h3>
+<p>Fazer cálculos com o R é bem simples e útil.
+A maior parte das vezes queremos armazenar os resultados para uso posterior.
+Assim, podemos atribuir valor à uma variável, através do operador <tt>&lt;-</tt>.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">a &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb22-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb22-3" data-line-number="3">b &lt;-<span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb22-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb22-5" data-line-number="5">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb22-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb22-7" data-line-number="7">y &lt;-<span class="st"> </span><span class="dv">6</span><span class="op">:</span><span class="dv">10</span></a></code></pre></div>
+<p>Agora, podemos reutilizar esses valores para fazer outros cálculos.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">a <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>b</a></code></pre></div>
+<pre><code>## [1] 31</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">x <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>y <span class="op">-</span><span class="st"> </span><span class="dv">3</span></a></code></pre></div>
+<pre><code>## [1] 10 13 16 19 22</code></pre>
+<p>Observe que não temos que dizer ao R qual o tipo da variável, se era um número (as variáveis <tt>a</tt> e <tt>a</tt>) ou vetor (<tt>x</tt> e <tt>y</tt>).</p>
+</div>
+<div id="números-especias" class="section level3">
+<h3><span class="header-section-number">7.1.2</span> Números especias</h3>
+<p>Para facilitar operações aritméticas, R suporta quatro valores especiais de números: <tt> Inf, -Inf, NaN</tt> e <tt>NA</tt>.
+Os dois primeiros representam infinito positivo e negativo.
+<tt>NaN</tt> é um acrônimo inglês para “not a number”, ou seja, não é um número.
+Ele aparece quando um cálculo não faz sentido, ou não está definido.
+<tt>NA</tt> significa “not available”, ou seja, não disponível, e representa um valor faltante.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">c</span>(<span class="ot">Inf</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, <span class="ot">Inf</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span>, <span class="ot">Inf</span> <span class="op">-</span><span class="st"> </span><span class="ot">Inf</span>, <span class="ot">NA</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## [1] Inf Inf NaN  NA</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">c</span>(<span class="dv">0</span> <span class="op">/</span><span class="st"> </span><span class="dv">0</span>, <span class="ot">Inf</span> <span class="op">/</span><span class="st"> </span><span class="ot">Inf</span>, <span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="ot">Inf</span>)</a></code></pre></div>
+<pre><code>## [1] NaN NaN   0</code></pre>
+</div>
+<div id="vetores-matrizes-e-dataframes" class="section level3">
+<h3><span class="header-section-number">7.1.3</span> Vetores, Matrizes e Dataframes</h3>
+<p>Previamente, vimos alguns tipos de vetores para valores lógicos, caracteres e números.
+Nessa seção, utilizaremos técnicas de manipulação de vetores e introduziremos o caso multidimensional: matrizes e dataframes.</p>
+<p>Abaixo relembramos as operações que já foram feitas com vetores</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="dv">10</span><span class="op">:</span><span class="dv">5</span>                    <span class="co">#sequência de números de 10 até 5</span></a></code></pre></div>
+<pre><code>## [1] 10  9  8  7  6  5</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">5</span>, <span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">7</span>), <span class="dv">8</span>)   <span class="co">#valores concatenados em um único vetor</span></a></code></pre></div>
+<pre><code>## [1] 1 2 3 4 5 6 7 8</code></pre>
+<div id="vetores" class="section level4">
+<h4><span class="header-section-number">7.1.3.1</span> Vetores</h4>
+<p>Existem funções para criar vetores de um tipo e com tamanho específicos.
+Todos os elementos deste vetor terá valor zero, FALSE, um caracter vazio, ou o equivalente à <em>nada/vazio</em> para aquele tipo.
+Veja abaixo duas maneiras de definir um vetor.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">vector</span>(<span class="st">&quot;numeric&quot;</span>, <span class="dv">5</span>) <span class="co">#cria um vetor numérico de 5 elementos</span></a></code></pre></div>
+<pre><code>## [1] 0 0 0 0 0</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw">numeric</span>(<span class="dv">5</span>) <span class="co">#equivalente ao comando acima</span></a></code></pre></div>
+<pre><code>## [1] 0 0 0 0 0</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw">vector</span>(<span class="st">&quot;logical&quot;</span>, <span class="dv">5</span>) <span class="co">#cria um vetor lógico de 5 elementos</span></a></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw">logical</span>(<span class="dv">5</span>) <span class="co">#equivalente ao comando acima</span></a></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>, <span class="dv">5</span>) <span class="co">#cria um vetor de caracteres de 5 elementos</span></a></code></pre></div>
+<pre><code>## [1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw">character</span>(<span class="dv">5</span>) <span class="co">#equivalente ao comando acima</span></a></code></pre></div>
+<pre><code>## [1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
+</div>
+<div id="sequências" class="section level4">
+<h4><span class="header-section-number">7.1.3.2</span> Sequências</h4>
+<p>Podemos criar sequências mais gerais que aquelas criadas com o operador <tt>:</tt>.
+A função <tt>seq</tt> te permite criar sequências em diferentes maneiras
+Veja abaixo.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw">seq</span>(<span class="dv">3</span>, <span class="dv">12</span>) <span class="co">#equivalente à 3:12</span></a></code></pre></div>
+<pre><code>##  [1]  3  4  5  6  7  8  9 10 11 12</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="kw">seq</span>(<span class="dv">3</span>, <span class="dv">12</span>, <span class="dv">2</span>) <span class="co">#o terceiro argumento indica a distância entre os elementos na lista.</span></a></code></pre></div>
+<pre><code>## [1]  3  5  7  9 11</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="kw">seq</span>(<span class="fl">0.1</span>, <span class="fl">0.01</span>, <span class="fl">-0.01</span>)</a></code></pre></div>
+<pre><code>##  [1] 0.10 0.09 0.08 0.07 0.06 0.05 0.04 0.03 0.02 0.01</code></pre>
+</div>
+</div>
+<div id="tamanhos" class="section level3">
+<h3><span class="header-section-number">7.1.4</span> Tamanhos</h3>
+<p>Todo vetor tem um tamanho, um número não negativo que representa a quantidade de elementos que o vetor contém.
+A função <tt>length</tt> retorna o tamanho de um dado vetor.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw">length</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) </a></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1">frase &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Observe&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;resultado&quot;</span>, <span class="st">&quot;dos&quot;</span>, <span class="st">&quot;comandos&quot;</span>, <span class="st">&quot;abaixo&quot;</span>)</a>
+<a class="sourceLine" id="cb55-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb55-3" data-line-number="3"><span class="kw">length</span>(frase)</a></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="kw">nchar</span>(frase)</a></code></pre></div>
+<pre><code>## [1] 7 1 9 3 8 6</code></pre>
+</div>
+<div id="indexando-vetores" class="section level3">
+<h3><span class="header-section-number">7.1.5</span> Indexando vetores</h3>
+<p>A indexação é útil quando queremos acessar elementos específicos de um vetor.
+Considere o vetor</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1">x &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) <span class="op">^</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
+<p>Abaixo, três métodos de indexar os mesmos valores do vetor <tt>x</tt>.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1">x[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)]</a>
+<a class="sourceLine" id="cb60-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb60-3" data-line-number="3">x[<span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">-4</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1">x[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)]</a></code></pre></div>
+<pre><code>## [1]  1  9 25</code></pre>
+<p>Se nomearmos os elementos do vetor, o método abaixo obtém os mesmos valores de <tt>x</tt>.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="kw">names</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;one&quot;</span>, <span class="st">&quot;four&quot;</span>, <span class="st">&quot;nine&quot;</span>, <span class="st">&quot;sixteen&quot;</span>, <span class="st">&quot;twenty five&quot;</span>)</a>
+<a class="sourceLine" id="cb63-2" data-line-number="2">x[<span class="kw">c</span>(<span class="st">&quot;one&quot;</span>, <span class="st">&quot;nine&quot;</span>, <span class="st">&quot;twenty five&quot;</span>)]</a></code></pre></div>
+<pre><code>##         one        nine twenty five 
+##           1           9          25</code></pre>
+<p>Cuidado, acessar um elemento fora do tamanho do vetor não gera um erro no R, apenas NA.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1">x[<span class="dv">6</span>]</a></code></pre></div>
+<pre><code>## &lt;NA&gt; 
+##   NA</code></pre>
+<p>###Matrizes
+Uma matriz é o equivalente à um vetor, porém em duas dimensões.
+Abaixo, um exemplo de definição de uma matriz com 4 linhas e 3 colunas (total de 12 elementos).</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1">?matrix</a>
+<a class="sourceLine" id="cb67-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb67-3" data-line-number="3">uma_matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(</a>
+<a class="sourceLine" id="cb67-4" data-line-number="4">      <span class="dv">1</span><span class="op">:</span><span class="dv">12</span>,</a>
+<a class="sourceLine" id="cb67-5" data-line-number="5">      <span class="dt">nrow =</span> <span class="dv">4</span>, <span class="co">#ncol = 3 gera o mesmo resultado. Verifique!</span></a>
+<a class="sourceLine" id="cb67-6" data-line-number="6">      <span class="dt">dimnames =</span> <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb67-7" data-line-number="7">        <span class="kw">c</span>(<span class="st">&quot;L1&quot;</span>, <span class="st">&quot;L2&quot;</span>, <span class="st">&quot;L3&quot;</span>, <span class="st">&quot;L4&quot;</span>),</a>
+<a class="sourceLine" id="cb67-8" data-line-number="8">        <span class="kw">c</span>(<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C2&quot;</span>, <span class="st">&quot;C3&quot;</span>)</a>
+<a class="sourceLine" id="cb67-9" data-line-number="9">      )</a>
+<a class="sourceLine" id="cb67-10" data-line-number="10">)</a>
+<a class="sourceLine" id="cb67-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb67-12" data-line-number="12"><span class="kw">class</span>(uma_matriz)</a></code></pre></div>
+<pre><code>## [1] &quot;matrix&quot; &quot;array&quot;</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1">uma_matriz</a></code></pre></div>
+<pre><code>##    C1 C2 C3
+## L1  1  5  9
+## L2  2  6 10
+## L3  3  7 11
+## L4  4  8 12</code></pre>
+<p>Por padrão, ao criar uma matrix, o vetor passado como primeiro argumento preenche a matrix por colunas.
+Para preencher a matrix por linhas, basta especificar o argumento <tt>byrow=TRUE</tt></p>
+<p>A função <tt>dim</tt> retorna um vetor de inteiros com as dimensões da variável.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="kw">dim</span>(uma_matriz)</a></code></pre></div>
+<pre><code>## [1] 4 3</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="kw">nrow</span>(uma_matriz) <span class="co">#retorna o número de linhas da matrix</span></a></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="kw">ncol</span>(uma_matriz) <span class="co">#retorna o número de colunas da matrix</span></a></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1"><span class="kw">length</span>(uma_matriz) <span class="co">#retorna o número de elementos da matrix</span></a></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<div id="nomeando-linhas-columas-e-dimensões" class="section level4">
+<h4><span class="header-section-number">7.1.5.1</span> Nomeando linhas, columas e dimensões</h4>
+<p>Da mesma forma para vetores, podemos nomear (e obter os nomes de) linhas e colunas de matrizes.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="kw">rownames</span>(uma_matriz)</a></code></pre></div>
+<pre><code>## [1] &quot;L1&quot; &quot;L2&quot; &quot;L3&quot; &quot;L4&quot;</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1"><span class="kw">colnames</span>(uma_matriz)</a></code></pre></div>
+<pre><code>## [1] &quot;C1&quot; &quot;C2&quot; &quot;C3&quot;</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1"><span class="kw">dimnames</span>(uma_matriz)</a></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;L1&quot; &quot;L2&quot; &quot;L3&quot; &quot;L4&quot;
+## 
+## [[2]]
+## [1] &quot;C1&quot; &quot;C2&quot; &quot;C3&quot;</code></pre>
+</div>
+<div id="indexação" class="section level4">
+<h4><span class="header-section-number">7.1.5.2</span> Indexação</h4>
+<p>A indexação de matrizes funciona de maneira similar à de vetores, com a diferença que agora precisam ser especificadas mais de uma dimensão.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1">uma_matriz[<span class="dv">1</span>, <span class="kw">c</span>(<span class="st">&quot;C2&quot;</span>, <span class="st">&quot;C3&quot;</span>)] <span class="co">#elementos na primeira linha, segunda e terceira colunas</span></a></code></pre></div>
+<pre><code>## C2 C3 
+##  5  9</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1">uma_matriz[<span class="dv">1</span>, ] <span class="co">#todos elementos da primeira linha</span></a></code></pre></div>
+<pre><code>## C1 C2 C3 
+##  1  5  9</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1">uma_matriz[, <span class="kw">c</span>(<span class="st">&quot;C2&quot;</span>, <span class="st">&quot;C3&quot;</span>)] <span class="co">#todos elementos da segunda e terceira colunas</span></a></code></pre></div>
+<pre><code>##    C2 C3
+## L1  5  9
+## L2  6 10
+## L3  7 11
+## L4  8 12</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1">uma_matriz[, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)] <span class="co">#todos elementos da segunda e terceira colunas</span></a></code></pre></div>
+<pre><code>##    C2 C3
+## L1  5  9
+## L2  6 10
+## L3  7 11
+## L4  8 12</code></pre>
+</div>
+<div id="combinando-matrizes" class="section level4">
+<h4><span class="header-section-number">7.1.5.3</span> Combinando matrizes</h4>
+<p>Considere a seguinte matriz.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1">outra_matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(</a>
+<a class="sourceLine" id="cb93-2" data-line-number="2">      <span class="kw">seq</span>(<span class="dv">2</span>, <span class="dv">24</span>, <span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb93-3" data-line-number="3">      <span class="dt">nrow =</span> <span class="dv">4</span>,</a>
+<a class="sourceLine" id="cb93-4" data-line-number="4">      <span class="dt">dimnames =</span> <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb93-5" data-line-number="5">        <span class="kw">c</span>(<span class="st">&quot;L5&quot;</span>, <span class="st">&quot;L6&quot;</span>, <span class="st">&quot;L7&quot;</span>, <span class="st">&quot;L8&quot;</span>),</a>
+<a class="sourceLine" id="cb93-6" data-line-number="6">        <span class="kw">c</span>(<span class="st">&quot;C5&quot;</span>, <span class="st">&quot;C6&quot;</span>, <span class="st">&quot;C7&quot;</span>)</a>
+<a class="sourceLine" id="cb93-7" data-line-number="7">      ))</a></code></pre></div>
+<p>A combinação de matrizes pode ser feita através das funções <tt>cbind</tt> e <tt>rbind</tt>, que combina matrizes por colunas e por linhas, respectivamentes.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1"><span class="kw">cbind</span>(uma_matriz, outra_matriz)</a></code></pre></div>
+<pre><code>##    C1 C2 C3 C5 C6 C7
+## L1  1  5  9  2 10 18
+## L2  2  6 10  4 12 20
+## L3  3  7 11  6 14 22
+## L4  4  8 12  8 16 24</code></pre>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1"><span class="kw">rbind</span>(uma_matriz, outra_matriz)</a></code></pre></div>
+<pre><code>##    C1 C2 C3
+## L1  1  5  9
+## L2  2  6 10
+## L3  3  7 11
+## L4  4  8 12
+## L5  2 10 18
+## L6  4 12 20
+## L7  6 14 22
+## L8  8 16 24</code></pre>
+</div>
+<div id="operações-com-matrizes" class="section level4">
+<h4><span class="header-section-number">7.1.5.4</span> Operações com matrizes</h4>
+<p>As operações básicas (+, -, *, /) funcionam de elemento a elemento em matrizes, da mesmo forma como em vetores:</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1">uma_matriz <span class="op">+</span><span class="st"> </span>outra_matriz</a></code></pre></div>
+<pre><code>##    C1 C2 C3
+## L1  3 15 27
+## L2  6 18 30
+## L3  9 21 33
+## L4 12 24 36</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1">uma_matriz <span class="op">*</span><span class="st"> </span>outra_matriz</a></code></pre></div>
+<pre><code>##    C1  C2  C3
+## L1  2  50 162
+## L2  8  72 200
+## L3 18  98 242
+## L4 32 128 288</code></pre>
+<p>Cuidado: as matrizes e vetores devem ter tamanhos compativeis!</p>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="appendix.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Livro.pdf", "Livro.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

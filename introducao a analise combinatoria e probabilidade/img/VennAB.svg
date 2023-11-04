@@ -1,0 +1,11 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="702" height="238" style="
+        width:702px;
+        height:238px;
+        background: #FFF;
+        fill: none;
+">
+        
+        
+        <svg xmlns="http://www.w3.org/2000/svg" class="role-diagram-draw-area" style="overflow: visible;"><g class="shapes-region" style="stroke: black; fill: none;"><g class="composite-shape"><path class="real" d=" M216,45.14 L462.5,45.14 L462.5,186 L216,186 Z" style="stroke-width: 1; stroke: rgb(0, 0, 0); fill: none; fill-opacity: 1;"/></g><g class="composite-shape"><path class="real" d=" M273,122.25 C273,97.26 293.26,77 318.25,77 C343.24,77 363.5,97.26 363.5,122.25 C363.5,147.24 343.24,167.5 318.25,167.5 C293.26,167.5 273,147.24 273,122.25 Z" style="stroke-width: 1; stroke: rgb(0, 0, 0); fill: none; fill-opacity: 1;"/></g><g class="composite-shape"><path class="real" d=" M334,120.25 C334,95.26 354.26,75 379.25,75 C404.24,75 424.5,95.26 424.5,120.25 C424.5,145.24 404.24,165.5 379.25,165.5 C354.26,165.5 334,145.24 334,120.25 Z" style="stroke-width: 1; stroke: rgb(0, 0, 0); fill: none; fill-opacity: 1;"/></g><g/></g><g/><g/><g/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="236" style="width:700px;height:236px;font-family:Asana-Math, Asana;background:#FFF;"><g><g><g><text x="269.9921875" y="149" style="white-space:pre;stroke:none;fill:rgb(0,0,0);fill-opacity:1;font-size:15px;font-family:Arial, Helvetica, sans-serif;font-weight:400;font-style:normal;dominant-baseline:text-before-edge;text-decoration:none solid rgb(0, 0, 0);">A</text></g></g></g><g><g><g><text x="417.9921875" y="149" style="white-space:pre;stroke:none;fill:rgb(0,0,0);fill-opacity:1;font-size:15px;font-family:Arial, Helvetica, sans-serif;font-weight:400;font-style:normal;dominant-baseline:text-before-edge;text-decoration:none solid rgb(0, 0, 0);">B</text></g></g></g></svg>
+</svg>

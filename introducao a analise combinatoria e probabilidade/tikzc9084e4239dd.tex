@@ -1,0 +1,42 @@
+\documentclass{article}
+\include{preview}
+\usepackage[pdftex,active,tightpage]{preview}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+%% INSERT YOUR OWN CODE HERE 
+\begin{document}
+\begin{preview}
+%% TIKZ_CODE %%
+\begin{center}
+  \begin{tikzpicture}
+  \def\radius{2cm}
+  \def\mycolorbox#1{\textcolor{#1}{\rule{2ex}{2ex}}}
+  \colorlet{colori}{blue!70}
+  \colorlet{colorii}{red!70}
+  
+  % some coordinates for the center of the circles
+  \coordinate (ceni);
+  \coordinate[xshift=\radius] (cenii);
+  
+  % the circles
+  \draw (ceni) circle (\radius);
+  \draw (cenii) circle (\radius);
+  
+  % the rectangle
+  \draw  ([xshift=-25pt,yshift=25pt]current bounding box.north west) 
+    rectangle ([xshift=25pt,yshift=-25pt]current bounding box.south east);
+  
+  %the labels
+  \node[xshift=-.5\radius] at (ceni) {$5$};
+  \node[xshift=.5\radius] at (cenii) {$2$};
+  \node[xshift=.9\radius] at (ceni) {$1 \qquad 3$};
+  \node[xshift=-30pt,yshift=\radius+10pt] at (ceni) {$A$};
+  \node[xshift=30pt,yshift=\radius+10pt] at (cenii) {$B$};
+  \node[xshift=10pt,yshift=10pt] at (current bounding box.south west) {$\Omega$};
+  \end{tikzpicture}
+\end{center}
+
+\end{preview}
+\end{document}

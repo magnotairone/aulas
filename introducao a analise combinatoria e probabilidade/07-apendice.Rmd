@@ -1,0 +1,271 @@
+# (APPENDIX) Appendice {-}
+# Básicos da linguagem `R` {#S:apendiceR}
+
+Para instalação, 
+
+- faça o download do R em <http://www.r-project.org>;
+
+- sugestão: utilizar a IDE [R Studio](http://www.rstudio.org).
+
+É muito importante saber como obter ajuda no R.
+Sempre que estiver em dúvidas quanto as características de alguma função, consule a aba *help* do R.
+
+```{r help}
+?mean #abre a página de ajuda da função 'mean'
+??plot #procura por tópicos contendo a palavra 'plot'
+```
+
+## Usando o `R` como uma calculadora
+O operador <tt>+</tt> realiza a adição entre dois elementos. 
+
+```{r sum}
+1 + 2
+```
+
+Um vetor é um conjunto ordenado de valores.
+O operador <tt>:</tt> cria uma sequência a partir de um número até outro.
+A função <tt>c</tt> concatena valores, criando um vetor.
+
+```{r vec}
+1:5
+
+c(1, 2, 3, 4, 5)
+```
+
+Além de adicionar dois números, o operador <tt>+</tt> pode ser usado para adicionar dois vetores.
+```{r sum-vec}
+1:5 + 6:10
+
+c(1, 2, 3, 4, 5) + c(6, 7, 8, 9, 10)
+
+1:5 + c(6, 7, 8, 9, 10)
+```
+
+Os próximos exemplos mostram subtração, multiplicação, exponenciação e divisão.
+
+```{r vector-operations}
+c(2, 3, 5, 7, 11, 13) - 2       #subtração
+
+-2:2 * -2:2                     #multiplicação
+
+(1:10) ^ 2                        #exponenciação
+
+1:10 / 3                        #divisão
+```
+
+## Atribuindo variáveis
+Fazer cálculos com o R é bem simples e útil.
+A maior parte das vezes queremos armazenar os resultados para uso posterior.
+Assim, podemos atribuir valor à uma variável, através do operador <tt><-</tt>.
+```{r var}
+a <- 1
+
+b <- 5 * 3
+
+x <- 1:5
+
+y <- 6:10
+```
+
+Agora, podemos reutilizar esses valores para fazer outros cálculos.
+
+```{r calcs}
+a + 2 * b
+
+x + 2 * y - 3
+```
+
+Observe que não temos que dizer ao R qual o tipo da variável, se era um número (as variáveis <tt>a</tt> e <tt>a</tt>) ou vetor (<tt>x</tt> e <tt>y</tt>).
+
+## Números especias
+Para facilitar operações aritméticas, R suporta quatro valores especiais de números: <tt> Inf, -Inf, NaN</tt> e <tt>NA</tt>.
+Os dois primeiros representam infinito positivo e negativo.
+<tt>NaN</tt> é um acrônimo inglês para "not a number", ou seja, não é um número.
+Ele aparece quando um cálculo não faz sentido, ou não está definido.
+<tt>NA</tt> significa "not available", ou seja, não disponível, e representa um valor faltante.
+
+```{r specials}
+c(Inf + 1, Inf - 1, Inf - Inf, NA + 1)
+
+c(0 / 0, Inf / Inf, 1 / Inf)
+```
+
+## Vetores, Matrizes e Dataframes
+Previamente, vimos alguns tipos de vetores para valores lógicos, caracteres e números.
+Nessa seção, utilizaremos técnicas de manipulação de vetores e introduziremos o caso multidimensional: matrizes e dataframes.
+
+Abaixo relembramos as operações que já foram feitas com vetores
+
+```{r recap-vec}
+10:5                    #sequência de números de 10 até 5
+
+c(1, 2:5, c(6, 7), 8)   #valores concatenados em um único vetor
+```
+
+
+### Vetores
+Existem funções para criar vetores de um tipo e com tamanho específicos.
+Todos os elementos deste vetor terá valor zero, FALSE, um caracter vazio, ou o equivalente à *nada/vazio* para aquele tipo.
+Veja abaixo duas maneiras de definir um vetor.
+
+```{r new-vec}
+vector("numeric", 5) #cria um vetor numérico de 5 elementos
+
+numeric(5) #equivalente ao comando acima
+
+vector("logical", 5) #cria um vetor lógico de 5 elementos
+
+logical(5) #equivalente ao comando acima
+
+vector("character", 5) #cria um vetor de caracteres de 5 elementos
+
+character(5) #equivalente ao comando acima
+```
+
+#### Sequências {#S:sequencia}
+Podemos criar sequências mais gerais que aquelas criadas com o operador <tt>:</tt>. 
+A função <tt>seq</tt> te permite criar sequências em diferentes maneiras
+Veja abaixo.
+
+```{r seq}
+seq(3, 12) #equivalente à 3:12
+
+seq(3, 12, 2) #o terceiro argumento indica a distância entre os elementos na lista.
+
+seq(0.1, 0.01, -0.01)
+```
+
+#### Tamanhos
+Todo vetor tem um tamanho, um número não negativo que representa a quantidade de elementos que o vetor contém.
+A função <tt>length</tt> retorna o tamanho de um dado vetor.
+
+```{r length}
+length(1:5) 
+
+frase <- c("Observe", "o", "resultado", "dos", "comandos", "abaixo")
+
+length(frase)
+
+nchar(frase)
+```
+
+#### Indexando vetores
+A indexação é útil quando queremos acessar elementos específicos de um vetor.
+Considere o vetor
+
+```{r index0}
+x <- (1:5) ^ 2
+```
+
+Abaixo, três métodos de indexar os mesmos valores do vetor <tt>x</tt>.
+```{r index1, eval = FALSE}
+x[c(1, 3, 5)]
+
+x[c(-2, -4)]
+```
+```{r index2}
+x[c(TRUE, FALSE, TRUE, FALSE, TRUE)]
+```
+
+Se nomearmos os elementos do vetor, o método abaixo obtém os mesmos valores de <tt>x</tt>.
+```{r index3}
+names(x) <- c("one", "four", "nine", "sixteen", "twenty five")
+x[c("one", "nine", "twenty five")]
+```
+
+Cuidado, acessar um elemento fora do tamanho do vetor não gera um erro no R, apenas NA.
+```{r index4}
+x[6]
+```
+
+### Matrizes
+Uma matriz é o equivalente à um vetor, porém em duas dimensões.
+Abaixo, um exemplo de definição de uma matriz com 4 linhas e 3 colunas (total de 12 elementos).
+
+```{r matrix1}
+?matrix
+
+uma_matriz <- matrix(
+      1:12,
+      nrow = 4, #ncol = 3 gera o mesmo resultado. Verifique!
+      dimnames = list(
+        c("L1", "L2", "L3", "L4"),
+        c("C1", "C2", "C3")
+      )
+)
+
+class(uma_matriz)
+
+uma_matriz
+```
+
+Por padrão, ao criar uma matrix, o vetor passado como primeiro argumento preenche a matrix por colunas.
+Para preencher a matrix por linhas, basta especificar o argumento <tt>byrow=TRUE</tt>
+
+A função <tt>dim</tt> retorna um vetor de inteiros com as dimensões da variável.
+
+```{r matrix2}
+dim(uma_matriz)
+
+nrow(uma_matriz) #retorna o número de linhas da matrix
+
+ncol(uma_matriz) #retorna o número de colunas da matrix
+
+length(uma_matriz) #retorna o número de elementos da matrix
+```
+
+#### Nomeando linhas, columas e dimensões
+Da mesma forma para vetores, podemos nomear (e obter os nomes de) linhas e colunas de matrizes.
+
+```{r matrix3}
+rownames(uma_matriz)
+
+colnames(uma_matriz)
+
+dimnames(uma_matriz)
+```
+
+#### Indexação
+A indexação de matrizes funciona de maneira similar à de vetores, com a diferença que agora precisam ser especificadas mais de uma dimensão.
+
+```{r index}
+uma_matriz[1, c("C2", "C3")] #elementos na primeira linha, segunda e terceira colunas
+
+uma_matriz[1, ] #todos elementos da primeira linha
+
+uma_matriz[, c("C2", "C3")] #todos elementos da segunda e terceira colunas
+
+uma_matriz[, c(2, 3)] #todos elementos da segunda e terceira colunas
+```
+
+#### Combinando matrizes
+Considere a seguinte matriz.
+
+```{r comb1}
+outra_matriz <- matrix(
+      seq(2, 24, 2),
+      nrow = 4,
+      dimnames = list(
+        c("L5", "L6", "L7", "L8"),
+        c("C5", "C6", "C7")
+      ))
+```
+
+A combinação de matrizes pode ser feita através das funções <tt>cbind</tt> e <tt>rbind</tt>, que combina matrizes por colunas e por linhas, respectivamentes.
+
+```{r comb2}
+cbind(uma_matriz, outra_matriz)
+
+rbind(uma_matriz, outra_matriz)
+```
+
+#### Operações com matrizes
+As operações básicas (+, -, \*, /) funcionam de elemento a elemento em matrizes, da mesmo forma como em vetores:
+
+```{r operation}
+uma_matriz + outra_matriz
+
+uma_matriz * outra_matriz
+```
+
+Cuidado: as matrizes e vetores devem ter tamanhos compativeis!

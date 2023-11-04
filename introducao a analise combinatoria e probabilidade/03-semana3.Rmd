@@ -1,0 +1,476 @@
+# Semana 3 {#sem3}
+
+<!-- ## A função $\phi$ de Euler -->
+<!-- ```{definition, label="defPhiEuler"} -->
+<!-- Chamamos de função $\phi$ de Euler a função que atribui a cada inteiro positivo $m$ o número de inteiros menors do que ou iguais a $m$ e relativamente primos com $m$. -->
+<!-- ``` -->
+
+<!-- ```{theorem, label="teoValorPhi"} -->
+<!-- O valor de $\phi(m)$ é dado por  -->
+<!-- $$\phi(m) = m\bigg(1 - \frac{1}{p_1}\bigg)\bigg(1 - \frac{1}{p_2}\bigg)\cdots\bigg(1 - \frac{1}{p_r}\bigg),$$ -->
+<!-- em que $p_1, p_2, \ldots, p_r$ são os divisores primos de $m$, isto é, os primos na decomposição de $m$ em fatores primos: -->
+<!-- $$m = p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_r^{\alpha_r}.$$ -->
+<!-- ``` -->
+
+<!-- ```{proof} -->
+<!-- Como o valor de $\phi(m)$ é o número de elementos no complementar da união dos $A_i$´s em $A$, temos -->
+
+<!-- \begin{align} -->
+<!-- \phi (m) &= \Big| \overline{\bigcup_{i=1}^{r} A_i} \Big| \\ -->
+<!--          &= \Big| \bigcap_{i=1}^{r} \overline{A_i} \Big| \\ -->
+<!--          &= \Big| \Omega \setminus \bigcup_{i=1}^{r} A_i \Big| \\ -->
+<!--          &= |A| - |A_1 \cup A_2 \cup \cdots \cup A_r| \\ -->
+<!--          &= |A| - \sum_{i=1}^{r}|A_i| + \sum_{1\leq i<j}|A_i \cap A_j| + \cdots + (-1)^r|A_1\cap A_2\cap\cdots\cap A_r|. -->
+<!-- \end{align} -->
+
+<!-- Como -->
+<!-- \begin{align}  -->
+<!-- |A| &= m, &\quad |A_i| &= \bigg\lfloor{\frac{m}{p_i}}\bigg\rfloor, &\quad \\ -->
+<!-- |A_i \cap A_j| &= \bigg\lfloor{\frac{m}{p_i p_j}}\bigg\rfloor, &\quad  -->
+<!-- |A_i \cap A_j \cap A_k| &= \bigg\lfloor{\frac{m}{p_i p_j p_k}}\bigg\rfloor, -->
+<!-- \end{align}  -->
+<!-- \begin{align}  -->
+<!-- &\vdots \\ |A_1 \cap A_2 \cap\cdots\cap A_r| &= \bigg\lfloor{\frac{m}{p_1 p_2 \cdots p_r}}\bigg\rfloor, -->
+<!-- \end{align}  -->
+
+<!-- temos -->
+
+<!-- \begin{align} -->
+<!-- \phi(m) &= m - \sum_{i=1}^{r}\frac{m}{p_i} + \sum_{1\leq i<j}\frac{m}{p_i p_j} + \cdots + (-1)^r\frac{m}{p_1 p_2 \cdots p_r}\\ -->
+<!-- &= m \Big(1 - \sum_{i=1}^{r}\frac{1}{p_i} + \sum_{1\leq i<j}\frac{1}{p_i p_j} + \cdots + (-1)^r\frac{1}{p_1 p_2 \cdots p_r} \Big) \\ -->
+<!-- &= m \Big(1 - \frac{1}{p_1}\Big)\Big(1 - \frac{1}{p_2}\Big)\cdots\Big(1 - \frac{1}{p_r}\Big) -->
+<!-- \end{align} -->
+
+<!-- ``` -->
+<!-- {RELEMBRAR COMO ESSE ULTIMO PASSO É FEITO} -->
+
+<!-- ```{example} -->
+<!-- Calcular $\phi(m)$ para $m=2100$ -->
+<!-- ``` -->
+
+<!-- ```{solution} -->
+<!-- Como $m=2^2\cdot 3\cdot 5\cdot 7$, temos -->
+<!-- $$\phi(m) = 2100 \Big(1 - \frac{1}{2}\Big)\Big(1 - \frac{1}{3}\Big) \Big(1 - \frac{1}{5}\Big)\Big(1 - \frac{1}{7}\Big) = 2100 \frac{1}{2}\frac{2}{3}\frac{4}{5}\frac{6}{7} = 480.$$ -->
+<!-- ``` -->
+
+
+<!-- ```{remark} -->
+<!-- Se $p=m$, com $p$ primo, então $\phi(p)=p-1.$ -->
+<!-- ``` -->
+
+## Mais exemplos com permutações
+
+```{example}
+Determine o número de permutações simples dos elementos $a_1, a_2, \ldots, a_n$ nas quais $a_1$ está em primeiro ou $a_2$ está em segundo lugar.
+```
+
+
+```{solution}
+Seja $A_1$ o conjunto das permutações em que $a_1$ está em primeiro lugar e $A_2$ o conjunto das permutações em que $a_2$ está em segundo lugar.
+É claro que $|A_1|=|A_2|=(n-1)!$ e $|A_1 \cap A_2| = (n-2)!$.
+Logo, o número que procuramos é $|A_1\cup A_2|$,
+  
+\begin{align}
+|A_1\cup A_2| &= |A_1| + |A_2| - |A_1 \cap A_2| \\
+&= (n-1)! + (n-1)! - (n-2)!\\
+&= 2(n-1)! - (n-2)!\\
+&= 2(n-1)(n-2)! - (n-2)!\\
+&= (2n - 2-1)(n-2)!\\
+&= (2n-3)(n-2)!.\\
+\end{align}
+```
+
+```{definition, name="Permutação Caótica", label="defPermCaotica"}
+Uma permutação de $a_1, a_2, \ldots, a_n$ é chamada de caótica quando nenhum dos $a_i$´s se encontra na posição original, isto é, na $i$-ésima posição.
+```
+
+Seja $A_i=$ "o conjunto das permutações de $a_1, a_2, \ldots, a_n$ tendo $a_i$ no $i$-ésimo lugar".
+Para calcular o número de permutações caóticas, denotado por $D_n$ (desarranjo), devemos calcular o número de elementos que não pertencem  a nenhum dos $A_i$´s:
+
+$$D_n = \Bigg|\overline{\bigcup_{i=1}^{n} A_i} \Bigg| = \Bigg|{\bigcap_{i=1}^{n} \overline{A_i}}\Bigg|.$$
+
+Veja que 
+\begin{align}
+|A_i| &= (n-1)! &\qquad \text{existem $n$ termos iguais a este na soma}\\
+|A_i\cap A_j| &= (n-2)! &\qquad \text{existem $C_n^1$ termos iguais a este na soma}\\
+|A_i\cap A_j \cap A_k| &= (n-3)! &\qquad \text{existem $C_n^2$ termos iguais a este na soma}\\
+&\vdots \\
+|A_1\cap\cdots\cap A_n| &= 1 &\qquad \text{existem $C_n^n$ termos iguais a este na soma}.\\
+\end{align}
+Então,
+
+\begin{align}
+D_n = \Bigg|{\bigcap_{i=1}^{n} \overline{A_i}}\Bigg| 
+&= n! - n(n-1)! + C_n^2(n-2)! - C_n^3(n-3)! + \cdots + (-1)^n\cdot 1 \\
+&= n! - \frac{n!}{1} +  \frac{n!}{2!(n-2)!}(n-2)! - \frac{n!}{3!(n-3)!}(n-3)! + \cdots + (-1)^n\frac{n!}{n!}\\
+&= n! - \frac{n!}{1} +  \frac{n!}{2!} - \frac{n!}{3!} + \cdots + (-1)^n\frac{n!}{n!}\\
+&= n! \Bigg(1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + \cdots +(-1)^n\frac{1}{n!}\Bigg).
+\end{align}
+
+```{example}
+Quantas permutações dos inteiros $1,2,3,\ldots,10$ tem exatamente $4$ dos números em suas posições originais?
+```
+
+```{solution}
+Como não são fixados os $4$ números que permanecerão nas suas posições originais, devemos escolher esstes números. 
+Essa escolha pode ser feita de $C_{10}^4$ maneiras distintas.
+Em seguinda, devemos permutar os $6$ números restantes caoticamente.
+Então, a resposta será
+$$C_{10}^4 D_6 = \frac{10!}{4!6!} 6! \Bigg(1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + \frac{1}{4!} - \frac{1}{5!} + \frac{1}{6!}\Bigg) = 55650.$$
+```
+
+### Contando o número de funções
+
+```{theorem, label="teoFuncoesBijetoras"}
+Sejam $A$ e $B$ conjuntos, em que $|A|=n$ e $|B|=k$.
+Se $k=n$, $n>0$, então o número de funções bijetoras $f:A\rightarrow B$ é $k!$.
+```
+
+```{proof}
+Se em $A$ existem $n$ pontos $a_1, \ldots, a_n$, temos $n$ possíveis imagens para $a_1$, $n-1$ possíveis imagens para $a_2$, $n-2$ para $a_3$, $\ldots$, 1 para $a_n$.
+```
+
+```{theorem, label="teoFuncoesInjetoras"}
+Sejam $A$ e $B$ conjuntos, em que $|A|=n$ e $|B|=k$.
+Se $n\leq k$, então o número de funções injetoras $f:A\rightarrow B$ é $k(k-1)(k-2)\cdots(k-n-1)!$.
+```
+
+```{proof}
+Exercício!
+```
+
+```{proposition}
+Se $|A|=m$ e $|B|=n$, então o número de funções $f:A\rightarrow B$ é $n^m$
+```
+
+```{proof}
+(por indução)
+Para $m=0$, temos que $|A|=0$ e a única função é a função vazia.
+Neste caso, $n^0=1$.
+Suponha que vale para $m$ e assuma $|A|=m+1$.
+Seja $a \in A$ (qualquer) e seja $|A^\prime|=A\setminus\{a\}$, um conjunto tal que $|A^\prime|=m$.
+Qualquer função $f:A\rightarrow B$ atribui um elemento $f(a)\in B$ para $a$ e $f|_{A^\prime}$ sendo uma função de $A^\prime$ à $B$.
+Pela hipótese de indução, existem $n^m$ funções de $A^\prime$ à $B$.
+Logo, existem $n$ maneiras de atribuir $f(a)\in B$ para $a \in B$, logo, pelo Princípio Multiplicativo, existem
+$$n\cdot n^m = n^{m+1}$$
+funções de $A$ à $B$. 
+```
+
+Na contagem do número de aplicações sobrejetoras é que necessitamos do princípio de inclusão e exclusão.
+
+```{theorem, label="teoFuncoesSobrejetoras"}
+Sejam $A$ e $B$ conjuntos, em que $|A|=n$ e $|B|=k$.
+Para $n\geq k$, o número de funções sobrejetoras $f:A\rightarrow B$ é dado por 
+$$T(n,k) = \sum_{i=0}^{k}(-1)^i{k \choose i}(k-i)^n.$$
+```
+
+```{proof}
+Como sabemos, uma função sobrejetora é tal que, para todo $b \in B$, existe pelo menos um $a \in A$ tal que $f(a)=b$.
+Como existem $k^n$ funções de $A$ em $B$, vamos subtrair desse total o número de funções que não são sobrejetoras.
+
+Considerando os elementos de $B$, $b_1, \ldots, b_k$, definimos $C_i=$ "conjunto de todas as funções $f:A\rightarrow B$ tais que $f^{-1}(b_i)=\emptyset$", isto é,
+$f(a)\neq b_i, \forall a \in A$.
+Como uma função deixa de ser sobrejetora quanto pertence a pelo menos um dos $C_i$´s, para $i=1,2,\ldots, k$, o conjunto de todas as funções não-sobrejetoras é
+$$C_1 \cup C_2 \cup\cdots \cup C_k = \bigcup_{i=1}^{k}C_i.$$
+Logo, pelo Princípio da Inclusão e Exclusão,
+$$\Big|\bigcup_{i=1}^{k}C_i\Big| = \sum_{i=1}^{k}|C_i| - \sum_{1\leq i<j}^{}|C_i\cap C_j| + \sum_{1\leq i<j<l}^{}|C_i\cap C_j\cap C_l| + \cdots |C_1\cap\cdots\cap C_k|$$
+
+Como $|C_i|=(k-1)^n$, $|C_i\cap C_j| = (k-2)^n, \ldots, |C_1\cap\ldots\cap C_k|=(k-k)^n$, temos
+\begin{align}
+  \Big|\bigcup_{i=1}^{k}C_i\Big| 
+  &={k \choose 1}(k-1)^n - {k \choose 2}(k-2)^n + {k \choose 3}(k-3)^n + \cdots + {k \choose k}(k-k)^n \\
+  &=\sum_{i=1}^{k}(-1)^{i-1}{k \choose i}(k-i)^n.
+\end{align}
+
+Subtraindo este número do total $k^n$, temos
+
+$$k^n-\sum_{i=1}^{k}(-1)^{i-1}{k \choose i}(k-i)^n = \sum_{i=0}^{k}(-1)^{i}{k \choose i}(k-i)^n.$$
+```
+
+
+```{remark}
+$T(n,k)$ é o número de maneiras de se distribuir $n$ bolas distintas em $k$ caixas distintas sem que nenhuma fique vazia.
+```
+
+
+```{example}
+Consideremos um conjunto de $9$ pessoas, sendo que todas sabem dirigir.
+De quantas maneiras estas $9$ pessoas podem se agrupar para levar $4$ carros de Campinas à São Paulo?
+```
+
+```{solution}
+Como todo carro deve ter um motorista, este número será igual ao número de funções sobrejetoras de um conjunto de $9$ elementos num conjunto de $4$ elementos.
+Pelo Teorema \@ref(thm:teoFuncoesSobrejetoras),
+
+\begin{align}
+T(9,4) &= \sum_{i=0}^{4}(-1)^k{4 \choose i}(4-i)^9 \\
+&= {4 \choose 4} 4^9 - {4 \choose 1} 3^9 + {4 \choose 2} 2^9- {4 \choose 3} 1^9\\
+&= 186480.
+\end{align}
+```
+
+## Probabilidade
+
+```{definition, name="Espaço amostral", label="defEspAmostral"}
+O espaço amostral de um experimento é o conjunto de todos os resultados possíveis deste experimento.
+Notação: $\mathcal{S}.$
+```
+
+
+
+```{example, label="exCorrida"}
+Defina o espaço amostral do seguinte experimento: ordem de chegada de uma corrida entre $7$ pessoas numeradas de $1$ a $7$.
+```
+
+```{solution}
+$\mathcal{S}=\{\text{todas as $7!$ permutações de $\{1,2,3,4,5,6,7\}$}\}.$
+```
+
+
+
+```{example, label="exDuasMoedas"}
+Defina o espaço amostral do seguinte experimento: resultado do lançamento de duas moedas.
+```
+
+```{solution}
+O espaço amostral é formado pelos quatro elementos a seguir
+$$\mathcal{S}=\{(H,H),(H,T),(T,H),(T,T)\}.$$
+O resultado será $(H,T)$ se a primeira moeda der $cara$ e a segunda $coroa$.
+```
+
+
+
+
+```{definition, name="Evento", label="defEvento"}
+Qualquer subconjunto $E$ do espaço amostral é conhecido como evento.
+```
+
+Em outras palavras, um evento é um conjunto formado pelos possíveis resultados do experimento.
+Se o resultado do experimento estiver contido em $E$, dizemos que $E$ ocorreu.
+
+No Exemplo \@ref(exm:exCorrida), considere $E=\{\text{todos os resultados em $\mathcal{S}$ começando com $3$}\}$, então $E$ é o evento em que a pessoa identificada pelo número $3$ vence a corrida.
+Já no Exemplo \@ref(exm:exDuasMoedas), se $E=\{(H,H),(H,T)\}$, então $E$ é o evento em que a primeira moeda lançada dá $cara$.
+
+Para quaisquer dois eventos $E$ e $F$ de um espaço amostral $\mathcal{S}$, definimos o novo evento $E\cup F$ como sendo formado por todos os resultados que pertecem a $E$ ou a $F$ ou a $E$ e $F$ simultaneamente.
+Isto é, o evento $E\cup F$ ocorrerá se $E$ ou $F$ ocorrer.
+
+```{example}
+No Exemplo \@ref(exm:exDuasMoedas), se $E=\{(H,H),(H,T)\}$ é o evento em que dá $cara$ no primeiro lançamento e $F=\{(T,H)\}$, então 
+$E\cup F=\{(H,H),(H,T),(T,H)\}$.
+Assim, $E\cup F$ ocorreria se desse $cara$ em qualquer uma das duas moedas.
+```
+
+Para quaisquer dois eventos $E$ e $F$ de um espaço amostral $\mathcal{S}$, definimos o evento $EF$ (ou $E\cap F$), chamado de interseção entre $E$ e $F$, como sendo formado por todos os resultados que estão tanto em $E$ quanto em $F$.
+
+```{example}
+No Exemplo \@ref(exm:exDuasMoedas), se $E=\{(H,H),(H,T),(T,H)\}$ é o evento em que pelo menos uma $cara$ aparece nas duas moedas e $F=\{(H,T),(T,H),(T,T)\}$ é o evento em que pelo menos uma coroa aparece, então 
+$$E\cap F=\{(H,T),(T,H)\}$$
+é o evento em que exatamente uma $cara$ e uma $coroa$ aparecem.
+```
+
+Se $EF=\emptyset$, então dizemos que $E$ e $F$ são mutualmente exclusivos.
+
+## Axiomas de Probabilidade
+Uma maneira de definir a probabilidade de um evento é em termos de sua frequência relativa: suponhamos que um experimento, cujo espaço amostral é $\mathcal{S}$, seja realizado repetidamente em condições exatamente iguais.
+Para cada evento $E \subseteq \mathcal{S}$, definimos $n(E)$ como o número de vezes que $E$ ocorre nas $n$ primeiras repetições do experimento.
+Então $P(E)$, a probabilidade do evento $E$, é definida como 
+$$P(E) = \lim_{n \rightarrow \infty} \frac{n(E)}{n}.$$
+
+Utilizando o `R`, vamos estimar a probabilidade de o lançamento de uma moeda dar `cara` através da frequencia relativa. 
+
+A simulação abaixo representa o resultado do lançamento de $10$ moedas:
+```{r}
+rbinom(n = 10, size = 1, prob = 0.5)
+```
+Vamos considerar que `1` representa `cara` e `0` coroa.
+Então, vamos realizar o experimento e calcular a probabilidade do evento $E=$ "o lançamento dá `cara`".
+```{r}
+n=10
+(m10 <- sum(rbinom(n, size = 1, prob = 0.5))/n)
+```
+
+Veja que o resultado é P(E)=`r m10`.
+
+Podemos repetir este experimento quantas vezes quisermos, por exemplo, para $n=100,1000,10000,1000000$.
+```{r}
+n=100
+(m100 <- sum(rbinom(n, size = 1, prob = 0.5))/n)
+
+n=1000
+(m100 <- sum(rbinom(n, size = 1, prob = 0.5))/n)
+
+n=10000
+(m100 <- sum(rbinom(n, size = 1, prob = 0.5))/n)
+
+n=100000
+(m100 <- sum(rbinom(n, size = 1, prob = 0.5))/n)
+```
+
+```{r include=FALSE}
+library(tidyverse)
+library(ggplot2)
+
+num <- c(10^c(0:4), 100*(2:9), 1000*(2:9), 2*10^4)
+df <- data.frame(num=numeric(), p=numeric())
+```
+
+
+A Figura \@ref(fig:figSimulacao) mostra o resultado deste experimento para `n=``r paste0(sort(num), collapse=", ")`. 
+
+```{r figSimulacao, echo=FALSE, message=FALSE, warning=FALSE, out.width='90%', fig.align="center", fig.cap="Simulação do lançamento de uma moeda para diferentes tamanhos amostrais"}
+i=1
+set.seed(1)
+for(i in 1:length(num)){
+  df <- rbind(df, 
+              cbind(num[i], rbinom(num[i], size=1, prob=0.5)))
+}
+
+  
+df %>% group_by(V1) %>% 
+  summarise(p = mean(V2)) %>% 
+  ggplot(aes(x=V1,y=p))+
+  geom_line()+
+  geom_hline(yintercept=0.5, color="red", linetype="dashed", alpha=0.5)+
+  scale_x_continuous(expand = c(0.01, 0))+
+  scale_y_continuous(expand = c(0, 0))+
+  labs(y="Probabilidade", x="Tamanho amostral")+
+  theme_bw()
+```
+
+
+
+Há um inconveniente nesta definição: como saberemos que $\frac{n(E)}{n}$ convergirá para algum valor limite constante que será o mesmo para cada possível sequência de repetições do experimento?
+
+Vamos considerar a abordagem axiomática moderna da teoria da probabilidade. 
+Então, vamos assumir que, para cada evento $E \subseteq \mathcal{S}$, existe um valor $P(E)$ chamado de probabilidade de ocorrência do evento $E$.
+Vamos supor então que todas as probabilidade satisfazem certo conjunto de axiomas.
+
+Considere um experimento cujo espaço amostral é $\mathcal{S}$. 
+Para cada evento $E$ de $\mathcal{S}$, assumimos que o número $P(E)$ seja definido e satisfaça os três axiomas a seguir.
+
+* Axioma 1: $0 \leq P(E) \leq 1$;
+* Axioma 2: $P(S) = 1$;
+* Axioma 3: para cada sequencia de eventos mutualmente exclusivos $E_1, E_2, \ldots$ (ou seja, $E_i E_j=\emptyset$ quando $i\neq j$), $P\big(\cup_{i=1}^{\infty}E_i\big)=\sum_{i=1}^{\infty}P(E_i)$.
+
+Se considerarmos a sequência de eventos $E_1, E_2, \ldots$, em que $E_1=\mathcal{S}$ e $E_i=\emptyset$ para $i>1$, então, como os eventos são mutualmente exclusivos e $\mathcal{S}=\cup_{i=1}^{\infty}E_i$, teremos, pelo Axioma 3,
+$$P(\mathcal{S})=\sum_{i=1}^{\infty}P(E_i) = P(\mathcal{S}) + \sum_{i=2}^{\infty}P(E_i),$$
+o que implica que $P(\emptyset)=0$.
+Isto é, o evento vazio tem probabilidade nula.
+Daí seque que, para qualquer sequência de eventos mutualmente exclusivos $E_1, E_2, \ldots, E_n$,
+$$P\Bigg(\bigcup_{i=1}^{n}E_i\Bigg) = \sum_{i=1}^{n}P(E_i).$$
+
+```{example}
+Se um dado é lançado e supormos que seus seis lados tenham a mesma probabilidade de aparecer, então teremos $P(\{1\})=$ $P(\{2\})=$ $P(\{3\})=$ $P(\{4\})=$ $P(\{5\})=$ $P(\{6\})=$ $\frac{1}{6}$.
+Do Axioma 3, temos que a probabilidade de sair um número par é igual a 
+$$P(\{2,4,6\}) = P(\{ 2 \})+P(\{ 4 \})+P(\{ 6 \}) = \frac{3}{6} = \frac{1}{2}.$$
+```
+
+```{proposition, label="propComplementar"}
+$$P(E^c) = 1 - P(E^c).$$
+```
+
+Em palavras, a Proposição \@ref(prp:propComplementar) afirma que a probabilidade de um evento não ocorrer é igual à 1 menos a probabilidade dele ocorrer.
+
+```{proof}
+Note que $E$ e $E^c$ são sempre mutualmente exclusivos e, como $E\cup E^c=\mathcal{S}$, temos, pelos Axiomas 2 e 3,
+$$1 = P(\mathcal{S}) = P(E\cup E^c) = P(E) + P(E^c)$$
+```
+
+```{proposition, label="propProbSubConjunto"}
+Se $E \subset F$, então $P(E) \leq P(F)$.
+```
+
+```{proof}
+Como $E \subset F$, podemos expressar $F$ como $F = E \cup E^c F$.
+Portanto, como $E$ e $E^c F$ são mutualmente exclusivos, obtemos, pelo Axioma 3,
+$$P(F) = P(E) + P(E^c F),$$
+o que prova o resultado, já que $P( E^c F)\geq 0$.
+```
+
+
+```{proposition, label="propProbUniao"}
+$$P(E \cup F) = P(E) + P(F) - P(E\cap F).$$
+```
+
+```{proof}
+Note que $E \cup F = E \cup E^c F$.
+Do Axioma 3 obtemos
+$$P(E \cup F) = P(E \cup E^c F) = P(E) + P(E^c F).$$
+Além disso, como $F = EF\cup E^c F$, obtemos do Axioma 3
+$$P(F) = P(EF) + P(E^c F),$$
+ou, equivalentemente, $P(E^c F) = P(F) - P(EF)$, o que completa a demonstração.
+```
+
+```{example}
+Uma pessoa leva dois livros para ler durante as férias.
+A probabilidaide dela gostar do primeiro livro é $0{,}5$, de gostar do segundo livro é $0{,}4$ e de gostar de ambos os livros é $0{,}3$.
+Qual a probabilidade de que essa pessoa não goste de nenhum dos livros?
+```
+
+```{solution}
+Seja $L_i$ o evento "a pessoa gosta do livro $i$", $i=1,2$.
+Então, a probabilidade dessa pessoa gostar de pelo menos um livro é 
+$$P(L_1 \cap L_2) = P(L_1) + P(L_2) - P(L_1L_2) = 0{,}5+0{,}4-0{,}3=0{,}6.$$
+  
+Como o evento "a pessoa não gosta de nenhum dos livros" é o complementar do evento em que ela gosta de pelo menos um deles, obtemos como resultado 
+$$P\big(L_1^c \cap L_2^c\big) = P\big((L_1^c \cup L_2)^c\big) = 1 - P\big(L_1^c \cup L_2\big) = 0{,}4.$$
+```
+
+
+```{proposition, label="propInclusaoExclusao"}
+\begin{align}
+P(E_1\cup E_2 \cup\cdots\cup E_n) = \sum_{i=1}^{n}P(E_i) &- \sum_{1\leq i <j}P(E_i E_j) \\
+&+ \cdots (-1)^{r+1}\sum_{1\leq i <j<\cdots<r}^{}P(E_i E_j \cdots E_r) +\cdots  \\
+&+(-1)^{n+1}P(E_1 E_2 \cdots E_n).
+\end{align}
+```
+
+```{remark}
+A soma $\sum_{1\leq i <j<\cdots<r}^{}P(E_i E_j \cdots E_r)$ é feita ao longo de todos os ${n \choose r}$ subconjuntos possíveis de tamanho $r$ do conjunto $\{1,2,3,\ldots, n\}.$
+```
+
+```{proof}
+Exercício! 
+Dica: semelhante ao visto no Princípio de Inclusão e Exclusão (veja o Teorema \@ref(thm:teoPrincInclExcl)).
+```
+
+## Espaços amostrais com resultados igualmente prováveis
+
+Em muitos experimentos é natural supor que todos os resultados presentes no espaço amostral sejam igualmente prováveis.
+Por exemplo, considere um experimento cujo espaço amostral $\mathcal{S}$ é um conjunto finito, digamos $\mathcal{S}=\{1,2,\ldots, n\}$.
+Se supormos que 
+$$P(\{1\})= P(\{2\})= \cdots = P(\{n\}),$$
+então, pelos Axiomas 2 e 3, temos que (por quê?)
+$$P(\{i\})=\frac{1}{n}, \qquad i=1,2,\ldots, n.$$
+A partir da expressão acima e do Axioma 3, temos que, para cada evento $E$,
+
+$$P(E)=\frac{\text{número de resultados em }E}{\text{número de resultados em } \mathcal{S}}.$$
+
+```{example}
+Se dois dados são lançados, qual é a probabilidade de que a soma das faces de cima seja igual a $7$?
+```
+
+```{solution}
+Assumindo que os $36$ resultados possíveis são equiprováveis, como há $6$ resultados possíveis que resultam na soma dos dados se $7$ -- isto é, $(1,6),$ $(2,5),$ $(3,4), (4,3),$ $(5,2), (6,1)$ -- a probabilidade desejada é igual a $\frac{6}{36}=\frac{1}{6}.$
+```
+
+```{example}
+Se três bolas são retiradas aleatoriamente de um recipiente contendo $6$ bolas brancas e $5$ bolas pretas, qual é a probabilidade de que uma das bolas seja branca e as outras duas sejam pretas?
+```
+
+```{solution}
+Se considerarmos a ordem de seleção das bolas como sendo relevante, então o espaço amostral é formado por $11\cdot 10\cdot 9 = 990$ resultados.
+Além disso, existem $6\cdot 5\cdot 4 = 120$ resultados nos quais a primeira bola selecionada é branca e as outras duas são pretas; $5\cdot 6\cdot 4 = 120$ resultados $5\cdot 4\cdot 6 = 120$ resultados nos quais as primeiras duas bolas são pretas e a terceira é branca.
+Portanto, supondo que retiradas aleatoriamente signifique que cada evento do espaço amostral seja igualmente provável, vemos que a probabilidade desejada é
+$$\frac{120 + 120 + 120}{990}=\frac{4}{11}.$$
+```
+
+```{solution}
+(alternativa)
+Podemos considerar o resultado do experimento como sendo o conjunto desordenado de bolas retiradas.
+Então, existem ${11 \choose 3}=165$ resultados no espaço amostral.
+Nesse caso, cada conjunto de 3 bolas corresponde a $3!$ resultados quando a ordem de seleção é levada em consideração.
+Como consequência, se for considerado que todos resultados são equiprováveis quando a  ordem da seleção é importante, tem-se que estes continuam equiprováveis quando o resultado considerado é um conjunto desordenado de bolas selecionadas.
+Dessa forma, usando esta última representação do experimentos, vemos que a probabilidade desejada é
+$$\frac{{6\choose 1}{5\choose 2}}{{11\choose 3}} = \frac{4}{11}.$$
+```

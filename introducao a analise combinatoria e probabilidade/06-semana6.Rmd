@@ -1,0 +1,191 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+# Semana 6 {#sem6}
+
+## Variáveis aleatórias contínuas
+Até o momento, vimos variáveis aleatórias discretas, ou seja, variáveis aleatórias em que o conjunto de valores possíveis que elas podem assumir é finito ou enumerável.
+Existem variáveis aleatórias cujo conjunto de valores possíveis é não enumerável.
+Por exemplo, a hora de chegada de um metrô na estação Butantã.
+
+```{definition, name="Variável aleatória contínua"}
+$X$ é uma variável aleatória contínua se existir uma função não negativa $f$, definida para todo real $x\in(-\infty,\infty),$ que tenha a propriedade de que, para qualquer conjunto $B$ de números reais,
+\begin{equation}
+  P(X\in B) = \int_{B}f(x)dx.
+  (\#eq:eqVAC)
+\end{equation}
+A função $f$ é chamada de *função densidade de probabilidade* da variável aleatória $X$, veja a Figura \@ref(fig:figFab2).
+```
+
+
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, label="figFab2", out.width='90%', fig.align="center", fig.cap="Função densidade de probabilidade f."}
+options(OutDec= ",")
+library(ggplot2)
+library(dplyr)
+s = seq(-5,5,by=0.01)
+df = data.frame(x=(s),y=dnorm(s)) %>% 
+         mutate(ab = ifelse(x >= 1 & x<=2, x, 0))
+ggplot(df, aes(x,y))+
+  # geom_function(fun=dnorm, col="blue", size=2)+
+  geom_area(mapping = aes(x = ab, y=y), fill = "gray")+
+  geom_line(size=2)+
+  scale_x_continuous(expand = c(0, 0), limits=c(-4,4), 
+                     breaks=c(1,2),
+                     labels=c("a","b"))+
+  scale_y_continuous(expand = c(0.02, 0), limits=c(0,.4))+
+  theme_bw()+
+  theme(legend.position = "none",
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(), 
+        axis.line = element_line(colour = "black"),
+        axis.ticks.y = element_blank(),
+        axis.text.y = element_blank())+
+  labs(y="f(x)", x="P(a<X<b)=área da região sombreada")
+options(OutDec= ".")
+```
+
+A Equação \@ref(eq:eqVAC) diz que a probabilidade de que $X$ esteja em $B$ pode ser obtida integrando-se a função de densidade de probabilidade ao longo do conjunto $B$.
+Como $X$ deve assumir algum valor, $f$ deve satisfazer
+$$1=P\big(X\in(-\infty,\infty)\big)=\int_{-\infty}^{\infty}f(x)dx$$
+
+A partir da Equação \@ref(eq:eqVAC), fazendo $B=[a,b]$, obtemos
+\begin{equation}
+  P(a\leq X\leq b) = \int_{a}^{b}f(x)dx.
+  (\#eq:eqVACab)
+\end{equation}
+E se fizermos $b=a$, temos
+$$P(a\leq X\leq a) = P(X=a) = \int_{a}^{a}f(x)dx = 0.$$
+A equação acima nos diz que a probabilidade de uma variável aleatória contínua assumir qualquer valor específico é zero.
+Portanto, para uma variável aleatória contínua,
+$$P(X<a)=P(X\leq a) = \int_{-\infty}^{a}f(x)dx.$$
+
+```{example}
+Suponha que $X$ seja uma variável aleatória contínua cuja função densidade de probabilidade é dada por 
+\begin{equation*}
+  f(x) =
+    \begin{cases}
+      c(4x-2x^2) & \text{se } 0 < x < 2\\
+      0 & \text{caso contrário.}\\
+    \end{cases}       
+\end{equation*}
+ 
+(a) Qual é o valor de $c$?
+(b) Determine P(X>1).
+      
+      
+      
+      
+```
+
+```{solution}
+(a) como $f$ é a função de densidade de probabilidade de $X$, devemos ter $\int_{-\infty}^{\infty}f(x)dx=1,$ o que implica
+$$c\int_{0}^{2}(4x-2x^2)dx=1,$$
+ou seja,
+
+$$c\bigg(2x^2-\frac{2x^3}{3}\bigg)\Bigg\vert_{x=0}^{x=2}dx=1,$$
+        
+o que implica em
+$$c=\frac{3}{8}.$$
+        
+(b) Com o resultado do item anterior, temos que $P(X>1)=\int_{1}^{\infty}f(x)dx=$ $\frac{3}{8}\int_{1}^{2}(4x-2x^2)dx=\frac{1}{2}.$
+```
+
+
+```{example}
+O tempo de vida, em horas, de um componente de um aparelho eletrônico é uma variável aleatória com função densidade de probabilidade dada por
+\begin{equation*}
+  f(x) =
+    \begin{cases}
+      0 & x \leq 100\\
+      \frac{100}{x^2} & x > 100\\
+    \end{cases}       
+\end{equation*}
+
+Qual é a probabilidade de que exatamente 2 de 5 componentes deste aparelho tenham que ser trocados nas primeiras 150 horas de uso?
+Suponha que os eventos $E_i$, $i=1,2,3,4,5,$ em que o $i$-ésimo componente tem que ser substituído dentro deste intervalo de tempo sejam independentes.
+      
+```
+
+```{solution}
+Do enunciado do problema, temos
+\begin{align*}
+  P(E_i) &= \int_{0}^{150} f(x)dx \\
+  &= 100\int_{0}^{150}x^{-2}dx\\
+  &= \frac{1}{3}.
+\end{align*}
+
+  Portanto, da independência dos eventos $E_i$ tem-se que a probabilidade deseja é 
+  $${5 \choose 2}\bigg(\frac{1}{3}\bigg)^2\bigg(\frac{2}{3}\bigg)^3.$$
+```
+
+A relação entre a função distribuição acumulada $F$ e a função densidade de probabilidade $f$ é dada por
+$$F(a) = P(X\in(-\infty,a))=\int_{-\infty}^{a}f(x)dx.$$
+Derivando ambos os lados dessa equação, temos
+$$\frac{d}{da}F(a)=f(a),$$
+ou seja, a função densidade de probabilidade é a derivada da função distribuição acumulada.
+
+## Esperança e variância de variáveis aleatórias contínuas
+
+Lembre-se que o valor esperado de uma variável aleatória discreta $X$ é
+$$E[X] = \sum_x xP(X=x).$$
+Se $X$ é uma variável aleatória contínua com função densidade de probabilidade $f(x),$ então, como 
+$$f(x)dx  \approx P(x\leq X \leq x+dx), \qquad \text{para } dx \text{ pequeno,}$$
+é análogo definir o valor esperado de $X$ como
+$$E[X] = \int_{-\infty}^{\infty}xf(x)dx.$$
+A proposição a seguir é útil para o cálculo da variância de uma variável aleatória contínua.
+
+```{proposition}
+Se $X$ é uma variável aleatória contínua com função densidade de probabilidade $f(x)$, então, para qualquer função de valor real $g$,
+$$E[g(X)] = \int_{-\infty}^{\infty}g(x)f(x)dx.$$
+```
+
+A variância de uma variável aleatória contínua é definida de forma exatamente igual à de uma variável aleatória discreta. 
+Isto é, se $X$ é uma variável aleatória com valor esperado $\mu$, então a variância de $X$ é definida (para qualquer tipo de variável aleatória) como
+$$Var(X)= E[(X-\mu)^2].$$
+A fórmula alternativa é
+$$Var(X) = E[X^2]-(E[X])^2.$$
+
+## Variável aleatória normal
+
+Dizemos que X é uma variável aleatória normal, ou simplesmente que $X$ é normalmente distribuída,com parâmetros $\mu$ e $\sigma^2$,se a função densidade de $X$ é dada por
+$$f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-(x-\mu)^2/2\sigma^2} \qquad -\infty<x<\infty.$$
+Os parâmetros $\mu$ e $\sigma^2$ de uma variável aleatória normal representam, respectivamente, o seu valor esperado e a sua variância.
+
+Um importante fato a respeito de variáveis aleatórias normais é que se $X$ é
+uma variável aleatória normalmente distribuída com parâmetros $\mu$ e $\sigma^2$, então $Y = aX + b$ é normalmente distribuída com parâmetros $a\mu+b$ e $a^2\sigma^2.$
+Uma implicação importante desse resultado é que se X é normalmente distribuída com parâmetros $\mu$ e $\sigma^2$, então $Z = (X-\mu)/\sigma$ é normalmente distribuída com parâmetros $0$ e $1$. 
+Tal variável aleatória é chamada de variável aleatória *normal padrão*.
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, label="figFab", out.width='90%', fig.align="center", fig.cap="Função densidade de probabilidade normal com média e variância arbitrários."}
+options(OutDec= ",")
+library(ggplot2)
+library(dplyr)
+
+mu <-10
+sigma<-2
+s = seq(mu-10*sigma,mu+10*sigma,by=0.01)
+df = data.frame(x=(s),y=dnorm(s,mu,sigma))
+ggplot(df, aes(x,y))+
+  geom_vline(xintercept = mu, linetype="dashed", color="gray")+
+  geom_line(size=2)+
+  scale_x_continuous(expand = c(0, 0), limits=c(0, mu+4*sigma),
+                     breaks=c(mu-2*sigma, mu-sigma,mu,mu+sigma, mu+2*sigma),
+                     labels=c(expression(mu~-~2~sigma),
+                              expression(mu~-~sigma),
+                              expression(mu),
+                              expression(mu~+~sigma),
+                              expression(mu~+~2~sigma)))+
+  scale_y_continuous(expand = c(0, 0), limits=c(0,max(df$y)*1.1))+
+  theme_bw()+
+  theme(legend.position = "none",
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(), 
+        axis.line = element_line(colour = "black"),
+        axis.ticks.y = element_blank(),
+        axis.text.y = element_blank())+
+  labs(y="f(x)", x="")
+options(OutDec= ".")
+```

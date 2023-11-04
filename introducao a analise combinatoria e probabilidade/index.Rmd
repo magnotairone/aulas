@@ -1,0 +1,51 @@
+--- 
+title: "Análise Combinatória, Probabilidade e Aplicações"
+author: "Magno T F Severino"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "Notas de aula da disciplina."
+---
+
+<!-- \newtheorem{definition}{Definição} -->
+<!-- \newtheorem{notation}{Notação}[section] -->
+<!-- \newtheorem{example}{Exemplo}[section] -->
+
+
+# Introdução {-}
+
+Curso ministrado no Programa de Verão do IME-USP, em 2023.
+
+Dias de aulas: 11/01/2021 à 26/02/2021
+
+<!-- Dias de monitorias.  -->
+
+<!-- Datas de provas. -->
+
+<!-- Referências bibliográficas. -->
+
+<!-- # # LISTA DE TAREFAS {-} -->
+<!-- * Semana 1: 11 páginas - FEITO! REVISADO! SLIDE FEITO! -->
+<!-- * Semana 2: 15 páginas - FEITO! REVISADO! SLIDE FEITO! -->
+<!-- * Semana 3: 9 páginas - FEITO! REVISADO! SLIDE FEITO! -->
+<!-- * Semana 4: 8 páginas - FEITO! REVISAO! SLIDE FEITO! -->
+<!-- * Semana 5: 8 páginas - FEITO! -->
+<!-- * Semana 6: 7 páginas - FEITO! -->
+<!--   * arrumar tabela da semana 6 -->
+
+<!-- * referencia teorema binomial inicio semana 5 -->
+<!-- * adicionar exemplos prob condicional para o caso de dist. conjunta -->
+<!-- * corrigir erro referencia fim da secao 4.2 -->
+
+
+```{r include=FALSE}
+library(kableExtra)
+
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
